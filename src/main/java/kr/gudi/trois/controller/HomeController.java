@@ -61,5 +61,10 @@ public class HomeController {
       // 결과값을 JSON으로 출력하기.
       HttpUtil.sendResponceToJson(resp, result);
    }
+   @RequestMapping("/main")
+   public String main(){
+      
+      return "main";
+   }
    
 }
