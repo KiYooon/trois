@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="paging">
+	<select id="select" parameterType="hashmap" resultType="hashmap">
+		select title, contents, substr(date, 1, 10) as date, answer, answercheck 
+		from qna where del_yn = 'y' limit #{start}, #{viewRow};
+	</select>
+	<select id="totCnt" resultType="hashmap">
+		select count(*) as tot from qna;
+	</select>
+</mapper>
