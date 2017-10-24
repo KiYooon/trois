@@ -6,6 +6,7 @@
 <link rel="stylesheet" href="resources/css/main.css">
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trois</title>
+
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <script type="text/javascript" src="/trois/resources/js/main.js">
@@ -26,19 +27,19 @@
 			</div>
 			<div class="head-3">
 				<button id="login">로그인</button>
-				<!-- The Modal -->
+<!-- 				The Modal -->
 				<div id="myModal" class="modal">
-					<!-- Modal content -->
+<!-- 					Modal content -->
 					<div class="modal-content">
 						<span class="close">&times;</span>
+						<form action="" method="post">
 						<div class="logintable">
 							<p>
-								<label for="id">ID : </label> <input type="text" id="id">
+								<label for="id">ID : </label> <input type="text" id="loginid">
 							</p>
 							<p>
-								<label for="pw">PW : </label> <input type="password" id="pw">
+								<label for="pw">PW : </label> <input type="password" id="loginpwd">
 							</p>
-							<form>
 								<input type="submit" value="Login" id="iplogin">
 							</form>
 							<button type="button" id="findid">ID찾기</button>
@@ -51,27 +52,31 @@
 				<!-- The Modal -->
 				<div id="myModal2" class="modal">
 					<!-- Modal content -->
-					<div class="modal-content2">
-						<span class="close">&times;</span>
-						<div class="jointable">
-							<p>
-								<label for="id">ID : </label> <input type="text" id="id">
-							</p>
-							<p>
-								<label for="pw">PW : </label> <input type="password" id="pw">
-							</p>
-							<p>
-								<label for="name">Name : </label> <input type="text" id="name">
-							</p>
-							<p>
-								<label for="email">E-MAIL : </label> <input type="text"
-									id="email">
-							</p>
+					<form action="" method="post">
+						<div class="modal-content2">
+							<span class="close">&times;</span>
+							<div class="jointable">
+								<p>
+									<label for="id">ID : </label> <input type="text" id="createid" name="id"> <input type="submit" id="overlap" value="중복확인">
+								</p>
+								<p>
+									<label for="pw">PW : </label> <input type="password" id="pwd" name="pwd">
+								</p>
+								<p>
+									<label for="name">Name : </label> <input type="text" id="name" name="name">
+								</p>
+								<p>
+									<label for="email">E-MAIL : </label> <input type="text"
+										id="email" name="email">
+								</p>
+							
+							
+							
+								<input type="submit" value="회원가입" id="ipjoin">
+							
+							</div>
 						</div>
-						<form>
-							<input type="submit" value="회원가입" id="ipjoin">
-						</form>
-					</div>
+					</form>
 				</div>
 			</div>
 
@@ -132,12 +137,20 @@
 		// 	});
 
 		// 	Get the modal
-		var modal = $("myModal");
-		var modal2 = $("myModal2");
+		
+		
+		
+// 		var modal = $("myModal");
+// 		var modal2 = $("myModal2");
 
-		// Get the button that opens the modal
-		var btn = $("login");
-		var btn2 = $("join");
+// 		// Get the button that opens the modal
+// 		var btn = $("login");
+// 		var btn2 = $("join");
+
+		var id = "";
+		var name = "";
+		var pwd = "";
+		var email = "";
 
 		// Get the <span> element that closes the modal
 		var tr = "<p>"
@@ -167,49 +180,164 @@
 				+ "<button type='button' id='findid'>ID찾기</button>"
 				+ "<button type='button' id='settingpw'>비밀번호 재설정</button>";
 		
+		var tr4 =  "<p>"
+			+ "<label for='name'>Name : </label>"
+			+ "<input type='text' id='name'>" + "</p>"
+			+ "<p>"
+			+ "<label for='id'>ID : </label>"
+			+ "<input type='text' id='id'>"
+			+ "</p>"
+			+ "<p>"
+			+ "<label for='changepw'>비밀번호 변경 : </label>"
+			+ "<input type='password' id='changepw'>" + "</p>"
+			+ "<input type='submit' value='변경' id='change'>";
 		
+		var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요."
+			+ "<button type='button' id='okpw'>확인</button>";
+			
 		
+// 		var tr6 = "회원가입이 완료되었습니다."
+// 			+ "<button type='button' id='okjoin'>확인</button>";
+			
+
+		var tr7 = "<span class='close'>&times;</span>" 
+				+ "<p>"
+				+ "<label for='id'>ID : </label>"
+				+ "<input type='text' id='id'> <input type='submit' id='overlap' value='중복확인'>" + "</p>"
+				+ "<p>" + "<label for='pw'>PW : </label>"
+				+ "<input type='password' id='pw'>" + "</p>" + "<p>"
+				+ "<label for='name'>Name : </label>"
+				+ "<input type='text' id='name'>" + "</p>" + "<p>"
+				+ "<label for='email'>E-MAIL : </label>"
+				+ "<input type='text' id='email'>"
+				+ "</p>"
+				+ "<form>" + "<input type='submit' value='회원가입' id='ipjoin'>"
+				+ "</form>";
+
 		var span = $("close")[0];
 		var span2 = $("close")[1];
-		
-		function btnLogin(){
-			$("#login").off().on("click",	function() {
+
+		function btnLogin() {
+			$("#login").off().on("click", function() {
 				// alert("띠용");
 				$("#myModal").css("display", "block");
 				btnFindid();
-			});			
+				btnSettingpw()
+			});
 		}
-		
-		function btnSpan(){
+
+		function btnSpan() {
 			$("span").off().on("click", function() {
 				$("#myModal").css("display", "none");
+				$("#myModal2").css("display", "none");
 			});
 		}
-		
-		
-		function btnFindid(){
+
+		function btnFindid() {
 			$("#findid").on("click", function() {
 				$(".modal-content").html(tr);
-				btnFindid2();				
+				btnFindid2();
 			});
 		}
-		
-		function btnFindid2(){
+
+		function btnFindid2() {
 			$("#findid2").off().on("click", function() {
 				$(".modal-content").html(tr2);
-				
+
 				$("#okid").off().on("click", function() {
 					$(".modal-content").html(tr3);
 					// 이벤트 다시 생성
 					btnFindid();
+					btnSettingpw()
 					btnSpan();
 				});
 			});
 		}
+		function btnSettingpw() {
+			$("#settingpw").off().on("click", function() {
+				// 				alert("메롱");
+				$(".modal-content").html(tr4);
+
+				btnChange();
+			});
+		}
+		function btnChange() {
+			$("#change").off().on("click", function() {
+				$(".modal-content").html(tr5);
+
+				$("#okpw").off().on("click", function() {
+					$(".modal-content").html(tr3);
+					// 이벤트 다시 생성
+					btnFindid();
+					btnSettingpw()
+					btnSpan();
+				});
+			});
+		}
+		function btnjoin() {
+			$("#join").off().on("click", function() {
+				// 				alert("띠용");
+				$("#myModal2").css("display", "block");
+				btnSpan();
+				btnipjoin();
+			});
+		}
+		function btnipjoin() {
+			$("#ipjoin").off().on("click", function() {
+// 				$(".modal-content2").html(tr6);
+				createUser();
+				btnokjoin();
+			});
+		}
+
+		function btnokjoin() {
+			$("#okjoin").off().on("click", function() {
+				$("#myModal2").css("display", "none");
+
+				$(".modal-content2").html(tr7);
+				btnjoin();
+			});
+
+		}
 		
+		function createUser(){ //계정 생성 ajax
+			id = $("#createid").val();
+			pwd = $("#pwd").val();
+			name = $("#name").val();
+			email = $("#email").val();
+			
+			$.ajax({
+				type:"post",
+				url:"/trois/Userjoin",
+				data:{"id": id, "pwd": pwd, "name": name, "email": email}
+			}).done(function(d){
+				var result = JSON.parse(d);
+				console.log(result);
+			});
+		}
+		
+		$("#iplogin").off().on("click", function(){
+			login();
+		});
+		
+		function login(){
+			id = $("#loginid").val();
+			pwd = $("#loginpwd").val();
+			
+			$.ajax({
+				type:"post",
+				url:"/trois/Userlogin",
+				data:{"id": id, "pwd": pwd}
+			}).done(function(d){
+				var result = JSON.parse(d);
+			})
+		}
+
 		// 시작 부분...
 		btnLogin();
 		btnSpan();
+		btnjoin();
+
 		// When the user clicks the button, open the modal 
 		// 		btn.onclick = function() {
 		// 		    modal.style.display = "block";

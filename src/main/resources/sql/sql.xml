@@ -6,4 +6,16 @@
 	<select id="test" resultType="hashmap">
 		select '테스트' as data
 	</select>
+	
+	<select id="user" resultType="hashmap">
+		select * from user
+	</select>
+	
+	<select id="login" resultType="hashmap">
+		select * from user where id = #{id} and pwd = #{pwd}
+	</select>
+	
+	<insert id="join" parameterType="hashmap">
+		insert into user (id, name, pwd, email, joindate) values (#{id}, #{name}, #{pwd}, #{email}, now())
+	</insert>
 </mapper>
