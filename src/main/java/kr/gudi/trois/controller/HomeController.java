@@ -15,6 +15,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 import kr.gudi.trois.service.TestServiceInterface;
 import kr.gudi.util.HttpUtil;
@@ -66,5 +67,12 @@ public class HomeController {
       
       return "main";
    }
+   
+   @RequestMapping(value ="/work")
+   public ModelAndView work(ModelAndView mav){
+	   mav.setViewName("work");
+	   return mav;
+   }
+
    
 }
