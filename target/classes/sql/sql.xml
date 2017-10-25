@@ -18,4 +18,8 @@
 	<insert id="join" parameterType="hashmap">
 		insert into user (id, name, pwd, email, joindate) values (#{id}, #{name}, #{pwd}, #{email}, now())
 	</insert>
+	
+	<select id="checkid" resultType="hashmap">
+		select * from user where id = #{id}
+	</select>
 </mapper>

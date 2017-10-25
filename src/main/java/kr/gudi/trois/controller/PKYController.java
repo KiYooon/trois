@@ -29,7 +29,7 @@ public class PKYController {
 	      mav.setViewName("main");
 	      return mav;
 	   }
-	@RequestMapping(value="/main2") //메인페이지
+	@RequestMapping(value="/main2") //로그인 되었을 때 메인페이지
 	   public ModelAndView main2(ModelAndView mav, HttpSession session){
 		  HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 	      System.out.println(user.get("login").get("email"));
@@ -84,6 +84,14 @@ public class PKYController {
 		session.setAttribute("user", Logindata);
 		
 		HttpUtil.sendResponceToJson(resp, Logindata);
+	}
+	@RequestMapping(value="/checkid", method = RequestMethod.POST)
+	public void checkid(HttpServletRequest req, HttpServletResponse resp){
+		HashMap<String, Object> checkid = HttpUtil.getParameterMap(req);
+		System.out.println(checkid);
+		HashMap<String, Object> checkiddata = (HashMap<String, Object>) usi.checkid(checkid);
+		
+		HttpUtil.sendResponceToJson(resp, checkiddata);
 	}
 	
 }

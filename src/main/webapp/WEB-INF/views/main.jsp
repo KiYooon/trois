@@ -27,105 +27,113 @@
 			</div>
 			<div class="head-3">
 				<button id="login">로그인</button>
-<!-- 				The Modal -->
+				<!-- 				The Modal -->
 				<div id="myModal" class="modal">
-<!-- 					Modal content -->
+					<!-- 					Modal content -->
 					<div class="modal-content">
 						<span class="close">&times;</span>
 						<form method="post">
-						<div class="logintable">
-							<p>
-								<label for="id">ID : </label> <input type="text" id="loginid">
-							</p>
-							<p>
-								<label for="pw">PW : </label> <input type="password" id="loginpwd">
-							</p>
-							<button type="button" id="iplogin">Login</button>
-							<button type="button" id="findid">ID찾기</button>
-							<button type="button" id="settingpw">비밀번호 재설정</button>
-						</div>
-						</form>
-						</div>
-					</div>
-				</div>
-				<button type="button" id="join">회원가입</button>
-				<!-- The Modal -->
-				<div id="myModal2" class="modal">
-					<!-- Modal content -->
-					<form action="" method="post">
-						<div class="modal-content2">
-							<span class="close">&times;</span>
-							<div class="jointable">
+							<div class="logintable">
 								<p>
-									<label for="id">ID : </label> <input type="text" id="createid" name="id"> <input type="submit" id="overlap" value="중복확인">
+									<label for="id">ID : </label> <input type="text" id="loginid">
 								</p>
 								<p>
-									<label for="pw">PW : </label> <input type="password" id="pwd" name="pwd">
+									<label for="pw">PW : </label> <input type="password"
+										id="loginpwd">
 								</p>
-								<p>
-									<label for="name">Name : </label> <input type="text" id="name" name="name">
-								</p>
-								<p>
-									<label for="email">E-MAIL : </label> <input type="text"
-										id="email" name="email">
-								</p>
-							
-							
-							
-								<input type="submit" value="회원가입" id="ipjoin">
-							
+								<button type="button" id="iplogin">Login</button>
+								<button type="button" id="findid">ID찾기</button>
+								<button type="button" id="settingpw">비밀번호 재설정</button>
 							</div>
-						</div>
-					</form>
-				</div>
-			</div>
-
-		</header>
-		<div class="body">
-			<div class="body-1"></div>
-
-			<div class="body-2">
-
-				<div class="body-2-1">
-					<img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
-						class="img-top img-left">
-				</div>
-				<div class="body-2-1">
-					<img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
-						class="img-top img-right">
-				</div>
-				<div class="body-2-1">
-					<img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
-						class="img-bottom img-left">
-				</div>
-				<div class="body-2-1">
-					<img
-						src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
-						class="img-bottom img-right">
-				</div>
-
-				<div class="body-2-3">
-					<div>
-						<div class="body-2-3-1"></div>
-						<div class="body-2-3-2"></div>
+						</form>
 					</div>
 				</div>
+			
+			
+			<button type="button" id="join">회원가입</button>
+			<!-- The Modal -->
+			<div id="myModal2" class="modal">
+				<!-- Modal content -->
+				<form action="" method="post">
+					<div class="modal-content2">
+						<span class="close">&times;</span>
+						<div class="jointable">
+							<p>
+								<label for="id">ID : </label> <input type="text" id="createid"
+									name="id">
+								<button type="button" id="overlap">중복확인</button>
+							</p>
+							<p>
+								<label for="pw">PW : </label> <input type="password" id="pwd"
+									name="pwd">
+							</p>
+							<p>
+								<label for="name">Name : </label> <input type="text" id="name"
+									name="name">
+							</p>
+							<p>
+								<label for="email">E-MAIL : </label> <input type="text"
+									id="email" name="email">
+							</p>
+
+
+
+							<input type="submit" value="회원가입" id="ipjoin">
+
+						</div>
+						</div>
+				</form>
+			</div>
+			
+	</div>
+
+	</header>
+	</div>
+	<div class="body">
+		<div class="body-1"></div>
+
+		<div class="body-2">
+
+			<div class="body-2-1">
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
+					class="img-top img-left">
+			</div>
+			<div class="body-2-1">
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
+					class="img-top img-right">
+			</div>
+			<div class="body-2-1">
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
+					class="img-bottom img-left">
+			</div>
+			<div class="body-2-1">
+				<img
+					src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg"
+					class="img-bottom img-right">
 			</div>
 
-			<div class="body-1"></div>
+			<div class="body-2-3">
+				<div>
+					<div class="body-2-3-1"></div>
+					<div class="body-2-3-2"></div>
+				</div>
+			</div>
+		</div>
 
-		</div>
-		<div class="body-3">
-			<button type="button" id="start">시작</button>
-		</div>
-		<div class="body-4">
-			<footer>
-				<p id=fp>Copyright.</p>
-			</footer>
-		</div>
+		<div class="body-1"></div>
+
+	</div>
+	<div class="body-3">
+		<button type="button" id="start">시작</button>
+	</div>
+	<div class="body-4">
+		<footer>
+			<p id=fp>Copyright.</p>
+		</footer>
+	</div>
 
 
 
@@ -334,6 +342,33 @@
 					location.href = "main2";
 				}else{
 					alert("ㅎㅎ");
+				}
+			});
+		}
+		$("#overlap").on("click", function(){
+			btnOverlap();
+		});
+		function btnOverlap(){
+			var id = $("#createid").val();
+			
+			if(id == ""){
+				alert("입력하슈~");
+				return false;
+			}
+			
+			$.ajax({
+				type : "post",
+				url : "checkid",
+				data:{"id" : id},
+				datatype: "json"
+				
+				
+			}).done(function(result){
+				console.log(result.checkid);
+				if(result.checkid == null){
+					alert("사용 가능한 아이디 입니다.");
+				}else{
+					alert("사용 불가능한 아이디 입니다.")
 				}
 			});
 		}

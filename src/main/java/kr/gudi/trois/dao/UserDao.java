@@ -30,5 +30,10 @@ public class UserDao implements UserDaoInterface {
 
 		return session.insert("sql.join", param);
 	}
+	@Override
+	public HashMap<String, Object> checkid(HashMap<String, Object> param) {
+		
+		return session.selectOne("sql.checkid", param);
+	}
 
 }

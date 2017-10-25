@@ -7,4 +7,5 @@ public interface UserServiceInterface {
 	
     public HashMap<String, Object> login(HashMap<String, Object> param);
     public HashMap<String, Object> join(HashMap<String, Object> param);
+    public HashMap<String, Object> checkid(HashMap<String, Object> param);
 }

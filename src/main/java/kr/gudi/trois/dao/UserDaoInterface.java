@@ -8,4 +8,5 @@ public interface UserDaoInterface {
 	
 	public HashMap<String, Object> login(HashMap<String, Object> param);
 	public int join(HashMap<String, Object> param);
+	public HashMap<String, Object> checkid(HashMap<String, Object> param);
 }

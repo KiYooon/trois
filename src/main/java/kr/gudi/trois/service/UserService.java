@@ -34,4 +34,10 @@ public class UserService implements UserServiceInterface {
 		map.put("join", udi.join(param));
 		return map;
 	}
+	@Override
+	public HashMap<String, Object> checkid(HashMap<String, Object> param){
+		map = new HashMap<String, Object>();
+		map.put("checkid", udi.checkid(param));
+		return map;
+	}
 }
