@@ -32,7 +32,7 @@
 <!-- 					Modal content -->
 					<div class="modal-content">
 						<span class="close">&times;</span>
-						<form action="" method="post">
+						<form method="post">
 						<div class="logintable">
 							<p>
 								<label for="id">ID : </label> <input type="text" id="loginid">
@@ -40,11 +40,11 @@
 							<p>
 								<label for="pw">PW : </label> <input type="password" id="loginpwd">
 							</p>
-								<input type="submit" value="Login" id="iplogin">
-							</form>
+							<button type="button" id="iplogin">Login</button>
 							<button type="button" id="findid">ID찾기</button>
-
 							<button type="button" id="settingpw">비밀번호 재설정</button>
+						</div>
+						</form>
 						</div>
 					</div>
 				</div>
@@ -174,9 +174,9 @@
 				+ "<label for='pw'>PW : </label>"
 				+ "<input type='password' id='pw'>"
 				+ "</p>"
-				+ "<form>"
-				+ "<input type='submit' value='Login' id='iplogin'>"
-				+ "</form>"
+				+ 
+				+ "<button type='button' id='iplogin'></button>"
+				
 				+ "<button type='button' id='findid'>ID찾기</button>"
 				+ "<button type='button' id='settingpw'>비밀번호 재설정</button>";
 		
@@ -323,14 +323,19 @@
 		function login(){
 			id = $("#loginid").val();
 			pwd = $("#loginpwd").val();
-			
 			$.ajax({
 				type:"post",
-				url:"/trois/Userlogin",
+				url:"Userlogin",
 				data:{"id": id, "pwd": pwd}
-			}).done(function(d){
-				var result = JSON.parse(d);
-			})
+			}).done(function(result){
+				console.log(result);
+				console.log(result.login);
+				if(result.login != null){
+					location.href = "main2";
+				}else{
+					alert("ㅎㅎ");
+				}
+			});
 		}
 
 		// 시작 부분...

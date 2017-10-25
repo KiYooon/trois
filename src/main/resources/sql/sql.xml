@@ -11,7 +11,7 @@
 		select * from user
 	</select>
 	
-	<select id="login" resultType="hashmap">
+	<select id="login" resultType="hashmap" parameterType="hashmap">
 		select * from user where id = #{id} and pwd = #{pwd}
 	</select>
 	
