@@ -3,6 +3,7 @@ package kr.gudi.trois.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,7 +21,8 @@ public class TroisController {
 	TroisServiceInterface tsi;
 
 	@RequestMapping("/myqna")
-	public ModelAndView myqna(ModelAndView mav) {
+	public ModelAndView myqna(ModelAndView mav, HttpSession session) {
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		mav.setViewName("myqna");
 		return mav;
 	}
@@ -41,7 +43,8 @@ public class TroisController {
 	}
 	
 	@RequestMapping("/myroom")
-	public ModelAndView myroom(ModelAndView mav) {
+	public ModelAndView myroom(ModelAndView mav, HttpSession session) {
+//		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		mav.setViewName("myroom");
 		return mav;
 	}
@@ -62,7 +65,8 @@ public class TroisController {
 	}
 	
 	@RequestMapping("/admin")
-	public ModelAndView admin(ModelAndView mav) {
+	public ModelAndView admin(ModelAndView mav, HttpSession session) {
+//		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		mav.setViewName("admin");
 		return mav;
 	}
@@ -83,7 +87,8 @@ public class TroisController {
 	}
 	
 	@RequestMapping("/modify")
-	public ModelAndView modify(ModelAndView mav) {
+	public ModelAndView modify(ModelAndView mav, HttpSession session) {
+//		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		mav.setViewName("modify");
 		return mav;
 	}

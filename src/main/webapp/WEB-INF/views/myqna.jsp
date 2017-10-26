@@ -165,7 +165,7 @@
 	<div class="trois">
 		<div class="header">
 			<div class="header-left">
-				<h1>logo</h1>
+				<img id="logo" src="resources/logo/logo.png">
 			</div>
 			<div class="header-center">
 				<h1>Trois</h1>
@@ -178,7 +178,7 @@
 			<div class="center-left">
 				<ul>
 					<li><a href="myroom">마이룸</a></li>
-					<li><a href="#">문의하기</a></li>
+					<li><a href="question">문의하기</a></li>
 					<li><a href="myqna" style="text-decoration: underline;">나의문의내역</a></li>
 					<li><a href="modify">회원정보수정/탈퇴</a></li>
 				</ul>

@@ -24,23 +24,22 @@ public class PKYController {
 	@Autowired
 	UserServiceInterface usi;
 	
-	@RequestMapping(value="/main") //메인페이지
-	   public ModelAndView main(ModelAndView mav){
-	      mav.setViewName("main");
-	      return mav;
-	   }
-	@RequestMapping(value="/main2") //로그인 되었을 때 메인페이지
-	   public ModelAndView main2(ModelAndView mav, HttpSession session){
-		  HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-	      System.out.println(user.get("login").get("email"));
-		  mav.setViewName("main2");
-	      return mav;
-	   }
+	@RequestMapping(value = "/main") // 메인페이지
+	public ModelAndView main(ModelAndView mav) {
+		mav.setViewName("main");
+		return mav;
+	}
 
-	
+	@RequestMapping(value = "/main2") // 로그인 되었을 때 메인페이지
+	public ModelAndView main2(ModelAndView mav, HttpSession session) {
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		System.out.println(user.get("login").get("email"));
+		mav.setViewName("main2");
+		return mav;
+	}
+
 	@RequestMapping(value="/Userjoin", method = RequestMethod.POST)
 	public  ModelAndView Userjoin(ModelAndView mav, HttpServletRequest req){
-		
 		String id = req.getParameter("id");
 		String pwd = req.getParameter("pwd");
 		String name = req.getParameter("name");

@@ -16,7 +16,7 @@
 <div class="trois">
     <div class="header">
         <div class="header-left">
-            <h1>logo</h1>
+            <img id="logo" src="resources/logo/logo.png">
         </div>
         <div class="header-center">
             <h1>Trois</h1>

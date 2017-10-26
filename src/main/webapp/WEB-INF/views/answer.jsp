@@ -49,7 +49,7 @@ $(document).ready(function(){
 			
 			$.ajax({
 				type:"post", // post 방식으로 통신 요청
-				url:"/test/answerRead", // test에서 만든 URL 호출
+				url:"answerRead", // test에서 만든 URL 호출
 				data:{"answer": answer} // 파라메터로 사용할 변수 값 객체 넣기
 				}).done(function(d){ // 비동기식 데이터 가져오기
 			var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
@@ -62,7 +62,7 @@ $(document).ready(function(){
 <div class="trois">
             <div class="header">
                 <div class="header-left">
-                    <h1>logo</h1>
+                    <img id="logo" src="resources/logo/logo.png">
                 </div>
                 <div class="header-center">
                     <h1>Trois</h1>

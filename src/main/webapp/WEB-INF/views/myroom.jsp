@@ -52,7 +52,6 @@
 		var pageGroup = 1; // 현재 페이지 값
 		var pageView = 5; // 페이징 버튼 객수
 	
-	
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
 			$(".ul-body").empty(); // ul 태그의 자식들를 초기화가 필요하다.
 			for(var i = 0; i < data.length; i++) {
@@ -140,11 +139,21 @@
 				totCnt = result.totCnt.tot;
 				createHtml(); // 화면에 표현하기 위하여 함수 호출
 				createPaging(); // 페이지 링크 표현하기 우하여 함수 호출
+				deletebutton();
 			}).fail(function(d, s, x) {
 				alert("fail");
 			})
 		}
 		initData();
+		
+		
+		function deletebutton(){
+			$(".ul-body button").off().on("click", function(){
+				alert("안녕");
+			});	
+		}
+		
+		
 	});
 </script>
 </head>
@@ -152,7 +161,7 @@
 	<div class="trois">
 		<div class="header">
 			<div class="header-left">
-				<h1>logo</h1>
+				<img id="logo" src="resources/logo/logo.png">
 			</div>
 			<div class="header-center">
 				<h1>Trois</h1>
@@ -165,7 +174,7 @@
 			<div class="center-left">
 				<ul>
 					<li><a href="myroom" style="text-decoration:underline;">마이룸</a></li>
-					<li><a href="#">문의하기</a></li>
+					<li><a href="question">문의하기</a></li>
 					<li><a href="myqna">나의문의내역</a></li>
 					<li><a href="modify">회원정보수정/탈퇴</a></li>
 				</ul>

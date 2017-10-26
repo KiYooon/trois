@@ -49,7 +49,7 @@
 			
 			$.ajax({
 				type:"post", // post 방식으로 통신 요청
-				url:"/test/questionRead", // test에서 만든 URL 호출
+				url:"questionRead", // test에서 만든 URL 호출
 				data:{"contents": contents, "title": title} // 파라메터로 사용할 변수 값 객체 넣기
 				}).done(function(d){ // 비동기식 데이터 가져오기
 			var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
@@ -63,7 +63,7 @@
 <div class="trois">
     <div class="header">
         <div class="header-left">
-            <h1>logo</h1>
+            <img id="logo" src="resources/logo/logo.png">
         </div>
         <div class="header-center">
             <h1>Trois</h1>
@@ -75,10 +75,10 @@
     <div class="center">
         <div class="center-left">
             <ul>
-				<li><a href="#">마이룸</a></li>
-				<li><a href="#">회원정보 수정/탈퇴</a></li>
-				<li><a href="#">문의하기</a></li>
-				<li><a href="#">나의 문의내역</a></li>
+            	<li><a href="myroom">마이룸</a></li>
+				<li><a href="question" style="text-decoration: underline;">문의하기</a></li>
+				<li><a href="myqna">나의문의내역</a></li>
+				<li><a href="modify">회원정보수정/탈퇴</a></li>
             </ul>
         </div>
         <div class="center-right">

@@ -1,3 +1,8 @@
+*  {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
 html, body{
     margin: 0;
     padding: 0;
@@ -17,6 +22,14 @@ html, body{
     height: 100%;
     float: left;
     border-right: 1px solid;
+    padding-left:90px;
+}
+.header .header-left #logo{
+	width: 90px;
+    height: auto;
+    text-align: center;
+    transform : translateX(100%);
+    transform : translateY(-16%);
 }
 .header .header-center{
     width: 70%;
@@ -51,17 +64,11 @@ html, body{
     text-decoration: none;
     color: black;
 }
-#mainContent{ /* 오른쪽 */
-    width: 90%;
-    height: 100%;
-    float: right;
-    display:inline-block; 
-}
-.footer{
-    width: 100%;
-    height: 99px;
-    display: block;
-    border-top: 1px solid;
+.footer {
+	width: 100%;
+	height: 94px;
+	display: block;
+	border-top: 1px solid;
 }
 .footer footer{
     text-align: center;
@@ -69,15 +76,17 @@ html, body{
 .center .center-left li{
     list-style: none;
 }
-.center-right li:first-child {    
-    border-left: 1px solid green;
-}
 
 #logout{
     margin-left: 113px;
     margin-top: 28px;
 }
-
+#mainContent{ /* 오른쪽 */
+    width: 90%;
+    height: 100%;
+    float: right;
+    display:inline-block; 
+}
 #mainBox{
     margin-left: 10%;
     margin-top: 5%;
@@ -116,8 +125,8 @@ html, body{
 }
 
 #inputText1{
-    width: calc(100% - 3px);
-    height: 20px;
+    width: 100%;
+    height: 25px;
 }
 
 #subBox2{ /* 아래부분 */
@@ -143,8 +152,8 @@ html, body{
 }
 
 #inputText2{
-    width: calc(100% - 5px);
-    height: calc(100% - 5px);
+    width: 100%;
+    height: 100%;
     resize: none;
 }
 
@@ -153,6 +162,7 @@ html, body{
     position: relative;
     height: 5%;
     margin-top: 1%;
+    transform: translateX(-2px);
 }
 
 #reqText1{
