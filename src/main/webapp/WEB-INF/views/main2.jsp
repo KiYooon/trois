@@ -17,8 +17,8 @@
         <h1>Trois</h1>
     </div>
     <div class="head-3"> 
-        <button type="button" id="myroom">마이룸</button>
-        <button type="button" id="logout">로그아웃</button>
+        <button type="button" id="myroom" onclick="location.href = 'myroom';">마이룸</button>
+        <button type="button" id="logout" onclick="location.href = 'logout';">로그아웃</button>
     </div>
 </header>
     <div class="body">

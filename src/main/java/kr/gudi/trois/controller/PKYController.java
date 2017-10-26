@@ -93,4 +93,11 @@ public class PKYController {
 		HttpUtil.sendResponceToJson(resp, checkiddata);
 	}
 	
+	@RequestMapping("/logout")
+	public ModelAndView logout(ModelAndView mav, HttpSession session){
+		session.invalidate();
+		mav.setViewName("redirect:/main");
+		return mav;
+	}
+	
 }

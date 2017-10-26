@@ -3,87 +3,10 @@
 <!Doctype html>
 <html>
 <head>
-    <title>Trois</title>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<title>Trois</title>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="resources/css/myroom.css">
 <style>
-* {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-}
-html, body{
-    margin: 0;
-    padding: 0;
-}
-.trois{
-    width: 100vw;
-    height: 100vh;
-}
-.header{
-    width: 100%;
-    height: 79px;
-    display: block;
-    border-bottom: 1px solid;
-}
-.header .header-left{
-    width: calc(15% - 1px);
-    height: 100%;
-    float: left;
-    border-right: 1px solid;
-}
-.header .header-center{
-    width: 70%;
-    height: 100%;
-    float: left;
-}
-.header h1{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 50px;
-    padding-top: 7px;
-}
-.header .header-right{
-    width: calc(15% - 1px);
-    height: 100%;
-    float: right;
-    border-left: 1px solid;
-}
-.center{
-    width: 100%;
-    height: calc(100vh - 180px);
-    display: block;
-}
-.center .center-left{
-    width: calc(10% - 1px);
-    height: 100%;
-    float: left;
-    border-right: 1px solid;
-}
-.center .center-left a{
-    text-decoration: none;
-}
-.center .center-right{
-    width: 90%;
-    height: 100%;
-    float: right;
-}
-.footer{
-    width: 100%;
-    height: 99px;
-    display: block;
-    border-top: 1px solid;
-}
-.footer footer{
-    text-align: center;
-}
-.center-right ul {
-    padding: 0;
-    width: 90%;
-    margin-left: 5%;
-    clear: both;
-    list-style: none; 
-}
 .center-right .ul-head li {
     margin: 0;
     padding-top: 35px;
@@ -107,40 +30,6 @@ html, body{
     float: left;                
     border-bottom: 1px solid green;
     border-right: 1px solid green;
-}
-
-.center .center-left li{
-    list-style: none;
-}
-.center-right li:first-child {    
-    border-left: 1px solid green;
-}
-.center-right .ul-head ul:first-child li {
-    height: 50px;
-    background-color: silver;
-    padding-top: 10px;
-    border-top: 1px solid green;
-    border-bottom: 1px solid green;
-}
-.button-list {
-    height: 100px;
-    clear: both;
-    text-align: center;
-    padding-top: 35px;
-}
-.button-list button {
-    width: 80px;
-    height: 30px;
-    border: 0px;
-    border-radius: 4px;
-    cursor: pointer;
-}
-.button-bg {
-    background-color: #5050d8;
-}
-#logout{
-    margin-left: 113px;
-    margin-top: 28px;
 }
 .button-list button.chk {
 	color: #ece4d7;
@@ -195,7 +84,8 @@ html, body{
 	            	tag += "<li>데이터가 없습니다.</li>";
 	            	tag += "</ul>";
 	            $(".ul-body").append(tag);
-	   		} 
+	   		}
+			deleteButton();
 		}
 	
 		function createPaging() {
@@ -270,6 +160,23 @@ html, body{
 			})
 		}
 		initData();
+		
+		function deleteButton(){
+			$(".ul-body button").off().on("click", function(){
+				var index = $(".ul-body button").index(this);
+				var no = data[index].no;
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "adminDataDelete", // Spring에서 만든 URL 호출 
+					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					initData();
+				}).fail(function(d, s, x) {
+					alert("fail");
+				})
+			});	
+		}
 	});
 	</script>
 </head>
@@ -283,7 +190,7 @@ html, body{
                 <h1>Trois</h1>
             </div>
             <div class="header-right">
-                <button id="logout">로그아웃</button>
+                <button id="logout" onclick="location.href = 'logout';">로그아웃</button>
             </div>
         </div>
         <div class="center">

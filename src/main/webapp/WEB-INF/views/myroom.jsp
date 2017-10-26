@@ -69,7 +69,8 @@
 	            	tag += "<li>데이터가 없습니다.</li>";
 	            	tag += "</ul>";
 	            $(".ul-body").append(tag);
-	   		} 
+	   		}  
+			deleteButton();
 		}
 	
 		function createPaging() {
@@ -139,17 +140,26 @@
 				totCnt = result.totCnt.tot;
 				createHtml(); // 화면에 표현하기 위하여 함수 호출
 				createPaging(); // 페이지 링크 표현하기 우하여 함수 호출
-				deletebutton();
 			}).fail(function(d, s, x) {
 				alert("fail");
 			})
 		}
 		initData();
 		
-		
-		function deletebutton(){
+		function deleteButton(){
 			$(".ul-body button").off().on("click", function(){
-				alert("안녕");
+				var index = $(".ul-body button").index(this);
+				var no = data[index].no;	
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "myroomDataDelete", // Spring에서 만든 URL 호출 
+					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					initData();
+				}).fail(function(d, s, x) {
+					alert("fail");
+				})
 			});	
 		}
 		
@@ -167,7 +177,7 @@
 				<h1>Trois</h1>
 			</div>
 			<div class="header-right">
-				<button id="logout">로그아웃</button>
+				<button id="logout" onclick="location.href = 'logout';">로그아웃</button>
 			</div>
 		</div>
 		<div class="center">

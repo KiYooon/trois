@@ -134,7 +134,7 @@
 				<h1>Trois</h1>
 			</div>
 			<div class="header-right">
-				<button id="logout">로그아웃</button>
+				<button id="logout" onclick="location.href = 'logout';">로그아웃</button>
 			</div>
 		</div>
 		<div class="center">
@@ -143,8 +143,7 @@
 					<li><a href="myroom">마이룸</a></li>
 					<li><a href="question">문의하기</a></li>
 					<li><a href="myqna">나의문의내역</a></li>
-					<li><a href="modify" style="text-decoration: underline;">회원정보
-							수정/탈퇴</a></li>
+					<li><a href="modify" style="text-decoration: underline;">회원정보 수정/탈퇴</a></li>
 				</ul>
 			</div>
 			<div class="center-right">
