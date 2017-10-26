@@ -1,0 +1,197 @@
+html, body{
+    margin: 0;
+    padding: 0;
+}
+.trois{
+    width: 100vw;
+    height: 100vh;
+}
+.header{
+    width: 100%;
+    height: 79px;
+    display: block;
+    border-bottom: 1px solid;
+}
+.header .header-left{
+    width: calc(15% - 1px);
+    height: 100%;
+    float: left;
+    border-right: 1px solid;
+}
+.header .header-center{
+    width: 70%;
+    height: 100%;
+    float: left;
+}
+.header h1{
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    font-size: 50px;
+    padding-top: 7px;
+}
+.header .header-right{
+    width: calc(15% - 1px);
+    height: 100%;
+    float: right;
+    border-left: 1px solid;
+}
+.center{
+    width: 100%;
+    height: calc(100vh - 180px);
+    display: block;
+}
+.center .center-left{
+    width: calc(10% - 1px);
+    height: 100%;
+    float: left;
+    border-right: 1px solid;
+}
+.center .center-left a{
+    text-decoration: none;
+    color: black;
+}
+#mainContent{ /* 오른쪽 */
+    width: 90%;
+    height: 100%;
+    float: right;
+    display:inline-block; 
+}
+.footer{
+    width: 100%;
+    height: 99px;
+    display: block;
+    border-top: 1px solid;
+}
+.footer footer{
+    text-align: center;
+}
+.center .center-left li{
+    list-style: none;
+}
+
+#logout{
+    margin-left: 113px;
+    margin-top: 28px;
+}
+
+#mainBox{ /* 상단박스 */
+    margin-left: 2%;
+    margin-top: 1%;
+    display: inline-block;
+    float: left;
+    width: 80%;
+    height: 180px;
+}
+
+#subBox1{ /* 윗부분 */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 20%;
+    display: inline-block;
+    float: left;
+}
+
+#mainBox p {
+    margin: 0;
+}
+
+#textBox1{
+    width: 70px;
+    height: 32px;
+    display: block;
+    margin-right: 1%;
+    float: left;
+}
+
+#reqBox1{
+    float: left;
+    width: calc((100% - 75px) - 1%);
+    border: 1px solid black;
+}
+
+#reqText1{
+    width: 100%;
+}
+
+#subBox2{ /* 아래부분 */
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 80%;
+    display: inline-block;
+    float: left;
+}
+
+#textBox2{
+    width: 70px;
+    height: 32px;
+    margin-right: 1%;
+    float: left;
+}
+
+#reqBox2{
+    float: left;
+    width: calc((100% - 75px) - 1%);
+    height: 100%;
+    border: 1px solid black;
+}
+
+#reqText2{
+    width: 100%;
+}
+
+#mainBox2{  /* 하단 박스 */
+    margin-left: 2%;
+    margin-top: 1%;
+    display: inline-block;
+    width: 80%;
+    height: 300px;
+}
+
+#subBox3{
+    float: left;
+    width: 100%;
+    height: 80%;
+    display: inline-block;
+}
+
+#subBox3 p {
+    margin: 0;
+}
+
+#textBox3{
+    width: 70px;
+    height: 32px;
+    margin-right: 1%;
+    float: left;
+    display: block;
+}
+
+#inputBox{
+    width: calc((100% - 75px) - 1%);
+    float: left;
+    margin-bottom: 1%;
+    height: 210px;
+    border: 1px solid black;
+}
+
+#inputText{
+    width: calc(100% - 5px);
+    height: calc(100% - 5px);
+    resize: none;
+}
+
+#submit{
+    text-align: right;
+    position: relative;
+    height: 5%;
+    transform: translateX(-3px);
+}
+
+#reqText3{
+    width: 100%;
+    height: 100%;
+    resize: none;
+}
