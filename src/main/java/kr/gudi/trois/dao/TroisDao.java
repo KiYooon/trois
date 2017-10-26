@@ -14,19 +14,34 @@ public class TroisDao implements TroisDaoInterface {
 	@Resource(name = "sqlSession")
 	SqlSession session;
 
-//	@Override
-//	public List<HashMap<String, Object>> selectQna() {
-//		return session.selectList("list.myquestion");
-//	}
-
 	@Override
-	public List<HashMap<String, Object>> select(HashMap<String, Object> param) {
-		return session.selectList("paging.select", param);
+	public List<HashMap<String, Object>> selectMyqna(HashMap<String, Object> param) {
+		return session.selectList("list.selectMyqna", param);
 	}
 
 	@Override
-	public HashMap<String, Object> totCnt() {
-		return session.selectOne("paging.totCnt");
+	public HashMap<String, Object> totCntMyqna() {
+		return session.selectOne("list.totCntMyqna");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectMyroom(HashMap<String, Object> param) {
+		return session.selectList("list.selectMyroom", param);
+	}
+
+	@Override
+	public HashMap<String, Object> totCntMyroom() {
+		return session.selectOne("list.totCntMyroom");
+	}
+
+	@Override
+	public List<HashMap<String, Object>> selectAdmin(HashMap<String, Object> param) {
+		return session.selectList("list.selectAdmin", param);
+	}
+
+	@Override
+	public HashMap<String, Object> totCntAdmin() {
+		return session.selectOne("list.totCntAdmin");
 	}
 
 }

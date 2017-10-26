@@ -209,10 +209,10 @@
             <div class="center">
                 <div class="center-left">
                     <ul>
-                        <li><a href="myroom.html">마이룸</a></li>
+                        <li><a href="myroom">마이룸</a></li>
                         <li><a href="#">문의하기</a></li>
-                        <li><a href="myqna.html">나의문의내역</a></li>
-                        <li><a href="mo" style="text-decoration: underline;">회원정보 수정/탈퇴</a></li>
+                        <li><a href="myqna">나의문의내역</a></li>
+                        <li><a href="modify" style="text-decoration: underline;">회원정보 수정/탈퇴</a></li>
                     </ul>
                 </div>
                 <div class="center-right">

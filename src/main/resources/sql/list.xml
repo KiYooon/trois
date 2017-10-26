@@ -3,11 +3,30 @@
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="list">
-	<select id="myquestion" resultType="hashmap">
-		select title, contents, substr(date, 1, 10) as date, answer, answercheck from qna where del_yn = 'y'
+	<select id="selectMyqna" parameterType="hashmap" resultType="hashmap">
+		select title, contents, substr(date, 1, 10) as date, answer, answercheck 
+		from qna where del_yn = 'y' limit #{start}, #{viewRow};
 	</select>
 	
-	<select id="adminquestion" resultType="hashmap">
-		select title, contents, id, substr(date, 1, 10) as date, answer, answercheck from qna where del_yn = 'y'
+	<select id="totCntMyqna" resultType="hashmap">
+		select count(*) as tot from qna where del_yn = 'y';
+	</select>
+	
+	<select id="selectMyroom" parameterType="hashmap" resultType="hashmap">
+		select id, title, capture, substr(date, 1, 10) as date 
+		from worksave where del_yn = 'y' limit #{start}, #{viewRow};
+	</select>
+	
+	<select id="totCntMyroom" resultType="hashmap">
+		select count(*) as tot from worksave where del_yn = 'y';
+	</select>
+	
+	<select id="selectAdmin" parameterType="hashmap" resultType="hashmap">
+		select title, contents, substr(date, 1, 10) as date, answer, answercheck 
+		from qna where del_yn = 'y' limit #{start}, #{viewRow};
+	</select>
+	
+	<select id="totCntAdmin" resultType="hashmap">
+		select count(*) as tot from qna where del_yn = 'y';
 	</select>
 </mapper>

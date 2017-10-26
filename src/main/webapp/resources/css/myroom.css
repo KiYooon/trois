@@ -1,0 +1,137 @@
+
+/* 기본적인 구조 같은 내용 */
+*  {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+html, body {
+	margin: 0;
+	padding: 0;
+}
+
+.trois {
+	width: 100vw;
+	height: 100vh;
+}
+
+.header {
+	width: 100%;
+	height: 79px;
+	display: block;
+	border-bottom: 1px solid;
+}
+
+.header .header-left {
+	width: calc(15% - 1px);
+	height: 100%;
+	float: left;
+	border-right: 1px solid;
+}
+
+.header .header-center {
+	width: 70%;
+	height: 100%;
+	float: left;
+}
+
+.header h1 {
+	margin: 0;
+	padding: 0;
+	text-align: center;
+	font-size: 50px;
+	padding-top: 7px;
+}
+
+.header .header-right {
+	width: calc(15% - 1px);
+	height: 100%;
+	float: right;
+	border-left: 1px solid;
+}
+
+.center {
+	width: 100%;
+	height: calc(100vh - 180px);
+	display: block;
+}
+
+.center .center-left {
+	width: calc(10% - 1px);
+	height: 100%;
+	float: left;
+	border-right: 1px solid;
+}
+
+.center .center-left a {
+	text-decoration: none;
+}
+
+.center .center-left li {
+	list-style: none;
+}
+
+.center .center-right {
+	width: 90%;
+	height: 100%;
+	float: right;
+}
+
+.center-right ul {
+	padding: 0;
+	width: 90%;
+	margin-left: 5%;
+	clear: both;
+	list-style: none;
+}
+
+.footer {
+	width: 100%;
+	height: 94px;
+	display: block;
+	border-top: 1px solid;
+}
+
+.footer footer {
+	text-align: center;
+}
+
+.center-right li:first-child {
+	border-left: 1px solid green;
+}
+
+.center-right .ul-head ul:first-child li {
+	height: 50px;
+	background-color: silver;
+	padding-top: 10px;
+	border-top: 1px solid green;
+	border-bottom: 1px solid green;
+}
+
+/* paging button */
+.button-list {
+	height: 100px;
+	clear: both;
+	text-align: center;
+	padding-top: 35px;
+}
+
+.button-list button {
+	width: 80px;
+	height: 30px;
+	border: 0px;
+	border-radius: 4px;
+	cursor: pointer;
+}
+
+.button-bg {
+	background-color: #5050d8;
+}
+
+#logout {
+	margin-left: 113px;
+	margin-top: 28px;
+}
+
+

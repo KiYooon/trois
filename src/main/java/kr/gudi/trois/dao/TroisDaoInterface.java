@@ -4,7 +4,10 @@ import java.util.HashMap;
 import java.util.List;
 
 public interface TroisDaoInterface {
-//	public List<HashMap<String, Object>> selectQna();
-	public List<HashMap<String, Object>> select(HashMap<String, Object> param);
-	public HashMap<String, Object> totCnt();
+	public List<HashMap<String, Object>> selectMyqna(HashMap<String, Object> param);
+	public HashMap<String, Object> totCntMyqna();
+	public List<HashMap<String, Object>> selectMyroom(HashMap<String, Object> param);
+	public HashMap<String, Object> totCntMyroom();
+	public List<HashMap<String, Object>> selectAdmin(HashMap<String, Object> param);
+	public HashMap<String, Object> totCntAdmin();
 }
