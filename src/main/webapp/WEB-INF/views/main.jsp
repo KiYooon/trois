@@ -200,7 +200,7 @@
          + "<p>"
          + "<label for='changepw'>비밀번호 변경 : </label>"
          + "<input type='password' id='changepw'>" + "</p>"
-         + "<input type='submit' value='변경' id='change'>";
+         + "<button type='button' id='change'>변경</button>";
       
       var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요."
          + "<button type='button' id='okpw'>확인</button>";
@@ -299,12 +299,15 @@
       }
       function btnChange() {
          $("#change").off().on("click", function() {
+        	 btnChangePW();
             $(".modal-content").html(tr5);
 
             $("#okpw").off().on("click", function() {
                $(".modal-content").html(tr3);
                // 이벤트 다시 생성
-               
+               $("#iplogin").off().on("click", function(){
+                  login();
+               });
                btnFindid();
                btnSettingpw()
                btnSpan();
@@ -400,6 +403,19 @@
                alert("사용 불가능한 아이디 입니다.")
             }
          });
+      }
+      function btnChangePW(){
+    	  id = $("#id").val();
+          name = $("#name").val();
+          var pw = $("#changepw").val();
+          
+          $.ajax({
+        	  type : "post",
+        	  url : "updatepw",
+        	  data : {"id" : id, "name" : name, "pw" : pw}
+          }).done(function(result){
+        	  console.log(result);
+          });
       }
 
       // 시작 부분...

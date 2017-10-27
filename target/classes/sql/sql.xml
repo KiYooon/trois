@@ -27,5 +27,9 @@
       select id from user where name = #{name} and email = #{email}
    </select>
    
+   <update id="updatepw" parameterType="hashmap">
+      update user set pwd = #{pw} where id=#{id} and name = #{name}
+   </update>
+  
    
 </mapper>

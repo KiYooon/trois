@@ -88,7 +88,7 @@ public class PKYController {
       HashMap<String, Object> checkiddata = (HashMap<String, Object>) usi.checkid(checkid);
       
       HttpUtil.sendResponceToJson(resp, checkiddata);
-}
+   }
    @RequestMapping(value="/findid", method = RequestMethod.POST)
    public void findid(HttpServletRequest req, HttpServletResponse resp){
       
@@ -107,5 +107,13 @@ public class PKYController {
          mav.setViewName("redirect:/main");
          return mav;
       }
+   @RequestMapping(value="/updatepw", method = RequestMethod.POST)
+   public void updatepw(HttpServletRequest req, HttpServletResponse resp){
+      HashMap<String, Object> updatepw = HttpUtil.getParameterMap(req);
+      System.out.println(updatepw);
+      
+      
+      HttpUtil.sendResponceToJson(resp, usi.updatepw(updatepw));
+   }
    
 }

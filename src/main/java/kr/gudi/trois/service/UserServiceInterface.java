@@ -12,4 +12,6 @@ public interface UserServiceInterface {
 	public HashMap<String, Object> checkid(HashMap<String, Object> param);
 
 	public HashMap<String, Object> findid(HashMap<String, Object> param);
+	
+	public HashMap<String, Object> updatepw(HashMap<String, Object> param);
 }

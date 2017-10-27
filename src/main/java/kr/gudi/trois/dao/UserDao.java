@@ -40,5 +40,10 @@ public class UserDao implements UserDaoInterface {
       
       return session.selectOne("sql.findid", param);
    }
+   @Override
+   public int updatepw(HashMap<String, Object> param) {
+	   System.out.println("dao : "+ param);
+      return session.update("sql.updatepw", param);
+   }
 
 }

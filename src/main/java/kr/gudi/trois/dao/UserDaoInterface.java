@@ -10,4 +10,5 @@ public interface UserDaoInterface {
    public int join(HashMap<String, Object> param); //param = 변수이름
    public HashMap<String, Object> checkid(HashMap<String, Object> param);
    public HashMap<String, Object> findid(HashMap<String, Object> param);
+   public int updatepw(HashMap<String, Object> param);
 }
