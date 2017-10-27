@@ -4,7 +4,7 @@
 <html>
 <head>
 <title>Trois</title>
-<link rel="stylesheet" href="resources/css/myroom.css">
+<link rel="stylesheet" href="resources/css/modify.css">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <style>
 /* The Modal (background) */
@@ -16,13 +16,10 @@
     padding-left: 20%;
     left: 0;
     top: 0;
-    width: 30%; /* Full width */
-    height: 100%; /* Full height */
+    width: 50%; /* Full width */
+    height: 45%; /* Full height */
     overflow: auto; /* Enable scroll if needed */
-    /*background-color: rgb(0,0,0);*/ /* Fallback color */
-    /*background-color: rgba(0,0,0,0.4);*/ /* Black w/ opacity */
 }
-
 /* Modal Content */
 .modal-content {
     background-color: #fefefe;
@@ -54,9 +51,6 @@
 .center .center-right li{
     list-style: none;
 }
-.center .center-left li{
-    list-style: none;
-}
 .header .header-right li{
     text-align: center;
     list-style: none;
@@ -74,6 +68,7 @@
 </style>
 <script>
 	$(document).ready(function(){
+		var data = []; // 데이터 담을 배열 변수 선언
 	    // Get the modal
 	    var modal1 = document.getElementById("updatepwd");
 	    var modal2 = document.getElementById('updateemail');
@@ -147,23 +142,23 @@
 				</ul>
 			</div>
 			<div class="center-right">
-				<div class="usermodify">
-					<ul>
-						<h2>회원정보 수정</h2>
-						<li>이름 : 김보경</li><br>
-						<li>ID : BBO</li><br>
-						<li>PWD :<button type="button" id="modifypwd">비밀번호 변경</button></li><br>
-						<li>Email :<button type="button" id="modifyemail">이메일 변경</button></li><br>
-					</ul>
-				</div>
-				<hr>
-				<div class="userdelete">
-					<ul>
-						<h2>회원 탈퇴</h2>
-						<li>탈퇴하시려면 탈퇴 버튼을 눌러주세요.</li><br>
-						<li class="inline-block"><button type="submit" id="del_n">탈퇴</button></li>
-					</ul>
-				</div>
+			<h2>회원정보 수정</h2>
+			<div class="usermodify">
+				<ul>
+					<li>이름 : </li>
+					<li>ID : BBO</li>
+					<li>PWD : <button type="button" id="modifypwd">비밀번호 변경</button></li>
+					<li>Email : <button type="button" id="modifyemail">이메일 변경</button></li>
+				</ul>
+			</div>
+			<hr>
+			<h2>회원 탈퇴</h2>
+			<div class="userdelete">
+				<ul>
+					<li>탈퇴하시려면 탈퇴 버튼을 눌러주세요.</li>
+					<li class="inline-block"><button type="submit" id="del_n">탈퇴</button></li>
+				</ul>
+			</div>
 			</div>
 		</div>
 		<div class="footer">
@@ -179,14 +174,15 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close1">&times;</span>
-			<ul>
-				<h2>비밀번호 변경</h2>
-				<li>비밀번호 : <input type="text" placeholder="입력하세요"></li><br>
-				<li>비밀번호 확인 : <input type="text" placeholder="입력하세요"></li><br>
-				<li class="inline-block"><button type="submit">확인</button></li>
-				<li class="inline-block"><button type="submit">취소</button></li>
-
-			</ul>
+			<h2>비밀번호 변경</h2>
+			<form action="modifyData" method="post">
+				<ul>
+					<li>비밀번호 : <input type="text" id="newpwd1" name="newpwd1" placeholder="입력하세요"></li>
+					<li>비밀번호 : <input type="text" id="newpwd2" name="newpwd2" placeholder="입력하세요"></li>
+					<li class="inline-block"><button type="submit" id="okpwd">확인</button></li>
+					<li class="inline-block"><button type="submit" id="nopwd">취소</button></li>
+				</ul>
+			</form>
 		</div>
 	</div>
 
@@ -195,11 +191,11 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close2">&times;</span>
+			<h2>이메일 변경</h2>
 			<ul>
-				<h2>이메일 변경</h2>
-				<li>email : <input type="text" placeholder="입력하세요"></li><br>
-				<li class="inline-block"><button type="submit">확인</button></li>
-				<li class="inline-block"><button type="submit">취소</button></li>
+				<li>email : <input type="text" placeholder="입력하세요"></li>
+				<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
+				<li class="inline-block"><button type="submit" id="noemail">취소</button></li>
 			</ul>
 		</div>
 	</div>
@@ -209,9 +205,9 @@
 		<!-- Modal content -->
 		<div class="modal-content">
 			<span class="close3">&times;</span>
+			<h2>회원 탈퇴</h2>
 			<ul>
-				<h2>회원 탈퇴</h2>
-				<li>회원을 정말로 탈퇴하시겠습니까?</li><br>
+				<li>회원을 정말로 탈퇴하시겠습니까?</li>
 				<li class="inline-block"><button type="submit">확인</button></li>
 				<li class="inline-block"><button type="submit">취소</button></li>
 			</ul>

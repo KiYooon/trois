@@ -66,6 +66,14 @@ public class TroisService implements TroisServiceInterface {
 		return map;
 	}
 
+	@Override
+	public HashMap<String, Object> updatePwd(HashMap<String, Object> param) {
+		int pwd = tdi.updatePwd(param);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("pwd", pwd);
+		return map;
+	}
+
 	
 
 }

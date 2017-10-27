@@ -39,7 +39,6 @@
             <div class="body-2-1">
                 <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS6_KABpjFj6tQYiSrvMe5cMEXuE41UaE4naH_Vkwizl-SlgC1cDg" class="img-bottom img-right">
             </div>
-
             <div class="body-2-3">
                 <div>
                     <div class="body-2-3-1"></div>
