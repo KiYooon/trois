@@ -13,4 +13,6 @@ public interface TroisDaoInterface {
 	public HashMap<String, Object> totCntAdmin();
 	public int deleteAdmin(HashMap<String, Object> param);
 	public int updatePwd(HashMap<String, Object> param);
+	public int updateEmail(HashMap<String, Object> param);
+	
 }

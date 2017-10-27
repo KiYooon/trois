@@ -165,8 +165,8 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/modifyData")
-	public ModelAndView modifyData(ModelAndView mav, HttpServletRequest req, HttpSession session){
+	@RequestMapping("/modifypwd")
+	public ModelAndView modifypwd(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("pwd", req.getParameter("newpwd1"));
@@ -206,9 +206,35 @@ public class TroisController {
 //		mav.addObject("message", jsonObject.toString());
 //		
 //		mav.setViewName("json");
-		return mav;
-		
-		
-				
+		return mav;		
+	}
+	
+	@RequestMapping("/modifyemail")
+	public ModelAndView modifyemail(ModelAndView mav, HttpServletRequest req, HttpSession session){
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("email", req.getParameter("email"));
+		param.put("id", user.get("login").get("id"));
+		boolean check = true;
+//		if (("").equals(param.get("email"))) {
+//			System.out.println("이메일이 없습니다.");
+//			check = false;
+//		}
+		if(check){
+			param.put("email", param.get("email"));
+		}
+		param = tsi.updateEmail(param);
+		if (user.get("login").get("id") == null) {
+			mav.setViewName("redirect:/main");
+		}else {
+			mav.setViewName("modify");
+		}
+//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+//		JSONObject jsonObject = new JSONObject();
+//		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.updatePwd(param)));
+//		mav.addObject("message", jsonObject.toString());
+//		
+//		mav.setViewName("json");
+		return mav;		
 	}
 }

@@ -49,4 +49,8 @@
 	<update id="updatePwd" parameterType="hashmap" >
 		update user set pwd = #{pwd} where id = #{id};
 	</update>
+	
+	<update id="updateEmail" parameterType="hashmap" >
+		update user set email = #{email} where id = #{id};
+	</update>
 </mapper>

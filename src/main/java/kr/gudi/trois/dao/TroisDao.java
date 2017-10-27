@@ -59,4 +59,9 @@ public class TroisDao implements TroisDaoInterface {
 		return session.update("list.updatePwd", param);
 	}
 
+	@Override
+	public int updateEmail(HashMap<String, Object> param) {
+		return session.update("list.updateEmail", param);
+	}
+
 }

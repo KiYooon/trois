@@ -175,10 +175,10 @@
 		<div class="modal-content">
 			<span class="close1">&times;</span>
 			<h2>비밀번호 변경</h2>
-			<form action="modifyData" method="post">
+			<form action="modifypwd" method="post">
 				<ul>
-					<li>비밀번호 : <input type="text" id="newpwd1" name="newpwd1" placeholder="입력하세요"></li>
-					<li>비밀번호 : <input type="text" id="newpwd2" name="newpwd2" placeholder="입력하세요"></li>
+					<li>비밀번호 : <input type="password" id="newpwd1" name="newpwd1" placeholder="입력하세요"></li>
+					<li>비밀번호 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요"></li>
 					<li class="inline-block"><button type="submit" id="okpwd">확인</button></li>
 					<li class="inline-block"><button type="submit" id="nopwd">취소</button></li>
 				</ul>
@@ -192,11 +192,13 @@
 		<div class="modal-content">
 			<span class="close2">&times;</span>
 			<h2>이메일 변경</h2>
-			<ul>
-				<li>email : <input type="text" placeholder="입력하세요"></li>
-				<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
-				<li class="inline-block"><button type="submit" id="noemail">취소</button></li>
-			</ul>
+			<form action="modifyemail" method="post">
+				<ul>
+					<li>email : <input type="text" id="email" name="email" placeholder="입력하세요"></li>
+					<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
+					<li class="inline-block"><button type="submit" id="noemail">취소</button></li>
+				</ul>
+			</form>
 		</div>
 	</div>
 
