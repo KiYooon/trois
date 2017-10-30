@@ -61,6 +61,6 @@
 	</update>
 	
 	<select id="myqnaDetail" parameterType="hashmap" resultType="hashmap">
-		select title, contents from qna where no = #{no};
+		select title, contents, answer from qna where no = #{no};
 	</select>
 </mapper>

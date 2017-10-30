@@ -76,7 +76,7 @@ html, body{
 .center .center-left li{
     list-style: none;
 }
-#mainContent{ /* 오른쪽 */
+.mainContent{ /* 오른쪽 */
     width: 90%;
     height: 100%;
     float: right;

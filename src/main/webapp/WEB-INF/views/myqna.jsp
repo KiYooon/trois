@@ -5,6 +5,7 @@
 <head>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/myroom.css">
+<link rel="stylesheet" href="resources/css/okquestion.css">
 <title>Trois</title>
 <style>
 .center-right .ul-head li {
@@ -51,6 +52,12 @@
 		var pageGroup = 1; // 현재 페이지 값
 		var pageView = 5; // 페이징 버튼 객수
 	
+		var no = "";
+		var index = "";
+		var title = "";
+		var contents = "";
+		var answer = "";
+			
 		$("#logout").on("click", function(){
 	    	location.href = "logout";
 	    });
@@ -87,7 +94,7 @@
                 	tag += "</ul>";
                 $(".ul-body").append(tag);
        		} 
-// 			detail();
+			detail();
 		}
 
 		function createPaging() {
@@ -166,31 +173,55 @@
 		}
 		initData();
 		
-// 		function detail(){
-// 			$(".ul-body ul").on("click",function(){
-// 				alert("ul");
-// 				var index = $(".ul-body ul").index(this);
-// 				console.log("index", index);
-// 				var no = data[index].no;
-// 				console.log("no", no);
-// // 				var title = data[index].title;
-// // 				console.log("title", title);
-// // 				var contents = data[index].contents;
-// // 				console.log("contents", title);
-// 				$.ajax({
-// 					type : "post", // post 방식으로 통신 요청
-// 					url : "myqnaDetail", // Spring에서 만든 URL 호출 
-// 					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
-// 				}).done(function(d) { // 비동기식 데이터 가져오기
-// 					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
-// 					initData();
-// 				}).fail(function(d, s, x) {
-// 					alert("fail");
-// 				})
+		function detail(){
+			$(".ul-body ul").on("click",function(){
+				alert("ul");
+				index = $(".ul-body ul").index(this);
+				no = data[index].no;
+				title = data[index].title;
+				contents = data[index].contents;
+				answer = data[index].answer;
 				
-// 			});
-			
-// 		}
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "myqnaDetail", // Spring에서 만든 URL 호출 
+					data : {"no" : no, "title": title, "contents": contents, "answer": answer} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					data = result.data;
+					title = data[0].title;
+					contents = data[0].contents;
+					answer = data[0].answer;
+					console.log(result);
+					console.log(data);
+					console.log(title);
+					if(answer == null){
+						answer = "답변 내용이 없습니다.";
+					}
+					detailCreate();
+					}).fail(function(d, s, x) {
+					alert("fail");
+				})
+			});
+		}
+		
+		function detailCreate(){
+			var content = '<div id="mainBox"><div id="subBox1"><div id="textBox1"><p>'
+			+ '제목</p></div><div id="reqBox1"><p id="reqText1">' + title + '</p></div></div><div id="subBox2">'
+            + '<div id="textBox2"><p>문의 내용</p></div><div id="reqBox2"><p id="reqText2">' + contents + '</p>'
+			+ '</div></div></div><div id="mainBox2"><div id="subBox3"><div id="textBox3"><p>답변</p></div>'
+            + '<div id="reqBox3"><p id="reqText3">' + answer + '</p></div><div id="submit">'
+            + '<button type="button" id="backBtn">돌아가기</button></div></div></div>';
+            
+            $(".center-right").empty();
+            $(".center-right").addClass('mainContent');
+            $(".mainContent").removeClass('center-right');
+            $(".mainContent").append(content);
+            
+            $("#backBtn").off().on("click", function(){
+            	location.reload(true);
+            });
+		}
 	});
 </script>
 </head>

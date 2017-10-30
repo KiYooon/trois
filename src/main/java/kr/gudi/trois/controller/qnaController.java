@@ -114,27 +114,4 @@ public class qnaController {
 			return mav;
 		}
 	}
-	
-	@RequestMapping(value="/okquestion")
-	public ModelAndView okquestion(ModelAndView mav, HttpServletRequest req, HttpSession session) {
-		HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
-		
-		String id = user.get("id").toString();
-		String title = req.getParameter("title");
-		String contents = req.getParameter("contents");
-		String answer = req.getParameter("answer");
-		
-		HashMap<String, Object> selectqnaAll = new HashMap<String, Object>();
-		
-		selectqnaAll.put("id", id);
-		selectqnaAll.put("title", title);
-		selectqnaAll.put("contents", contents);
-		selectqnaAll.put("answer", answer);
-		
-		selectqnaAll = qsi.selectanswer(selectqnaAll);
-		
-		mav.addObject("selectqnaAll", selectqnaAll);
-		mav.setViewName("okquestion");
-		return mav;
-	}
 }

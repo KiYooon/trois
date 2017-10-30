@@ -62,8 +62,8 @@
 				var tag = '<ul>'
 				tag += '<li>' + (i + 1) + '</li>';
 				tag += '<li>' + data[i].title + '</li>';
-				tag += '<li>' + data[i].capture + '</li>';
 				tag += '<li>' + data[i].date + '</li>';
+				tag += '<li><button type="button">수정</button></li>';
 				tag += '<li><button type="button">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
@@ -155,7 +155,9 @@
 		function deleteButton(){
 			$(".ul-body button").off().on("click", function(){
 				var index = $(".ul-body button").index(this);
-				var no = data[index].no;	
+				console.log(index);
+				var no = data[index].no;
+				console.log(no);
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "myroomDataDelete", // Spring에서 만든 URL 호출 
@@ -167,14 +169,8 @@
 					alert("fail");
 				})
 			});
-// 			detailWork();
 		}
 		
-// 		function detailWork(){
-// 			$(".ul-body li").off().on("click", function(){
-// 				alert("li");
-// 			});
-// 		}
 	});
 </script>
 </head>
@@ -205,8 +201,8 @@
 					<ul>
 						<li>순서</li>
 						<li>제목</li>
-						<li>캡쳐</li>
 						<li>날짜</li>
+						<li>수정</li>
 						<li>삭제</li>
 					</ul>
 				</div>

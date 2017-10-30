@@ -50,16 +50,16 @@ public class TroisController {
 	@RequestMapping("/myqnaDetail")
 	public ModelAndView myqnaDetail(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("no", Integer.parseInt(req.getParameter("no")));
-		param.put("title",req.getParameter("title"));
+		param.put("no", req.getParameter("no"));
+		param.put("title", req.getParameter("title"));
 		param.put("contents", req.getParameter("contents"));
+		param.put("answer", req.getParameter("answer"));
 		System.out.println(param);
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.myqnaDetail(param)));
 		mav.addObject("message", jsonObject.toString());
-		
-		mav.setViewName("okquestion");
+		mav.setViewName("json");
 		return mav;
 	}
 	
