@@ -68,7 +68,6 @@
 </style>
 <script>
 	$(document).ready(function(){
-		var data = []; // 데이터 담을 배열 변수 선언
 	    // Get the modal
 	    var modal1 = document.getElementById("updatepwd");
 	    var modal2 = document.getElementById('updateemail');
@@ -116,6 +115,17 @@
 	        }
 	    }
 	    
+	    $("#nopwd").on("click", function(){
+	    	location.href = "modify";
+	    });
+	    
+	    $("#noemail").on("click", function(){
+	    	location.href = "modify";
+	    });
+	    
+	    $("#nodeleteuser").on("click", function(){
+	    	location.href = "modify";
+	    });
 	});
 </script>
 </head>
@@ -145,10 +155,8 @@
 			<h2>회원정보 수정</h2>
 			<div class="usermodify">
 				<ul>
-					<li>이름 : </li>
-					<li>ID : BBO</li>
-					<li>PWD : <button type="button" id="modifypwd">비밀번호 변경</button></li>
-					<li>Email : <button type="button" id="modifyemail">이메일 변경</button></li>
+					<li>PWD : <button type="submit" id="modifypwd">비밀번호 변경</button></li>
+					<li>Email : <button type="submit" id="modifyemail">이메일 변경</button></li>
 				</ul>
 			</div>
 			<hr>
@@ -180,7 +188,7 @@
 					<li>비밀번호 : <input type="password" id="newpwd1" name="newpwd1" placeholder="입력하세요"></li>
 					<li>비밀번호 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요"></li>
 					<li class="inline-block"><button type="submit" id="okpwd">확인</button></li>
-					<li class="inline-block"><button type="submit" id="nopwd">취소</button></li>
+					<li class="inline-block"><button type="button" id="nopwd">취소</button></li>
 				</ul>
 			</form>
 		</div>
@@ -196,7 +204,7 @@
 				<ul>
 					<li>email : <input type="text" id="email" name="email" placeholder="입력하세요"></li>
 					<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
-					<li class="inline-block"><button type="submit" id="noemail">취소</button></li>
+					<li class="inline-block"><button type="button" id="noemail">취소</button></li>
 				</ul>
 			</form>
 		</div>
@@ -208,11 +216,13 @@
 		<div class="modal-content">
 			<span class="close3">&times;</span>
 			<h2>회원 탈퇴</h2>
-			<ul>
-				<li>회원을 정말로 탈퇴하시겠습니까?</li>
-				<li class="inline-block"><button type="submit">확인</button></li>
-				<li class="inline-block"><button type="submit">취소</button></li>
-			</ul>
+			<form action="deleteuser" method="post">
+				<ul>
+					<li>회원을 정말로 탈퇴하시겠습니까?</li>
+					<li class="inline-block"><button type="submit" id="okdeleteuser">확인</button></li>
+					<li class="inline-block"><button type="button" id="nodeleteuser">취소</button></li>
+				</ul>
+			</form>
 		</div>
 	</div>
 </body>

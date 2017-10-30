@@ -64,4 +64,14 @@ public class TroisDao implements TroisDaoInterface {
 		return session.update("list.updateEmail", param);
 	}
 
+	@Override
+	public int deleteUser(HashMap<String, Object> param) {
+		return session.update("list.deleteUser", param);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> myqnaDetail(HashMap<String, Object> param) {
+		return session.selectList("list.myqnaDetail", param);
+	}
+
 }

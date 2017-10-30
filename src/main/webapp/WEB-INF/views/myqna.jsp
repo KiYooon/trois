@@ -84,6 +84,7 @@
                 	tag += "</ul>";
                 $(".ul-body").append(tag);
        		} 
+			 detail();
 		}
 
 		function createPaging() {
@@ -158,6 +159,32 @@
 			})
 		}
 		initData();
+		
+		function detail(){
+			$(".ul-body ul").on("click",function(){
+				alert("ul");
+				var index = $(".ul-body ul").index(this);
+				console.log("index", index);
+				var no = data[index].no;
+				console.log("no", no);
+// 				var title = data[index].title;
+// 				console.log("title", title);
+// 				var contents = data[index].contents;
+// 				console.log("contents", title);
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "myqnaDetail", // Spring에서 만든 URL 호출 
+					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					initData();
+				}).fail(function(d, s, x) {
+					alert("fail");
+				})
+				
+			});
+			
+		}
 	});
 </script>
 </head>

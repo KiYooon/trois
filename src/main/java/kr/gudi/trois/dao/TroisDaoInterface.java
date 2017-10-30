@@ -14,5 +14,7 @@ public interface TroisDaoInterface {
 	public int deleteAdmin(HashMap<String, Object> param);
 	public int updatePwd(HashMap<String, Object> param);
 	public int updateEmail(HashMap<String, Object> param);
+	public int deleteUser(HashMap<String, Object> param);
+	public List<HashMap<String, Object>> myqnaDetail(HashMap<String, Object> param);
 	
 }

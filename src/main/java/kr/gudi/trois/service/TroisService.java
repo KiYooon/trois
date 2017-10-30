@@ -82,6 +82,23 @@ public class TroisService implements TroisServiceInterface {
 		return map;
 	}
 
+	@Override
+	public HashMap<String, Object> deleteUser(HashMap<String, Object> param) {
+		int id = tdi.deleteUser(param);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("id", id);
+		return map;
+	}
+
+	@Override
+	public HashMap<String, Object> myqnaDetail(HashMap<String, Object> param) {
+		List<HashMap<String, Object>> list = tdi.myqnaDetail(param);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("data", list);
+		
+		return map;
+	}
+
 	
 
 }

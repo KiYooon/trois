@@ -48,6 +48,22 @@ public class TroisController {
 		return mav;
 	}
 	
+	@RequestMapping("/myqnaDetail")
+	public ModelAndView myqnaDetail(ModelAndView mav, HttpServletRequest req){
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("no", Integer.parseInt(req.getParameter("no")));
+		param.put("title", Integer.parseInt(req.getParameter("title")));
+		param.put("contents", Integer.parseInt(req.getParameter("contents")));
+		System.out.println(param);
+		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+		JSONObject jsonObject = new JSONObject();
+		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.myqnaDetail(param)));
+		mav.addObject("message", jsonObject.toString());
+		
+		mav.setViewName("okquestion");
+		return mav;
+	}
+	
 	@RequestMapping("/myroom")
 	public ModelAndView myroom(ModelAndView mav, HttpSession session) {
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
@@ -169,6 +185,7 @@ public class TroisController {
 	public ModelAndView modifypwd(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", user.get("login").get("id"));
 		param.put("pwd", req.getParameter("newpwd1"));
 		param.put("pwd2", req.getParameter("newpwd2"));
 		System.out.println(req.getParameter("newpwd1"));
@@ -216,10 +233,11 @@ public class TroisController {
 		param.put("email", req.getParameter("email"));
 		param.put("id", user.get("login").get("id"));
 		boolean check = true;
-//		if (("").equals(param.get("email"))) {
-//			System.out.println("이메일이 없습니다.");
-//			check = false;
-//		}
+		if (("").equals(param.get("email"))) {
+			System.out.println("이메일이 없습니다.");
+			check = false;
+		}
+		System.out.println(check);
 		if(check){
 			param.put("email", param.get("email"));
 		}
@@ -228,6 +246,26 @@ public class TroisController {
 			mav.setViewName("redirect:/main");
 		}else {
 			mav.setViewName("modify");
+		}
+//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+//		JSONObject jsonObject = new JSONObject();
+//		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.updatePwd(param)));
+//		mav.addObject("message", jsonObject.toString());
+//		
+//		mav.setViewName("json");
+		return mav;		
+	}
+	
+	@RequestMapping("/deleteuser")
+	public ModelAndView deleteuser(ModelAndView mav, HttpServletRequest req, HttpSession session){
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("id", user.get("login").get("id"));
+		param = tsi.deleteUser(param);
+		if (user.get("login").get("id") == null) {
+			mav.setViewName("redirect:/main");
+		}else{
+			mav.setViewName("redirect:/main");
 		}
 //		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 //		JSONObject jsonObject = new JSONObject();
