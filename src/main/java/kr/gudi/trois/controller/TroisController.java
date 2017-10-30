@@ -38,7 +38,6 @@ public class TroisController {
 		param.put("start", Integer.parseInt(req.getParameter("start")));
 		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));
 		param.put("id", user.get("login").get("id"));
-		
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectMyqna(param)));
@@ -52,8 +51,8 @@ public class TroisController {
 	public ModelAndView myqnaDetail(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
-		param.put("title", Integer.parseInt(req.getParameter("title")));
-		param.put("contents", Integer.parseInt(req.getParameter("contents")));
+		param.put("title",req.getParameter("title"));
+		param.put("contents", req.getParameter("contents"));
 		System.out.println(param);
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();

@@ -70,7 +70,8 @@
 	            	tag += "</ul>";
 	            $(".ul-body").append(tag);
 	   		}  
-			deleteButton();
+			 deleteButton();
+			
 		}
 	
 		function createPaging() {
@@ -130,6 +131,7 @@
 	
 			var end = (viewRow * page); // 10 * 2 = 20
 			var start = (end - viewRow); // 20 - 10 = 10
+			
 			$.ajax({
 				type : "post", // post 방식으로 통신 요청
 				url : "myroomData", // Spring에서 만든 URL 호출 
@@ -160,8 +162,15 @@
 				}).fail(function(d, s, x) {
 					alert("fail");
 				})
-			});	
+			});
+// 			detailWork();
 		}
+		
+// 		function detailWork(){
+// 			$(".ul-body li").off().on("click", function(){
+// 				alert("li");
+// 			});
+// 		}
 	});
 </script>
 </head>

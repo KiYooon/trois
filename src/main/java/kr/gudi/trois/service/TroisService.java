@@ -20,9 +20,11 @@ public class TroisService implements TroisServiceInterface {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("data", list);
 		
-		HashMap<String, Object> totCnt = tdi.totCntMyqna();
-		map.put("totCnt", totCnt);
 		
+		HashMap<String, Object> totCnt = tdi.totCntMyqna(param);
+		
+		map.put("totCnt", totCnt);
+		System.out.println("service map: "+ map);
 		return map;
 	}
 
@@ -32,7 +34,7 @@ public class TroisService implements TroisServiceInterface {
 		HashMap<String, Object> map = new HashMap<String, Object>();
 		map.put("data", list);
 		
-		HashMap<String, Object> totCnt = tdi.totCntMyroom();
+		HashMap<String, Object> totCnt = tdi.totCntMyroom(param);
 		map.put("totCnt", totCnt);
 		
 		return map;

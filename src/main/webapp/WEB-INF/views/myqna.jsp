@@ -84,7 +84,7 @@
                 	tag += "</ul>";
                 $(".ul-body").append(tag);
        		} 
-			 detail();
+// 			detail();
 		}
 
 		function createPaging() {
@@ -105,18 +105,21 @@
 			
 			if(end > pageView){
 				$(".button-list").append("<button type='button' id ='#myqna" + ((start+1) - pageView) + "'>&lt;</button>")
-			    k = 1;
+			    console.log("다음");
+				k = 1;
 			}       
 	       	for(var i = start; i < end; i++){
 	       		$(".button-list").append("<button type='button' id ='#myqna" + (i + 1) + "'>" + (i + 1) + "</button>");
-	          	if(page == (i + 1)){
+	       		console.log("가운데");
+	       		if(page == (i + 1)){
 	            $(".button-list button").eq(k).addClass("chk");
 	        }
 	          	k++;
 	        }
 	       
 	        if(end >= pageView && paging > end){
-	        	$(".button-list").append("<button type='button' id ='#myqna" + (end + 1) + "'>&gt;</button>")
+	        	$(".button-list").append("<button type='button' id ='#myqna" + (end + 1) + "'>&gt;</button>");
+	        	console.log("이전");
 	        }
 			$(".button-list button").off().on("click", function() { // 페이지 전환 이벤트를 작성 한다.
 				// a 태그 중에 몇번째 페이지인지 알면 리스트 화면를 다시 보여 줄 수 있다. page 변수 활용 할것!
@@ -160,31 +163,31 @@
 		}
 		initData();
 		
-		function detail(){
-			$(".ul-body ul").on("click",function(){
-				alert("ul");
-				var index = $(".ul-body ul").index(this);
-				console.log("index", index);
-				var no = data[index].no;
-				console.log("no", no);
-// 				var title = data[index].title;
-// 				console.log("title", title);
-// 				var contents = data[index].contents;
-// 				console.log("contents", title);
-				$.ajax({
-					type : "post", // post 방식으로 통신 요청
-					url : "myqnaDetail", // Spring에서 만든 URL 호출 
-					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
-				}).done(function(d) { // 비동기식 데이터 가져오기
-					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
-					initData();
-				}).fail(function(d, s, x) {
-					alert("fail");
-				})
+// 		function detail(){
+// 			$(".ul-body ul").on("click",function(){
+// 				alert("ul");
+// 				var index = $(".ul-body ul").index(this);
+// 				console.log("index", index);
+// 				var no = data[index].no;
+// 				console.log("no", no);
+// // 				var title = data[index].title;
+// // 				console.log("title", title);
+// // 				var contents = data[index].contents;
+// // 				console.log("contents", title);
+// 				$.ajax({
+// 					type : "post", // post 방식으로 통신 요청
+// 					url : "myqnaDetail", // Spring에서 만든 URL 호출 
+// 					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+// 				}).done(function(d) { // 비동기식 데이터 가져오기
+// 					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+// 					initData();
+// 				}).fail(function(d, s, x) {
+// 					alert("fail");
+// 				})
 				
-			});
+// 			});
 			
-		}
+// 		}
 	});
 </script>
 </head>
@@ -224,6 +227,7 @@
 				<div class="ul-body">
 				</div>
 				<div class="button-list">
+				
 				</div>
 			</div>
 		</div>
