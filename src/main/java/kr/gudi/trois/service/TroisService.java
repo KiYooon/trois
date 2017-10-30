@@ -59,6 +59,15 @@ public class TroisService implements TroisServiceInterface {
 		map.put("no", no);
 		return map;
 	}
+	
+	@Override
+	public HashMap<String, Object> updateMyroom(HashMap<String, Object> param) {
+		List<HashMap<String, Object>> list = tdi.updateMyroom(param);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("data", list);
+		
+		return map;
+	}
 
 	@Override
 	public HashMap<String, Object> deleteAdmin(HashMap<String, Object> param) {
@@ -100,6 +109,8 @@ public class TroisService implements TroisServiceInterface {
 		
 		return map;
 	}
+
+	
 
 	
 

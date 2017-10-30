@@ -63,8 +63,8 @@
 				tag += '<li>' + (i + 1) + '</li>';
 				tag += '<li>' + data[i].title + '</li>';
 				tag += '<li>' + data[i].date + '</li>';
-				tag += '<li><button type="button">수정</button></li>';
-				tag += '<li><button type="button">삭제</button></li>';
+				tag += '<li><button type="button" class="updatebutton">수정</button></li>';
+				tag += '<li><button type="button" class="deletebutton">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}
@@ -75,7 +75,7 @@
 	            $(".ul-body").append(tag);
 	   		}  
 			 deleteButton();
-			
+			 updateButton();
 		}
 	
 		function createPaging() {
@@ -153,11 +153,11 @@
 		initData();
 		
 		function deleteButton(){
-			$(".ul-body button").off().on("click", function(){
-				var index = $(".ul-body button").index(this);
-				console.log(index);
+			$(".ul-body .deletebutton").off().on("click", function(){
+				var index = $(".ul-body .deletebutton").index(this);
+				console.log("index : " + index);
 				var no = data[index].no;
-				console.log(no);
+				console.log("no : " + no);
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "myroomDataDelete", // Spring에서 만든 URL 호출 
@@ -168,6 +168,27 @@
 				}).fail(function(d, s, x) {
 					alert("fail");
 				})
+				
+			});
+		}
+		
+		function updateButton(){
+			$(".ul-body .updatebutton").off().on("click", function(){
+				var index = $(".ul-body .updatebutton").index(this);
+				console.log("index : " + index);
+				var no = data[index].no;
+				console.log("no : " + no);
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "myroomDataUpdate", // Spring에서 만든 URL 호출 
+					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					initData();
+				}).fail(function(d, s, x) {
+					alert("fail");
+				})
+				
 			});
 		}
 		

@@ -105,6 +105,20 @@ public class TroisController {
 		return mav;
 	}
 	
+	@RequestMapping("/myroomDataUpdate")
+	public ModelAndView myroomDataUpdate(ModelAndView mav, HttpServletRequest req){
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("no", Integer.parseInt(req.getParameter("no")));
+		System.out.println(param);
+		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+		JSONObject jsonObject = new JSONObject();
+		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.updateMyroom(param)));
+		mav.addObject("message", jsonObject.toString());
+		
+		mav.setViewName("json");
+		return mav;
+	}
+	
 //	@RequestMapping("/admin")
 //	public ModelAndView admin(ModelAndView mav, HttpSession session) {
 //		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
