@@ -11,28 +11,19 @@
 	
 	<select id="selectqna" parameterType="hashmap" resultType="hashmap">
 		select title, contents from qna
-		where id = #{id}
-<!-- 		 and title = #{title} and contents = #{contents} -->
+		where id = #{id} and title = #{title} and contents = #{contents}
 	</select>
 	<!-- 사용자 문의내용 가져오기 -->
 	
 	<select id="updateqna" parameterType="hashmap">
 		update qna set answer = #{answer}, answercheck = '답변완료'
-		where id = #{id}
-<!-- 		 and title = #{title} and contents = #{contents} -->
+		where id = #{id} and title = #{title} and contents = #{contents}
 	</select>
 	<!-- 관리자 답변 저장하기 -->
 
 	<select id="selectanswer" parameterType="hashmap" resultType="hashmap">
 		select title, contents, answer from qna
-		where id = #{id}
-<!-- 		 and title = #{title} and contents = #{contents} and answer = #{answer} -->
+		where id = #{id} and title = #{title} and contents = #{contents} and answer = #{answer}
 	</select>
 	<!-- 사용자 문의내용, 관리자 답변 가져오기 -->
-	
-	<select id="userselect" resultType="hashmap">
-		select * from user where id = 'admin' and pwd = 'trois'
-	</select>
-	<!-- id, pw 일치시 정보 가져오기 -->
-	
 </mapper>

@@ -7,5 +7,4 @@ public interface qnaDaoInterface {
 	public HashMap<String, Object> selectQna(HashMap<String, Object> param);
 	public int updateQna(HashMap<String, Object> param);
 	public HashMap<String, Object> selectanswer(HashMap<String, Object> param);
-	public HashMap<String, Object> userselect();
 }

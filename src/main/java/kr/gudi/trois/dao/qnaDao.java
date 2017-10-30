@@ -28,9 +28,5 @@ public class qnaDao implements qnaDaoInterface {
 	public HashMap<String, Object> selectanswer(HashMap<String, Object> param){
 		return session.selectOne("project.selectanswer", param);
 	}
-	
-	public HashMap<String, Object> userselect() {
-		return session.selectOne("project.userselect");
-	}
 
 }

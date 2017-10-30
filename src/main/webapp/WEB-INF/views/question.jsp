@@ -20,13 +20,12 @@
 			
 				if(charRemain < 0){
 					$("#submitBtn").prop("disabled", true);
-				} else {
+				}else {
 					$("#submitBtn").prop("disabled", false);
 				}
 		});
 		
 		$("#submitBtn").off().on("click", function(){
-			if(($("#inputText1").text()) <= 10 && ($("#inputText2").text() <= 50))
 			initData();
 			createqna();
 		});
@@ -39,13 +38,23 @@
    			$("#inputBox1").append("<p id='reqText1'>" + title + "</p>");
   			$("#inputBox2").append("<p id='reqText2'>" + contents + "</p>");
   			$('#inputBox2').html($('#reqText2').html().replace(/\n/g,"<br>"));
-  			$("#submit").append("<button type='button' id='submitBtn2'>돌아가기</button>");
+  			$("#submit").append('<button type="button" id="submitBtn2">돌아가기</button>');
+  			
+  			$("#submitBtn2").off().on("click", function(){
+  				var url = "myroom"; 
+  				$(location).attr('href',url);
+  			});
 		}
 		
 		function initData(){
 			
 			title = $("#inputText1").val();
 			contents = $("#inputText2").val();
+			
+			if(($("#inputText1").val() == "") || ($("#inputText2").val() == "")){
+				alert("내용을 입력하세요!");
+				location.reload(true);
+			}
 			
 			$.ajax({
 				type:"post", // post 방식으로 통신 요청
@@ -55,7 +64,6 @@
 			var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
 			});
 		}
-		
 });
 </Script>
 </head>
@@ -69,7 +77,7 @@
             <h1>Trois</h1>
         </div>
         <div class="header-right">
-            <button id="logout">로그아웃</button>
+            <button id="logout" onclick="location.href = 'logout';">로그아웃</button>
         </div>
     </div>
     <div class="center">
@@ -110,7 +118,14 @@
             </div>
         </div>
     </div>
-    <div class="footer"><footer>copyright</footer></div>
+    <div class="footer">
+            <footer>
+		                상호 :  Trois(주)<br>
+		                장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
+		                대표이사 : 박기윤 김원중 최승환 김보경 공은비<br>
+		               s Copyright (c) 2017  Trois all rights reserved. Trois는 안전하게 운영중입니다.
+            </footer>
+        </div>
  </div>
 </body>
 </html>

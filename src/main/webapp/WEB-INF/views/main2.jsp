@@ -19,6 +19,7 @@
     <div class="head-3"> 
         <button type="button" id="myroom" onclick="location.href = 'myroom';">마이룸</button>
         <button type="button" id="logout" onclick="location.href = 'logout';">로그아웃</button>
+     
     </div>
 </header>
     <div class="body">
@@ -52,7 +53,7 @@
 
     </div>
     <div class="body-3">
-        <button type="button" id="start">시작</button>
+        <button type="button" id="start" onclick="location.href = 'work';">시작</button>
     </div>
     <div class="body-4">
         <footer><p id=fp>Copyright.</p></footer>

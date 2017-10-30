@@ -22,17 +22,17 @@
             <h1>Trois</h1>
         </div>
         <div class="header-right">
-            <button id="logout">로그아웃</button>
+            <button id="logout" onclick="location.href = 'logout';">로그아웃</button>
         </div>
     </div>
     <div class="center">
         <div class="center-left">
             <p id="ad">관리자 페이지</p>
             <ul>
-				<li><a href="#">마이룸</a></li>
-				<li><a href="#">회원정보 수정/탈퇴</a></li>
-				<li><a href="#">문의하기</a></li>
-				<li><a href="#">나의 문의내역</a></li>
+				<li><a href="myroom">마이룸</a></li>
+				<li><a href="question" style="text-decoration: underline;">문의하기</a></li>
+				<li><a href="myqna">나의문의내역</a></li>
+				<li><a href="modify">회원정보수정/탈퇴</a></li>
             </ul>
         </div>
         <div id="mainContent">
@@ -69,7 +69,14 @@
             </div>
         </div>
     </div>
-    <div class="footer"><footer>copyright</footer></div>
+    <div class="footer">
+            <footer>
+		                상호 :  Trois(주)<br>
+		                장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
+		                대표이사 : 박기윤 김원중 최승환 김보경 공은비<br>
+		               s Copyright (c) 2017  Trois all rights reserved. Trois는 안전하게 운영중입니다.
+            </footer>
+        </div>
 </div>
 </body>
 </html>

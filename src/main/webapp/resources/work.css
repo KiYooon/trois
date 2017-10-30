@@ -7,9 +7,10 @@ body {
 #active{
     display: block;
 /*     background-color: antiquewhite; */
-    width: 70%;
+    width: 240%;
     height: 700px;
     float: left;
+    margin-top:30px;
 }
  body{
     margin: 0;
@@ -19,11 +20,17 @@ body {
     height: 90%;
     display: inline-block;
 }
+.contain2{
+	width: 100%;
+    height: 90%;
+    display: inline-block;
+}
 #active1{
 /*     background-color: aquamarine; */
     width: 30%;
     height: 50%;
     float: right;
+    margin-top:80px;
 }
 #active2{
 /*     background-color: antiquewhite; */
@@ -40,23 +47,23 @@ body {
 }
 .active3-1{
     float: left;
-    height: 125px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 .active3-2{
     float: left;
-    height: 125px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 .active3-3{
     float: left;
-    height: 125px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 .active3-4{
     float: left;
-    height: 125px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 #active4{
     float: left;
@@ -64,28 +71,39 @@ body {
     height: 140px;
 }
 .active4-1{
-    height: 140px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 .active4-2{
-    height: 140px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 #active5{
     float: left;
     width: 100%;
     height: 140px;
 }
-.active5-1{
+#active6{
+	float: left;
+    width: 100%;
     height: 140px;
-    width: 50%;
+}
+.active5-1{
+    height: 100px;
+    width: 100px;
 }
 .active5-2{
-    height: 140px;
-    width: 50%;
+    height: 100px;
+    width: 100px;
 }
 .side{ /* 왼쪽 사이드 */
     width: 20%;
+    float: left;
+    display: inline-block;
+    height: 60%;
+}
+.side2{
+	width: 20%;
     float: left;
     display: inline-block;
     height: 60%;
@@ -105,6 +123,18 @@ body {
 }
 .p3{
     width: 100%;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+}
+.p4{
+	width: 240%;
+    height: 30px;
+    font-size: 25px;
+    margin-top: 1%;
+}
+.p5{
+	width: 100%;
     height: 30px;
     font-size: 25px;
     text-align: center;
@@ -161,44 +191,52 @@ body {
 }
 
 #image9{
-    width: 60%;
-    margin-left: 17%;
-    margin-top: 30px
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image10{
-    width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image11{
-     width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image12{
-     width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image13{
-     width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image14{
-    width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+   width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image15{
-    width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+    width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #image16{
-     width: 60%;
-    margin-left: 17%;
-    margin-top: 30px;
+   width: 100px;
+    overflow: hidden;
+    height: 100%;
+    resize: both;
 }
 #active6{
     width: 40%;
@@ -210,11 +248,89 @@ body {
     margin-left: 40%;
     margin-top: 10%;
 }
-#active7{
+.p4{
     width: 100%;
-    text-align: right;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 70%;
+    
+}
+#active9{
+    float: left;
+    width: 100%;
+    height: 250px;
+    margin-left: 70%;
+    margin-top: 20px;
+  
+}
+#active7{
+	float: left;
+    width: 300%;
+    height: 250px;
+    margin-top: 20%;
+}
+.active7-1{
+    float: left;
+    height:100px;
+    width:100px;
+}
+.active7-2{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+.active7-3{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+.active7-4{
+    float: left;
+    height:100px;
+    width: 100px;
+}
+.p5{
+    width: 100%;
+    height: 30px;
+    font-size: 25px;
+    text-align: center;
+    margin-top: 70%;
+    
+}
+#active10{
+	float: left;
+    width: 100%;
+    height: 250px;
+    margin-top: 20%;
+}
+#active8{
+    float: left;
+    width: 100%;
+    height: 250px;
+    margin-top: 20%;
+  
+}
+li{
+	margin:0px;
+	padding:0px;
+	list-style:none;
+}
+.active8-1{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+.active8-2{
+    float: left;
+    height: 100px;
+    width: 100px;
+}
+.side3{ /* 왼쪽 사이드 */
+    width: 20%;
+    float: left;
     display: inline-block;
-    margin-top: 1%;
+    height: 60%;
 }
 
 .right{
@@ -226,12 +342,12 @@ body {
     width: 1213px;
     height: 708px;
     margin-left: 7%;
+    margin-top:42px;
 }
 
 .big1 {
     width: 100%;
     height: 100%;
-    margin-top: 5px;
     background-image: url(/trois/resources/work/wall1.png);
     display: inline-block;
     /*background-color: #efd8c6;*/
@@ -284,13 +400,13 @@ body {
 
 /* Modal Content */
 .modal-content1 {
-   background-color: #80ffff;
+   background-color: aquamarine;
     margin: auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 20%;
-    margin-left: 60%;
-    margin-top:30%;
+    width: 15%;
+    margin-left: 79%;
+    margin-top: 3%;
 }
 
 /* The Close Button */
@@ -301,8 +417,8 @@ body {
     font-weight: bold;
 }
 
-.close:hover,
-.close:focus {
+.close1:hover,
+.close1:focus {
     color: #000;
     text-decoration: none;
     cursor: pointer;

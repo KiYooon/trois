@@ -42,10 +42,20 @@ $(document).ready(function(){
 		$("#inputBox").append("<p id='reqText3'>" + answer + "</p>");
 		$("#submit").append("<button type='button' id='backBtn'>돌아가기</button>");
  		$('#inputBox').html($('#reqText3').html().replace(/\n/g,"<br>"));
+ 		
+ 		$("#backBtn").off().on("click", function(){
+				var url = "myroom"; 
+				$(location).attr('href',url);
+		});
 	}
 	
 	function initData(){
 			answer = $("#inputText").val();
+			
+			if($("#inputText").val() == ""){
+				alert("내용을 입력하세요!");
+				location.reload(true);
+			}
 			
 			$.ajax({
 				type:"post", // post 방식으로 통신 요청
@@ -68,14 +78,14 @@ $(document).ready(function(){
                     <h1>Trois</h1>
                 </div>
                 <div class="header-right">
-                    <button id="logout">로그아웃</button>
+                    <button id="logout" onclick="location.href = 'logout';">로그아웃</button>
                 </div>
             </div>
             <div class="center">
                 <div class="center-left">
                     <p id="ad">관리자 페이지</p>
                     <ul>
-                        <li><a href="#">문의내역</a></li>
+                        <li><a href="admin">문의내역</a></li>
                     </ul>
                 </div>
                 <div id="mainContent">
@@ -115,6 +125,13 @@ $(document).ready(function(){
                     </form>
                 </div>
             </div>
-            <div class="footer"><footer>copyright</footer></div>
+            <div class="footer">
+            <footer>
+		                상호 :  Trois(주)<br>
+		                장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
+		                대표이사 : 박기윤 김원중 최승환 김보경 공은비<br>
+		               s Copyright (c) 2017  Trois all rights reserved. Trois는 안전하게 운영중입니다.
+            </footer>
+        </div>
         </div>
 </html>
