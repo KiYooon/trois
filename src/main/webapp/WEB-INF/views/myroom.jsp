@@ -51,6 +51,10 @@
 		
 		var pageGroup = 1; // 현재 페이지 값
 		var pageView = 5; // 페이징 버튼 객수
+
+		$("#logout").on("click", function(){
+	    	location.href = "logout";
+	    });
 	
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
 			$(".ul-body").empty(); // ul 태그의 자식들를 초기화가 필요하다.
@@ -184,7 +188,7 @@
 				<h1>Trois</h1>
 			</div>
 			<div class="header-right">
-				<button id="logout" onclick="location.href = 'logout';">로그아웃</button>
+				<button id="logout">로그아웃</button>
 			</div>
 		</div>
 		<div class="center">
