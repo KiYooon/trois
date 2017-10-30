@@ -38,7 +38,6 @@ h1{
     display: block;
     float: left;
     height: 150px;
-    
     width: 25%;
     text-align: center;
     position: relative;
@@ -213,7 +212,7 @@ h1{
     top: 20px;
     left: 350px;
     height: 50px;
-    width: 10%;
+    width: 15%;
     
 }
 #ipjoin{
@@ -224,7 +223,7 @@ h1{
     position: absolute;
     top: 30%;
     width: 20%;
-    right: 15%;
+    right: 10%;
 }
 #findid{
     background: #ebebeb;
@@ -244,6 +243,16 @@ h1{
     width: 15%;
     right: 15%;
 }
+#change{
+    background: #ebebeb;
+    border-radius: 5px;
+    font-family:monospace;
+    height: 40px;
+    position: absolute;
+    top: 30%;
+    width: 15%;
+    right: 15%;
+}
 #settingpw{
     background: #ebebeb;
     border-radius: 5px;
@@ -260,6 +269,32 @@ h1{
     top: 50%;
     width: 10%;
     right: 45%;
+}
+#okpw{
+    background: #ebebeb;
+    border-radius: 5px;
+    font-family:monospace;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    width: 10%;
+    right: 45%;
+}
+#okjoin{
+    background: #ebebeb;
+    border-radius: 5px;
+    font-family:monospace;
+    height: 40px;
+    position: absolute;
+    top: 50%;
+    width: 10%;
+    right: 45%;
+}
+#overlap{
+    background: #ebebeb;
+/*     border-radius: 5px; */
+    font-family:monospace;
+    height: 20px;
 }
 .jointable{
     
