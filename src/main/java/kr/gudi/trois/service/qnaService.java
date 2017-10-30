@@ -34,9 +34,4 @@ public class qnaService implements qnaServiceInterface {
 		HashMap<String, Object> map = (HashMap<String, Object>) qdi.selectanswer(param);
 		return map;
 	}
-
-	public HashMap<String, Object> userselect() {
-		HashMap<String, Object> map = (HashMap<String, Object>) qdi.userselect();
-		return map;
-	}
 }
