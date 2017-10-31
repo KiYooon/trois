@@ -20,12 +20,13 @@ import kr.gudi.trois.service.workServiceInterface;
 public class workController {
 	
 	@Autowired
-	workServiceInterface work;
+	workServiceInterface wsi;
 	
 @RequestMapping(value="/work")
 public ModelAndView question(ModelAndView mav, HttpSession session) {
-	HashMap<String, Object> user = (HashMap<String, Object>) work.userselect(); // 로그인 페이지에서 해줘야됨
-	session.setAttribute("user", user); // 로그인 페이지에서 해줘야됨
+	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+	HashMap<String, Object> param = new HashMap<String, Object>();
+	param.put("id", user.get("login").get("id"));
 	mav.setViewName("work");
 	return mav;
 }

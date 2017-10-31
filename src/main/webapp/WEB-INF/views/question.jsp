@@ -30,6 +30,10 @@
 			createqna();
 		});
 		
+// 		$("#logout").on("click", function(){
+// 	    	location.href = "logout";
+// 	    });
+		
 		function createqna(){
 			$("#inputBox1").empty(); 
 			$("#inputBox2").empty();

@@ -48,46 +48,46 @@
                   </form>
                </div>
             </div>
-         
-         
-         <button type="button" id="join">회원가입</button>
-         <!-- The Modal -->
-         <div id="myModal2" class="modal">
-            <!-- Modal content -->
-            <form action="" method="post">
-               <div class="modal-content2">
-                  <span class="close">&times;</span>
-                  <div class="jointable">
-                     <p>
-                        <label for="id">ID : </label> <input type="text" id="createid"
-                           name="id">
-                        <button type="button" id="overlap">중복확인</button>
-                     </p>
-                     <p>
-                        <label for="pw">PW : </label> <input type="password" id="pwd"
-                           name="pwd">
-                     </p>
-                     <p>
-                        <label for="name">Name : </label> <input type="text" id="name"
-                           name="name">
-                     </p>
-                     <p>
-                        <label for="email">E-MAIL : </label> <input type="text"
-                           id="email" name="email">
-                     </p>
+
+
+            <button type="button" id="join">회원가입</button>
+            <!-- The Modal -->
+            <div id="myModal2" class="modal">
+               <!-- Modal content -->
+               <form action="" method="post">
+                  <div class="modal-content2">
+                     <span class="close">&times;</span>
+                     <div class="jointable">
+                        <p>
+                           <label for="id">ID : </label> <input type="text" id="createid"
+                              name="id">
+                           <button type="button" id="overlap">중복확인</button>
+                        </p>
+                        <p>
+                           <label for="pw">PW : </label> <input type="password" id="pwd"
+                              name="pwd">
+                        </p>
+                        <p>
+                           <label for="name">Name : </label> <input type="text" id="name"
+                              name="name">
+                        </p>
+                        <p>
+                           <label for="email">E-MAIL : </label> <input type="text"
+                              id="email" name="email">
+                        </p>
 
 
 
-                     <input type="submit" value="회원가입" id="ipjoin">
+                        <button type="button" value="회원가입" id="ipjoin">회원가입</button>
 
+                     </div>
                   </div>
-                  </div>
-            </form>
+               </form>
+            </div>
+
          </div>
-         
-   </div>
 
-   </header>
+      </header>
    </div>
    <div class="body">
       <div class="body-1"></div>
@@ -145,89 +145,79 @@
       //    });
 
       //    Get the modal
-      
-      
-      
-//       var modal = $("myModal");
-//       var modal2 = $("myModal2");
 
-//       // Get the button that opens the modal
-//       var btn = $("login");
-//       var btn2 = $("join");
+      //       var modal = $("myModal");
+      //       var modal2 = $("myModal2");
+
+      //       // Get the button that opens the modal
+      //       var btn = $("login");
+      //       var btn2 = $("join");
 
       var id = "";
       var name = "";
       var pwd = "";
       var email = "";
-      
 
       // Get the <span> element that closes the modal
-      var tr = "<span class='close'>&times;</span>"
-            +"<p>"
+      var tr = "<span class='close'>&times;</span>" + "<p>"
             + "<label for='name'>Name : </label>"
-            + "<input type='text' id='name'>" + "</p>"
-            + "<p>"
+            + "<input type='text' id='name'>" + "</p>" + "<p>"
             + "<label for='email'>E-mail : </label>"
-            + "<input type='text' id='email'>"
-            + "</p>"
+            + "<input type='text' id='email'>" + "</p>"
             + "<input type='submit' value='찾기' id='findid2'>";
-      
-//       var tr2 = "회원님의 아이디는" + findid.id + "니다."
-//             + "<button type='button' id='okid'>확인</button>";
-            
-      var tr3 = "<span class='close'>&times;</span>"
-            + "<p>"
+
+      var tr3 = "<span class='close'>&times;</span>" + "<p>"
             + "<label for='id'>ID : </label>"
-            + "<input type='text' id='loginid'>"
-            + "</p>"
-            + "<p>"
+            + "<input type='text' id='loginid'>" + "</p>" + "<p>"
             + "<label for='pw'>PW : </label>"
-            + "<input type='password' id='loginpwd'>"
-            + "</p>"
-             
+            + "<input type='password' id='loginpwd'>" + "</p>"
+
             + "<button type='button' id='iplogin'>로그인</button>"
-            
+
             + "<button type='button' id='findid'>ID찾기</button>"
             + "<button type='button' id='settingpw'>비밀번호 재설정</button>";
-      
-      var tr4 =  "<p>"
-         + "<label for='name'>Name : </label>"
-         + "<input type='text' id='name'>" + "</p>"
-         + "<p>"
-         + "<label for='id'>ID : </label>"
-         + "<input type='text' id='id'>"
-         + "</p>"
-         + "<p>"
-         + "<label for='changepw'>비밀번호 변경 : </label>"
-         + "<input type='password' id='changepw'>" + "</p>"
-         + "<button type='button' id='change'>변경</button>";
-      
-      var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요."
-         + "<button type='button' id='okpw'>확인</button>";
-         
-      
-//       var tr6 = "회원가입이 완료되었습니다."
-//          + "<button type='button' id='okjoin'>확인</button>";
-         
 
-      var tr7 = "<span class='close'>&times;</span>" 
+      var tr4 = "<p>" + "<label for='name'>Name : </label>"
+            + "<input type='text' id='name'>" + "</p>" + "<p>"
+            + "<label for='id'>ID : </label>"
+            + "<input type='text' id='id'>" + "</p>" + "<p>"
+            + "<label for='changepw'>비밀번호 변경 : </label>"
+            + "<input type='password' id='changepw'>" + "</p>"
+            + "<button type='button' id='change'>변경</button>";
+
+      var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요."
+            + "<button type='button' id='okpw'>확인</button>";
+
+      //       var tr6 = "회원가입이 완료되었습니다."
+      //          + "<button type='button' id='okjoin'>확인</button>";
+
+      var tr7 = "<span class='close'>&times;</span>"
             + "<p>"
             + "<label for='id'>ID : </label>"
-            + "<input type='text' id='id'> <input type='submit' id='overlap' value='중복확인'>" + "</p>"
-            + "<p>" + "<label for='pw'>PW : </label>"
+            + "<input type='text' id='id'> <input type='submit' id='overlap' value='중복확인'>"
+            + "</p>" + "<p>" + "<label for='pw'>PW : </label>"
             + "<input type='password' id='pw'>" + "</p>" + "<p>"
             + "<label for='name'>Name : </label>"
             + "<input type='text' id='name'>" + "</p>" + "<p>"
             + "<label for='email'>E-MAIL : </label>"
-            + "<input type='text' id='email'>"
-            + "</p>"
-            + "<form>" + "<input type='submit' value='회원가입' id='ipjoin'>"
-            + "</form>";
+            + "<input type='text' id='email'>" + "</p>" + "<form>"
+            + "<input type='submit' value='회원가입' id='ipjoin'>" + "</form>";
+
+      var tr8 = "<span class='close'>&times;</span>" + "<p>"
+            + "<label for='id'>ID : </label>"
+            + "<input type='text' id='loginid2'>" + "</p>" + "<p>"
+            + "<label for='pw'>PW : </label>"
+            + "<input type='password' id='loginpwd2'>" + "</p>"
+
+            + "<button type='button' id='iplogin2'>로그인</button>"
+
+            + "<button type='button' id='findid'>ID찾기</button>"
+            + "<button type='button' id='settingpw'>비밀번호 재설정</button>";
 
       var span = $("close")[0];
       var span2 = $("close")[1];
 
-      function btnLogin() {
+      function btnLogin() {//메인화면에서 로그인버튼으로 로그인
          $("#login").off().on("click", function() {
             // alert("띠용");
             $("#myModal").css("display", "block");
@@ -236,60 +226,61 @@
          });
       }
 
-      function btnSpan() {
+      function btnSpan() {//팝업창닫기
          $("span").off().on("click", function() {
             $("#myModal").css("display", "none");
             $("#myModal2").css("display", "none");
          });
       }
 
-      function btnFindid() {
+      function btnFindid() {//id찾기
          $("#findid").on("click", function() {
             $(".modal-content").html(tr);
             btnFindid2();
          });
       }
 
-      function btnFindid2() {
+      function btnFindid2() {//이름, email입력 후 찾기 버튼
          $("#findid2").off().on("click", function() {
-            
+
             name = $("#name").val();
             email = $("#email").val();
-            
+
             $.ajax({
-               type:"post",
-               url:"findid",
-               data:{"name": name, "email": email}
-            }).done(function(result){
-//                console.log(result);
+               type : "post",
+               url : "findid",
+               data : {
+                  "name" : name,
+                  "email" : email
+               }
+            }).done(function(result) {
+               //                console.log(result);
                findid = result.findid;
-//                console.log(findid);
+               //                console.log(findid);
                alert("회원님의 아이디는 " + findid.id + " 입니다.");
-               
-               
+
                $(".modal-content").html(tr3);
-               
-               $("#iplogin").off().on("click", function(){
+
+               $("#iplogin").off().on("click", function() {
                   login();
                });
                btnFindid();
                btnSettingpw();
                btnSpan();
             });
-            
-            
-//             $(".modal-content").html(tr2);
-            
-            $("#okid").off().on("click", function() {
-               $(".modal-content").html(tr3);
-               // 이벤트 다시 생성
-               btnFindid();
-               btnSettingpw();
-               btnSpan();
-            });
+
+            //             $(".modal-content").html(tr2);
+
+            //             $("#okid").off().on("click", function() {
+            //                $(".modal-content").html(tr3);
+            //                // 이벤트 다시 생성
+            //                btnFindid();
+            //                btnSettingpw();
+            //                btnSpan();
+            //             });
          });
       }
-      function btnSettingpw() {
+      function btnSettingpw() {//비밀번호 재설정
          $("#settingpw").off().on("click", function() {
             //             alert("메롱");
             $(".modal-content").html(tr4);
@@ -297,21 +288,38 @@
             btnChange();
          });
       }
-      function btnChange() {
+      function btnChange() {//
          $("#change").off().on("click", function() {
-        	 btnChangePW();
+            btnChangePW();
             $(".modal-content").html(tr5);
 
             $("#okpw").off().on("click", function() {
                $(".modal-content").html(tr3);
                // 이벤트 다시 생성
-               $("#iplogin").off().on("click", function(){
+               $("#iplogin").off().on("click", function() {
                   login();
                });
                btnFindid();
                btnSettingpw()
                btnSpan();
             });
+         });
+      }
+      function btnChangePW() {
+         id = $("#id").val();
+         name = $("#name").val();
+         var pw = $("#changepw").val();
+
+         $.ajax({
+            type : "post",
+            url : "updatepw",
+            data : {
+               "id" : id,
+               "name" : name,
+               "pw" : pw
+            }
+         }).done(function(result) {
+            console.log(result);
          });
       }
       function btnjoin() {
@@ -324,7 +332,7 @@
       }
       function btnipjoin() {
          $("#ipjoin").off().on("click", function() {
-//             $(".modal-content2").html(tr6);
+            //             $(".modal-content2").html(tr6);
             createUser();
             btnokjoin();
          });
@@ -339,89 +347,119 @@
          });
 
       }
-      
-      function createUser(){ //계정 생성 ajax
+
+      function createUser() { //계정 생성 ajax
          id = $("#createid").val();
          pwd = $("#pwd").val();
          name = $("#name").val();
          email = $("#email").val();
-         
+
+         if (id == "" || pwd == "" || name == "" || email == "") {
+            alert("값을 모두 입력해주세요.");
+            return false;
+         }
+
          $.ajax({
-            type:"post",
-            url:"/trois/Userjoin",
-            data:{"id": id, "pwd": pwd, "name": name, "email": email}
-         }).done(function(d){
-            var result = JSON.parse(d);
-            console.log(result);
+            type : "post",
+            url : "/trois/Userjoin",
+            data : {
+               "id" : id,
+               "pwd" : pwd,
+               "name" : name,
+               "email" : email
+            }
+
+         }).done(function(result) {
+            console.log(result.join);
+            alert("회원가입이 성공하였습니다!");
+
+            $(".modal-content2").html(tr8);
+
+            $("#iplogin2").off().on("click", function() {
+               login2();
+            });
+            btnFindid();
+            btnSettingpw();
+            btnSpan();
          });
       }
-      
-      $("#iplogin").off().on("click", function(){
+
+      $("#iplogin").off().on("click", function() {
          login();
       });
-      
-      function login(){
+
+      function login() {//modal-content
          id = $("#loginid").val();
          pwd = $("#loginpwd").val();
+
          $.ajax({
-            type:"post",
-            url:"Userlogin",
-            data:{"id": id, "pwd": pwd}
-         }).done(function(result){
-        	login = result.login;
-        	id = login.id;
+            type : "post",
+            url : "Userlogin",
+            data : {
+               "id" : id,
+               "pwd" : pwd
+            }
+         }).done(function(result) {
             console.log(result);
             console.log(result.login);
-            if(result.login != null){
-            	if(id == "admin"){
-            		location.href = "admin";
-            	}else{
-              		 location.href = "main2";
-            	}
-            }else{
-               alert("ㅎㅎ");
+            if (result.login != null) {
+               if(id == "admin" && pwd == "1234"){
+                  location.href = "admin";
+               }else{
+                  location.href = "main2";
+               }
+            } else {
+               alert("아이디 혹은 패스워드를 확인하세요.");
             }
          });
       }
-      $("#overlap").on("click", function(){
+      function login2() {//modal-content2
+         id = $("#loginid2").val();
+         pwd = $("#loginpwd2").val();
+         $.ajax({
+            type : "post",
+            url : "Userlogin",
+            data : {
+               "id" : id,
+               "pwd" : pwd
+            }
+         }).done(function(result) {
+            console.log(result);
+            console.log(result.login);
+            if (result.login != null) {
+               location.href = "main2";
+            } else {
+               alert("아이디 혹은 패스워드를 확인하세요.");
+            }
+         });
+      }
+      $("#overlap").on("click", function() {
          btnOverlap();
       });
-      function btnOverlap(){
+      function btnOverlap() {
          var id = $("#createid").val();
-         
-         if(id == ""){
-            alert("입력하슈~");
+
+         if (id == "") {
+            alert("아이디를 입력해주세요.");
             return false;
          }
-         
+
          $.ajax({
             type : "post",
             url : "checkid",
-            data:{"id" : id},
-            datatype: "json"
-            
-            
-         }).done(function(result){
+            data : {
+               "id" : id
+            },
+            datatype : "json"
+
+         }).done(function(result) {
             console.log(result.checkid);
-            if(result.checkid == null){
+            if (result.checkid == null) {
                alert("사용 가능한 아이디 입니다.");
-            }else{
+            } else {
                alert("사용 불가능한 아이디 입니다.")
             }
          });
-      }
-      function btnChangePW(){
-    	  id = $("#id").val();
-          name = $("#name").val();
-          var pw = $("#changepw").val();
-          
-          $.ajax({
-        	  type : "post",
-        	  url : "updatepw",
-        	  data : {"id" : id, "name" : name, "pw" : pw}
-          }).done(function(result){
-        	  console.log(result);
-          });
       }
 
       // 시작 부분...
