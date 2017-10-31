@@ -78,7 +78,6 @@ public class PKYController {
 //      mav.addObject("loginuser", userlogin);
       System.out.println(Logindata);
       session.setAttribute("user", Logindata);
-      
       HttpUtil.sendResponceToJson(resp, Logindata);
    }
    @RequestMapping(value="/checkid", method = RequestMethod.POST)
@@ -95,6 +94,7 @@ public class PKYController {
       
       HashMap<String, Object> findid = HttpUtil.getParameterMap(req);
       System.out.println(findid);
+      
       
       HashMap<String, Object> findiddata = (HashMap<String, Object>) usi.findid(findid);
       System.out.println(findiddata);

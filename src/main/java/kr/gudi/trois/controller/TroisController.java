@@ -119,45 +119,24 @@ public class TroisController {
 		return mav;
 	}
 	
-//	@RequestMapping("/admin")
-//	public ModelAndView admin(ModelAndView mav, HttpSession session) {
-//		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-//		if(user == null){
-//			mav.setViewName("redirect:/main");
-//		}else {
-//			mav.setViewName("admin");
-//		}
-//		return mav;
-//	}
-//
-//	@RequestMapping("/adminData")
-//	public ModelAndView listData(ModelAndView mav, HttpServletRequest req, HttpSession session){
-//		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-//		HashMap<String, Object> param = new HashMap<String, Object>();
-//		param.put("start", Integer.parseInt(req.getParameter("start")));
-//		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));		
-//		param.put("id", user.get("login").get("id"));
-//		
-//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
-//		JSONObject jsonObject = new JSONObject();
-//		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectAdmin(param)));
-//		mav.addObject("message", jsonObject.toString());
-//		
-//		mav.setViewName("json");
-//		return mav;
-//	}
-	
 	@RequestMapping("/admin")
-	public ModelAndView admin(ModelAndView mav) {
-		mav.setViewName("admin");
+	public ModelAndView admin(ModelAndView mav, HttpSession session) {
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		if(user == null){
+			mav.setViewName("redirect:/main");
+		}else {
+			mav.setViewName("admin");
+		}
 		return mav;
 	}
 
 	@RequestMapping("/adminData")
-	public ModelAndView listData(ModelAndView mav, HttpServletRequest req){
+	public ModelAndView listData(ModelAndView mav, HttpServletRequest req, HttpSession session){
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("start", Integer.parseInt(req.getParameter("start")));
 		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));		
+		param.put("id", user.get("login").get("id"));
 		
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
@@ -167,6 +146,27 @@ public class TroisController {
 		mav.setViewName("json");
 		return mav;
 	}
+	
+//	@RequestMapping("/admin")
+//	public ModelAndView admin(ModelAndView mav) {
+//		mav.setViewName("admin");
+//		return mav;
+//	}
+//
+//	@RequestMapping("/adminData")
+//	public ModelAndView listData(ModelAndView mav, HttpServletRequest req){
+//		HashMap<String, Object> param = new HashMap<String, Object>();
+//		param.put("start", Integer.parseInt(req.getParameter("start")));
+//		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));		
+//		
+//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+//		JSONObject jsonObject = new JSONObject();
+//		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectAdmin(param)));
+//		mav.addObject("message", jsonObject.toString());
+//		
+//		mav.setViewName("json");
+//		return mav;
+//	}
 	
 	@RequestMapping("/adminDataDelete")
 	public ModelAndView adminDataDelete(ModelAndView mav, HttpServletRequest req){

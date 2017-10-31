@@ -10,20 +10,20 @@
 	<!-- 사용자 문의내용 저장 하기-->
 	
 	<select id="selectqna" parameterType="hashmap" resultType="hashmap">
-		select title, contents from qna
-		where id = #{id} and title = #{title} and contents = #{contents}
+		select no, title, contents from qna
+		where no = #{no}
 	</select>
 	<!-- 사용자 문의내용 가져오기 -->
 	
 	<select id="updateqna" parameterType="hashmap">
 		update qna set answer = #{answer}, answercheck = '답변완료'
-		where id = #{id} and title = #{title} and contents = #{contents}
+		where no = #{no}
 	</select>
 	<!-- 관리자 답변 저장하기 -->
 
 	<select id="selectanswer" parameterType="hashmap" resultType="hashmap">
-		select title, contents, answer from qna
-		where id = #{id} and title = #{title} and contents = #{contents} and answer = #{answer}
+		select no, title, contents, answer from qna
+		where no = #{no}
 	</select>
 	<!-- 사용자 문의내용, 관리자 답변 가져오기 -->
 </mapper>
