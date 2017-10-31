@@ -342,17 +342,7 @@ li{
 }
 .border-bottom{
     border-bottom: 1px solid black;
-}
-
-             
-            /*.bg1{
-                background-color: aqua;
-            }
-            .bg2{
-                background-color: gray;
-            }*/
-            
-            
+}            
 .modal1 {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */

@@ -1,5 +1,10 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-	pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%
+	String ws_no = request.getParameter("ws_no");
+	if(ws_no == null){
+		response.sendRedirect("main");
+	}
+%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -11,12 +16,36 @@
 </head>
 <script type="text/javascript" src="/trois/resources/js/html2canvas.js"></script>
 <script>
+var ws_no = <%=ws_no%>;
+console.log(ws_no);
+var ws_class = "";
+var ws_src = "";
+var ws_index = "";
+var addItems = [];
+var addItems2 = [];
 $(document).ready(function() {
 	
-	var ws_no = 1;
-	var ws_class = "";
-	var ws_src = "";
-	var ws_index = "";
+	$.ajax({
+		type : "post", // post 방식으로 통신 요청
+		url : "workSelectData", // Spring에서 만든 URL 호출
+		data : {ws_no: ws_no} // 파라메터로 사용할 변수 값 객체 넣기
+	}).done(function(result) { // 비동기식 데이터 가져오기
+		console.log(result);
+		addItems2 = result.list;
+		$("#text").val(result.workSave.title);
+		createItems();
+	}).fail(function(d,s,x){
+		alert("ajax 안됨");
+	});
+	
+	function createItems(){
+		for(var i = 0; i < addItems2.length; i++){
+			console.log(addItems[i]);
+			$(".big1 div").eq(addItems2[i].indexs).append('<img id="item' + addItems2[i].indexs + '" class="' + addItems2[i].class1 + '" draggable="true" ondragstart="drag(event)" src="' + addItems2[i].src + '">');
+			addItems.push({"id": 'item' + addItems2[i].indexs,"class1": addItems2[i].class1, "src": addItems2[i].src, "index":addItems2[i].indexs});
+		}
+		console.log(addItems);
+	}
 	
 	$(".tab_sub2,.tab_sub3").hide();
 	// Get the modal
@@ -50,32 +79,23 @@ $(document).ready(function() {
 	$("#btn2").on('click', function () {
 	    if(confirm("저장을 하시겠습니까?")){
 	    	if(addItems != null){
-// 		    	alert("저장되었습니다.");
-
-// 			for(var i=0; i<addItems.length; i++){
-// 				no = 1;
-// 				ws_class = addItems[i].class;
-// 				ws_src = addItems[i].src;
-// 				ws_index = addItems[i].index;
-// {"no": no, "class": ws_class, "src": ws_src, "index": ws_index}
-						console.log(addItems, JSON.stringify(addItems));
-				    	$.ajax({
-							type : "post", // post 방식으로 통신 요청
-							url : "workInsert", // Spring에서 만든 URL 호출
-							data : {list: JSON.stringify(addItems), title: $("#text").val()} // 파라메터로 사용할 변수 값 객체 넣기
-						}).done(function(result) { // 비동기식 데이터 가져오기
-							console.log(result);
-							data = result.data; // JSON으로 받은 데이터를 사용하기 위하여 전역변수인 data에 값으로 넣기
-							console.log(data);
-						}).fail(function(d,s,x){
-							alert("ajax 안됨");
-						});
-// 					}
-		    	}else{
-	    			alert("저장되지 않음");
-	    		}
+					console.log(addItems, JSON.stringify(addItems));
+			    	$.ajax({
+						type : "post", // post 방식으로 통신 요청
+						url : "workInsert", // Spring에서 만든 URL 호출
+						data : {list: JSON.stringify(addItems), title: $("#text").val()} // 파라메터로 사용할 변수 값 객체 넣기
+					}).done(function(result) { // 비동기식 데이터 가져오기
+						console.log(result);
+						data = result.data; // JSON으로 받은 데이터를 사용하기 위하여 전역변수인 data에 값으로 넣기
+						console.log(data);
+					}).fail(function(d,s,x){
+						alert("ajax 안됨");
+					});
+	    	}else{
+    			alert("저장되지 않음");
+    		}
 	    }else{
-	    alert("취소되었습니다.");
+	    	alert("취소되었습니다.");
 	    }
 	});
 });
@@ -89,18 +109,14 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
-var addItems = [];
-
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-//     console.log($(".big1 div").index(ev.target));
     $.each($("#active img"), function( index, value ) {
     	if(data.substr(data.indexOf("resources"), data.length) == $(value).attr("src")) { 
     		console.log( index, $(value).attr("class"), $(value).attr("src") );
-    		$(ev.target).append('<img id="item' + $(".big1 div").index(ev.target) + '" class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
-    		var i = $(".big1 div").index(ev.target);
-    		addItems.push({"id": 'item' + i,"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":i});
+    		$(ev.target).append('<img class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
+    		addItems.push({"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":$(".big1 div").index($(ev.target))});
     	}
     });
     console.log(addItems);
@@ -109,6 +125,7 @@ function drop(ev) {
 function drop2(ev) {
 	ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
+    console.log(data);
     for(var i = 0; i < addItems.length; i++){
 		if(data == addItems[i].id){
 			console.log(data.substr(data.indexOf("resources"), data.length), addItems[i].src, addItems[i].index);

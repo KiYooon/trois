@@ -1,6 +1,7 @@
 package kr.gudi.trois.dao;
 
 import java.util.HashMap;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -12,8 +13,26 @@ public class workDao implements workDaoInterface {
 
 	@Resource(name="sqlSession")
 	SqlSession session;
-	
-	public HashMap<String, Object> userselect() {
-		return session.selectOne("project.userselect");
+
+	@Override
+	public int insertWorksave(HashMap<String, Object> param) {
+		return session.insert("list.worksaveInsert", param);
 	}
+
+	@Override
+	public int insertWork(HashMap<String, Object> param) {
+		return session.insert("list.workInsert", param);
+	}
+
+	@Override
+	public List<HashMap<String, Object>> workSelect(HashMap<String, Object> param) {
+		return session.selectList("list.workSelect", param);
+	}
+
+	@Override
+	public HashMap<String, Object> worksaveSelect(HashMap<String, Object> param) {
+		return session.selectOne("list.worksaveSelect", param);
+	}
+	
+	
 }

@@ -64,9 +64,22 @@
 		select title, contents, answer from qna where no = #{no}
 	</select>
 	
-	<select id="updateMyroom" parameterType="hashmap" resultType="hashmap">
-	select worksave.no as no, worksave.id, worksave.title, work.categorysmall, work.positionX, work.positionY 
-	from worksave inner join work on worksave.no = work.ws_no
-	where id = #{id} and worksave.no = #{no};
+	<insert id="worksaveInsert" parameterType="hashmap">
+		insert into worksave(id, title, date) values(#{id}, #{title}, now())
+	</insert>
+	
+	<insert id="workInsert" parameterType="hashmap">
+		<selectKey keyProperty="ws_no" resultType="int" order="BEFORE">
+		    select no from worksave order by date desc limit 0, 1
+		</selectKey>
+		insert into work(ws_no, class1, src, indexs, date) values(#{ws_no}, #{class}, #{src}, #{index}, now())
+	</insert>
+	
+	<select id="workSelect" parameterType="hashmap" resultType="hashmap">
+		select * from work where ws_no = #{ws_no}
+	</select>
+	
+	<select id="worksaveSelect" parameterType="hashmap" resultType="hashmap">
+		select * from worksave where no = #{ws_no}
 	</select>
 </mapper>
