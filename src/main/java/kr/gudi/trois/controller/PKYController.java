@@ -63,20 +63,24 @@ public class PKYController {
       
       String id = req.getParameter("id");
       String pwd = req.getParameter("pwd");
-      System.out.println(id); System.out.println(pwd); 
+//      String del_yn = req.getParameter("del_yn");
+//      System.out.println(id); System.out.println(pwd);
+//      System.out.println(del_yn);
       
       
       HashMap<String, Object> userlogin = new HashMap<String, Object>();
       
       userlogin.put("id", id);
       userlogin.put("pwd", pwd);
-      System.out.println(userlogin);
+//      userlogin.put("del_yn", del_yn);
+//      System.out.println(userlogin);
       HashMap<String, Object> Logindata = (HashMap<String, Object>) usi.login(userlogin);
       
+      System.out.println(userlogin);
 //      session.setAttribute("id", Logindata.get("id")); //다른 페이지에서 로그인 데이터를 가져오기 위해  세팅한것 건들면 팀장님한테 뒤짐
 //      
 //      mav.addObject("loginuser", userlogin);
-      System.out.println(Logindata);
+//      System.out.println(Logindata);
       session.setAttribute("user", Logindata);
       
       HttpUtil.sendResponceToJson(resp, Logindata);
@@ -94,10 +98,10 @@ public class PKYController {
       
       
       HashMap<String, Object> findid = HttpUtil.getParameterMap(req);
-      System.out.println(findid);
+//      System.out.println(findid);
       
       HashMap<String, Object> findiddata = (HashMap<String, Object>) usi.findid(findid);
-      System.out.println(findiddata);
+//      System.out.println(findiddata);
       
       HttpUtil.sendResponceToJson(resp, findiddata);
    }
@@ -110,7 +114,7 @@ public class PKYController {
    @RequestMapping(value="/updatepw", method = RequestMethod.POST)
    public void updatepw(HttpServletRequest req, HttpServletResponse resp){
       HashMap<String, Object> updatepw = HttpUtil.getParameterMap(req);
-      System.out.println(updatepw);
+//      System.out.println(updatepw);
       
       
       HttpUtil.sendResponceToJson(resp, usi.updatepw(updatepw));
