@@ -368,10 +368,16 @@
             url:"Userlogin",
             data:{"id": id, "pwd": pwd}
          }).done(function(result){
+        	login = result.login;
+        	id = login.id;
             console.log(result);
             console.log(result.login);
             if(result.login != null){
-               location.href = "main2";
+            	if(id == "admin"){
+            		location.href = "admin";
+            	}else{
+              		 location.href = "main2";
+            	}
             }else{
                alert("ㅎㅎ");
             }

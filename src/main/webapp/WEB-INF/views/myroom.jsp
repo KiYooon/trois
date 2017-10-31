@@ -51,6 +51,10 @@
 		
 		var pageGroup = 1; // 현재 페이지 값
 		var pageView = 5; // 페이징 버튼 객수
+
+		$("#logout").on("click", function(){
+	    	location.href = "logout";
+	    });
 	
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
 			$(".ul-body").empty(); // ul 태그의 자식들를 초기화가 필요하다.
@@ -58,9 +62,9 @@
 				var tag = '<ul>'
 				tag += '<li>' + (i + 1) + '</li>';
 				tag += '<li>' + data[i].title + '</li>';
-				tag += '<li>' + data[i].capture + '</li>';
 				tag += '<li>' + data[i].date + '</li>';
-				tag += '<li><button type="button">삭제</button></li>';
+				tag += '<li><button type="button" class="updatebutton">수정</button></li>';
+				tag += '<li><button type="button" class="deletebutton">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}
@@ -70,7 +74,8 @@
 	            	tag += "</ul>";
 	            $(".ul-body").append(tag);
 	   		}  
-			deleteButton();
+			 deleteButton();
+			 updateButton();
 		}
 	
 		function createPaging() {
@@ -130,6 +135,7 @@
 	
 			var end = (viewRow * page); // 10 * 2 = 20
 			var start = (end - viewRow); // 20 - 10 = 10
+			
 			$.ajax({
 				type : "post", // post 방식으로 통신 요청
 				url : "myroomData", // Spring에서 만든 URL 호출 
@@ -147,9 +153,11 @@
 		initData();
 		
 		function deleteButton(){
-			$(".ul-body button").off().on("click", function(){
-				var index = $(".ul-body button").index(this);
-				var no = data[index].no;	
+			$(".ul-body .deletebutton").off().on("click", function(){
+				var index = $(".ul-body .deletebutton").index(this);
+				console.log("index : " + index);
+				var no = data[index].no;
+				console.log("no : " + no);
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "myroomDataDelete", // Spring에서 만든 URL 호출 
@@ -160,8 +168,30 @@
 				}).fail(function(d, s, x) {
 					alert("fail");
 				})
-			});	
+				
+			});
 		}
+		
+		function updateButton(){
+			$(".ul-body .updatebutton").off().on("click", function(){
+				var index = $(".ul-body .updatebutton").index(this);
+				console.log("index : " + index);
+				var no = data[index].no;
+				console.log("no : " + no);
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "myroomDataUpdate", // Spring에서 만든 URL 호출 
+					data : {"no" : no} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					initData();
+				}).fail(function(d, s, x) {
+					alert("fail");
+				})
+				
+			});
+		}
+		
 	});
 </script>
 </head>
@@ -175,7 +205,7 @@
 				<h1>Trois</h1>
 			</div>
 			<div class="header-right">
-				<button id="logout" onclick="location.href = 'logout';">로그아웃</button>
+				<button id="logout">로그아웃</button>
 			</div>
 		</div>
 		<div class="center">
@@ -192,8 +222,8 @@
 					<ul>
 						<li>순서</li>
 						<li>제목</li>
-						<li>캡쳐</li>
 						<li>날짜</li>
+						<li>수정</li>
 						<li>삭제</li>
 					</ul>
 				</div>

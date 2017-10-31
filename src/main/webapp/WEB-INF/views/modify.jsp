@@ -126,6 +126,10 @@
 	    $("#nodeleteuser").on("click", function(){
 	    	location.href = "modify";
 	    });
+
+		$("#logout").on("click", function(){
+	    	location.href = "logout";
+	    });
 	});
 </script>
 </head>
@@ -139,7 +143,7 @@
 				<h1>Trois</h1>
 			</div>
 			<div class="header-right">
-				<button id="logout" onclick="location.href = 'logout';">로그아웃</button>
+				<button id="logout">로그아웃</button>
 			</div>
 		</div>
 		<div class="center">

@@ -6,6 +6,7 @@
 <title>Trois</title>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <link rel="stylesheet" href="resources/css/myroom.css">
+<link rel="stylesheet" href="resources/css/answer.css">
 <style>
 .center-right .ul-head li {
     margin: 0;
@@ -50,6 +51,12 @@
 		var pageGroup = 1; // 현재 페이지 값
 		var pageView = 5; // 페이징 버튼 객수
 	
+		var no = "";
+		var index = "";
+		var id = "";
+		var title = "";
+		var contents = "";
+		var answer = "";
 	
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
 			$(".ul-body").empty(); // ul 태그의 자식들를 초기화가 필요하다.
@@ -86,6 +93,7 @@
 	            $(".ul-body").append(tag);
 	   		}
 			deleteButton();
+			detail();
 		}
 	
 		function createPaging() {
@@ -177,6 +185,127 @@
 				})
 			});	
 		}
+		
+		function detail(){
+			$(".ul-body ul").on("click",function(){
+				index = $(".ul-body ul").index(this);
+				no = data[index].no;
+				title = data[index].title;
+				contents = data[index].contents;
+				answer = data[index].answer;
+				
+				$.ajax({
+					type : "post", // post 방식으로 통신 요청
+					url : "answer", // Spring에서 만든 URL 호출 
+					data : {"no": no, "title": title, "contents": contents, "answer":answer} // 파라메터로 사용할 변수 값 객체 넣기
+				}).done(function(d) { // 비동기식 데이터 가져오기
+					var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+					no = result.no;
+					title = result.title;
+					contents = result.contents;
+					answer = result.answer;
+					if(answer == null){
+						detailCreate();
+					}else{
+						detailCreate2();
+					}
+					});
+			});
+		}
+		
+		function detailCreate(){
+			var content = '<div id="mainBox"><div id="subBox1"><div id="textBox1"><p>'
+			+ '제목</p></div><div id="reqBox1"><p id="reqText1">' + title + '</p></div></div><div id="subBox2">'
+            + '<div id="textBox2"><p>문의 내용</p></div><div id="reqBox2"><p id="reqText2">' + contents + '</p>'
+			+ '</div></div></div><form action="" method="post"><div id="mainBox2"><div id="subBox3"><div id="textBox3"><p>답변</p></div>'
+            + '<div id="inputBox"><textarea id="inputText" name="answer" placeholder="내용을 입력하세요"></textarea>'
+            + '<span id="textSpan"><em>50</em> / 50</span></div><div id="submit">'
+            + '<input type="hidden" name="no" value="' + no + '"><input type="submit" id="submitBtn" value="확인"></div></div></div></form>';
+
+            $(".center-right").empty();
+            $(".center-right").addClass('mainContent');
+            $(".mainContent").removeClass('center-right');
+            $(".mainContent").append(content);
+            
+            $('#reqBox2').html($('#reqText2').html().replace(/\n/g,"<br>"));
+            
+            $("#inputText").keydown(function(){
+        		var numChar = $(this).val().length;
+        		var maxNum = 50;
+        		var charRemain = maxNum - numChar;
+        		$("#textSpan > em").text(charRemain);
+        		
+        			if(charRemain < 0){
+        				$("#submitBtn").prop("disabled", true);
+        			} else {
+        				$("#submitBtn").prop("disabled", false);
+        			}
+        	});
+            
+            $("#submitBtn").off().on("click", function(){
+        		initData2();
+        		createqna();
+        	});
+		}
+		
+		function detailCreate2(){
+			var content = '<div id="mainBox"><div id="subBox1"><div id="textBox1"><p>'
+			+ '제목</p></div><div id="reqBox1"><p id="reqText1">' + title + '</p></div></div><div id="subBox2">'
+            + '<div id="textBox2"><p>문의 내용</p></div><div id="reqBox2"><p id="reqText2">' + contents + '</p>'
+			+ '</div></div></div><div id="mainBox2"><div id="subBox3"><div id="textBox3"><p>답변</p></div>'
+            + '<div id="inputBox"><p id="reqText3">' + answer + '</p>'
+            + '</div><div id="submit"><button type="button" id="backBtn">돌아가기</button></div></div></div>';
+            
+            $(".center-right").empty();
+            $(".center-right").addClass('mainContent');
+            $(".mainContent").removeClass('center-right');
+            $(".mainContent").append(content);
+            
+            $('#reqBox2').html($('#reqText2').html().replace(/\n/g,"<br>"));
+            $('#reqBox3').html($('#reqText3').html().replace(/\n/g,"<br>"));
+            
+            $("#backBtn").off().on("click", function(){
+				var url = "admin"; 
+				$(location).attr('href',url);
+			});
+		}
+		
+		function createqna(){
+			$("#inputBox").empty(); 
+			$("#submit").empty();
+			
+			$("#inputBox").append("<p id='reqText3'>" + answer + "</p>");
+			$("#submit").append("<button type='button' id='backBtn'>돌아가기</button>");
+	 		$('#inputBox').html($('#reqText3').html().replace(/\n/g,"<br>"));
+	 		
+	 		$("#backBtn").off().on("click", function(){
+				var url = "admin"; 
+				$(location).attr('href',url);
+		});
+		}
+		
+		function initData2(){
+				title = $("#reqText1").text();
+				contents = $("#reqBox2").text();
+				answer = $("#inputText").val();
+				
+				if($("#inputText").val() == ""){
+					alert("내용을 입력하세요!");
+					location.reload(true);
+				}
+				
+				$.ajax({
+					type:"post", // post 방식으로 통신 요청
+					url:"answerRead", // test에서 만든 URL 호출
+					data:{"no":no, "title":title, "contents":contents, "answer": answer} // 파라메터로 사용할 변수 값 객체 넣기
+					}).done(function(d){ // 비동기식 데이터 가져오기
+				var result = JSON.parse(d); // 가져온 데이터를 JSON 형식으로 형변환 하여 result 변수에 담기.
+				no = result.no;
+				title = result.title;
+				contents = result.contents;
+				answer = result.answer;
+				});
+			}
 	});
 	</script>
 </head>
@@ -220,11 +349,10 @@
         </div>
         <div class="footer">
             <footer>
-                상호 :  Trois(주)<br>
-                장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
-                대표이사 : 박기윤 김원중 최승환 김보경 공은비<br>
-                Copyright (c) 2017  Trois all rights reserved. Trois는 안전하게 운영중입니다.
-            </footer>
+				상호 : Trois(주)<br> 장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br> 대표이사 : 박기윤
+				김원중 최승환 김보경 공은비<br> 
+				Copyright (c) 2017 Trois all rights reserved. Trois는 안전하게 운영중입니다.
+			</footer>
         </div>
     </div>
 </body>

@@ -20,8 +20,8 @@ public class TroisDao implements TroisDaoInterface {
 	}
 
 	@Override
-	public HashMap<String, Object> totCntMyqna() { // Myqna 총 데이터 갯수
-		return session.selectOne("list.totCntMyqna");
+	public HashMap<String, Object> totCntMyqna(HashMap<String, Object> param) { // Myqna 총 데이터 갯수
+		return session.selectOne("list.totCntMyqna",param);
 	}
 
 	@Override
@@ -30,8 +30,8 @@ public class TroisDao implements TroisDaoInterface {
 	}
 
 	@Override
-	public HashMap<String, Object> totCntMyroom() { // Myroom 총 데이터 갯수
-		return session.selectOne("list.totCntMyroom");
+	public HashMap<String, Object> totCntMyroom(HashMap<String, Object> param) { // Myroom 총 데이터 갯수
+		return session.selectOne("list.totCntMyroom", param);
 	}
 	
 	@Override
@@ -73,5 +73,11 @@ public class TroisDao implements TroisDaoInterface {
 	public List<HashMap<String, Object>> myqnaDetail(HashMap<String, Object> param) {
 		return session.selectList("list.myqnaDetail", param);
 	}
+
+	@Override
+	public List<HashMap<String, Object>> updateMyroom(HashMap<String, Object> param) {
+		return session.selectList("list.updateMyroom", param);
+	}
+
 
 }

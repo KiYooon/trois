@@ -67,16 +67,33 @@ public class qnaController {
 	public ModelAndView answer(ModelAndView mav, HttpServletRequest req, HttpSession session) {
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();
+
+		String answer = req.getParameter("answer");
 		
-		param.put("id", user.get("login").get("id"));
-		param.put("title", req.getParameter("title"));
-		param.put("contents", req.getParameter("contents"));
-		
-		param = qsi.selectQna(param);
-		
-		mav.addObject("qnaSelect", param);
-		mav.setViewName("answer");
-		return mav;
+		if(answer == null) {
+			param.put("no", req.getParameter("no"));
+			param.put("title", req.getParameter("title"));
+			param.put("contents", req.getParameter("contents"));
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectQna(param)));
+			
+			mav.addObject("message", jsonObject.toString());
+			mav.setViewName("json");
+			return mav;
+		}else {
+			param.put("no", req.getParameter("no"));
+			param.put("title", req.getParameter("title"));
+			param.put("contents", req.getParameter("contents"));
+			param.put("answer", answer);
+			
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectanswer(param)));
+			
+			mav.addObject("message", jsonObject.toString());
+			mav.setViewName("json");
+			return mav;
+		}
 	}
 	
 	@RequestMapping(value="/answerRead", method = RequestMethod.POST)
@@ -89,52 +106,27 @@ public class qnaController {
 			chc = false;
 		}
 		if(chc) {
-		param.put("id", ((JSONObject) user.get("login")).get("id"));
+		param.put("no", req.getParameter("no"));
 		param.put("title", req.getParameter("title"));
 		param.put("contents", req.getParameter("contents"));
 		param.put("answer", req.getParameter("answer"));
 		
-		param = qsi.updateQna(param);
+		HashMap<String, Object> SelectAns = (HashMap<String, Object>)qsi.updateQna(param);
 		
-		HashMap<String, Object> Selectqna = new HashMap<String, Object>();
-		
-		Selectqna.put("id", ((JSONObject) user.get("login")).get("id"));
-		Selectqna.put("title", req.getParameter("title"));
-		Selectqna.put("contents", req.getParameter("contents"));
-		Selectqna.put("answer", req.getParameter("answer"));
+		SelectAns.put("no", param.get("no"));
+		SelectAns.put("title", param.get("title"));
+		SelectAns.put("contents", param.get("contents"));
+		SelectAns.put("answer", param.get("answer"));
 		
 		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectanswer(Selectqna)));
+		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectanswer(SelectAns)));
 		
-		mav.addObject("selectqna", jsonObject.toString());
-		mav.setViewName("answerJSON");
+		mav.addObject("message", jsonObject.toString());
+		mav.setViewName("json");
 		return mav;
 		} else {
-			mav.setViewName("answer");
+			mav.setViewName("admin");
 			return mav;
 		}
-	}
-	
-	@RequestMapping(value="/okquestion")
-	public ModelAndView okquestion(ModelAndView mav, HttpServletRequest req, HttpSession session) {
-		HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
-		
-		String id = user.get("id").toString();
-		String title = req.getParameter("title");
-		String contents = req.getParameter("contents");
-		String answer = req.getParameter("answer");
-		
-		HashMap<String, Object> selectqnaAll = new HashMap<String, Object>();
-		
-		selectqnaAll.put("id", id);
-		selectqnaAll.put("title", title);
-		selectqnaAll.put("contents", contents);
-		selectqnaAll.put("answer", answer);
-		
-		selectqnaAll = qsi.selectanswer(selectqnaAll);
-		
-		mav.addObject("selectqnaAll", selectqnaAll);
-		mav.setViewName("okquestion");
-		return mav;
 	}
 }
