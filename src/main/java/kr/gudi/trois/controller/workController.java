@@ -73,4 +73,12 @@ public void workSelectData(HttpSession session, HttpServletRequest req, HttpServ
 	HttpUtil.sendResponceToJson(resp, param);
 }
 
+@RequestMapping(value="/workUpdate")
+public void workUpdate(HttpSession session, HttpServletRequest req, HttpServletResponse resp) {
+	HashMap<String, Object> param = HttpUtil.getParameterMap(req);
+	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+	param.put("id", user.get("login").get("id"));
+	HttpUtil.sendResponceToJson(resp, wsi.updateWork(param));
+}
+
 }

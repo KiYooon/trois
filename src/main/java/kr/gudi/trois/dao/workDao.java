@@ -33,6 +33,20 @@ public class workDao implements workDaoInterface {
 	public HashMap<String, Object> worksaveSelect(HashMap<String, Object> param) {
 		return session.selectOne("list.worksaveSelect", param);
 	}
-	
+
+	@Override
+	public int deleteWork(HashMap<String, Object> param) {
+		return session.delete("list.workDelete", param);
+	}
+
+	@Override
+	public int insertOldWork(HashMap<String, Object> param) {
+		return session.insert("list.workOldInsert", param);
+	}
+
+	@Override
+	public int updateWorksave(HashMap<String, Object> param) {
+		return session.update("list.worksaveUpdate", param);
+	}
 	
 }

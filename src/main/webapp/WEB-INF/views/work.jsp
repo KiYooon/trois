@@ -65,8 +65,12 @@ $(document).ready(function() {
 							data : {list: JSON.stringify(addItems), title: $("#text").val()} // 파라메터로 사용할 변수 값 객체 넣기
 						}).done(function(result) { // 비동기식 데이터 가져오기
 							console.log(result);
-							data = result.data; // JSON으로 받은 데이터를 사용하기 위하여 전역변수인 data에 값으로 넣기
-							console.log(data);
+							if(result.state == 1){
+								location.href = "myroom";
+							}else{
+								alert("처음부터 하시길.. ㅋ");
+								location.href = "main";
+							}
 						}).fail(function(d,s,x){
 							alert("ajax 안됨");
 						});

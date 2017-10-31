@@ -82,12 +82,16 @@ $(document).ready(function() {
 					console.log(addItems, JSON.stringify(addItems));
 			    	$.ajax({
 						type : "post", // post 방식으로 통신 요청
-						url : "workInsert", // Spring에서 만든 URL 호출
-						data : {list: JSON.stringify(addItems), title: $("#text").val()} // 파라메터로 사용할 변수 값 객체 넣기
+						url : "workUpdate", // Spring에서 만든 URL 호출
+						data : {list: JSON.stringify(addItems), title: $("#text").val(), ws_no: ws_no} // 파라메터로 사용할 변수 값 객체 넣기
 					}).done(function(result) { // 비동기식 데이터 가져오기
 						console.log(result);
-						data = result.data; // JSON으로 받은 데이터를 사용하기 위하여 전역변수인 data에 값으로 넣기
-						console.log(data);
+						if(result.state == 1){
+							location.href = "myroom";
+						}else{
+							alert("처음부터 하시길.. ㅋ");
+							location.href = "main";
+						}
 					}).fail(function(d,s,x){
 						alert("ajax 안됨");
 					});
@@ -115,7 +119,7 @@ function drop(ev) {
     $.each($("#active img"), function( index, value ) {
     	if(data.substr(data.indexOf("resources"), data.length) == $(value).attr("src")) { 
     		console.log( index, $(value).attr("class"), $(value).attr("src") );
-    		$(ev.target).append('<img class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
+    		$(ev.target).append('<img id="item' + $(".big1 div").index(ev.target) + '" class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
     		addItems.push({"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":$(".big1 div").index($(ev.target))});
     	}
     });

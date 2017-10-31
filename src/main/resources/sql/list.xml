@@ -16,7 +16,7 @@
 
 	<!-- Myroom(본인만) 리스트 목록 불러오기 -->
 	<select id="selectMyroom" parameterType="hashmap" resultType="hashmap">
-		select no, id, title, capture, substr(date, 1, 10) as date 
+		select no, id, title, substr(date, 1, 10) as date 
 		from worksave where del_yn = 'y' and id = #{id} limit #{start}, #{viewRow}
 	</select>
 	
@@ -82,4 +82,16 @@
 	<select id="worksaveSelect" parameterType="hashmap" resultType="hashmap">
 		select * from worksave where no = #{ws_no}
 	</select>
+	
+	<delete id="workDelete" parameterType="hashmap">
+		delete from work where ws_no = #{ws_no}
+	</delete>
+	
+	<update id="worksaveUpdate" parameterType="hashmap">
+		update worksave set title = #{title} where no = #{ws_no}
+	</update>
+	
+	<insert id="workOldInsert" parameterType="hashmap">
+		insert into work(ws_no, class1, src, indexs, date) values(#{ws_no}, #{class}, #{src}, #{index}, now())
+	</insert>
 </mapper>

@@ -44,20 +44,39 @@ public class workService implements workServiceInterface {
 		}
 		return map;
 	}
-	
-	@Override
-	public HashMap<String, Object> insertWorksave(HashMap<String, Object> param) {
-		int no = wdi.insertWorksave(param);
-		HashMap<String, Object> map = new HashMap<String, Object>();
-		map.put("no", no);
-		return map;
-	}
 
 	@Override
 	public HashMap<String, Object> workSelect(HashMap<String, Object> param) {
 		 HashMap<String, Object> map = new HashMap<String, Object>();
 		 map.put("list", wdi.workSelect(param));
 		 map.put("workSave", wdi.worksaveSelect(param));
+		return map;
+	}
+
+	@Override
+	public HashMap<String, Object> updateWork(HashMap<String, Object> param) {
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		int cnt = 0;
+		cnt = wdi.deleteWork(param);
+		cnt = wdi.updateWorksave(param);
+		if(cnt > 0){
+			int noo = 0;
+			JSONArray jsonArray = JSONArray.fromObject(param.get("list").toString());
+			for(int i = 0; i < jsonArray.size(); i++){
+				JSONObject jo = jsonArray.getJSONObject(i);
+				System.out.println(jsonArray.getJSONObject(i));
+				HashMap<String, Object> data = new HashMap<String, Object>(); 
+				data.put("ws_no", param.get("ws_no"));
+				data.put("class", jo.getString("class1"));
+				data.put("src", jo.getString("src"));
+				data.put("index", jo.getString("index"));
+				noo += wdi.insertOldWork(data);
+			}
+			map.put("noo", noo);
+			map.put("state", 1);
+		}else {
+			map.put("state", 0);
+		}
 		return map;
 	}
 	
