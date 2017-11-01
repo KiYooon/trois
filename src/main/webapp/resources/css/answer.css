@@ -207,3 +207,11 @@ html, body{
     height: 100%;
     resize: none;
 }
+#submitBtn{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+}
+#backBtn{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+}

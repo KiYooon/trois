@@ -40,6 +40,12 @@
     background-color: #656565;
     color: #f8edde;
 }
+#admindel{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
+}
 </style>
 <script>
 	$(document).ready(function() {
@@ -82,7 +88,7 @@
 					//tag	+= data[i].answercheck;
 				}
 				tag += '</li>';
-				tag += '<li><button type="button">삭제</button></li>';
+				tag += '<li><button type="button" id="admindel">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}

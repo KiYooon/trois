@@ -80,6 +80,10 @@ html, body{
 #logout{
     margin-left: 113px;
     margin-top: 28px;
+    border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #def5da;
+    color: black;
 }
 #mainContent{ /* 오른쪽 */
     width: 90%;
@@ -180,4 +184,10 @@ html, body{
     text-align: right;
     position: relative;
     height: 5%;
+}
+#submitBtn{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
 }

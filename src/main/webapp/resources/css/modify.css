@@ -146,6 +146,26 @@ html, body {
 #logout {
 	margin-left: 113px;
 	margin-top: 28px;
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #def5da;
+    color: black;
 }
-
-
+#modifypwd{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
+}
+#modifyemail{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
+}
+#del_n{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
+}

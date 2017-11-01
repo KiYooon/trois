@@ -198,3 +198,7 @@ html, body{
     height: 5%;
     transform: translateX(-3px);
 }
+#backBtn{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+}
