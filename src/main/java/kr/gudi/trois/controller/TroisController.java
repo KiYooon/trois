@@ -8,6 +8,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.gudi.trois.service.TroisServiceInterface;
@@ -33,35 +34,50 @@ public class TroisController {
 		return mav;
 	}
 
-	@RequestMapping("/myqnaData")
+	@RequestMapping(value = "/myqnaData", method=RequestMethod.POST)
 	public ModelAndView myqnaData(ModelAndView mav, HttpServletRequest req, HttpSession session){
-		HashMap<String, Object> param = new HashMap<String, Object>();
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-		param.put("start", Integer.parseInt(req.getParameter("start")));
-		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));
-		param.put("id", user.get("login").get("id"));
-		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
-		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectMyqna(param)));
-		mav.addObject("message", jsonObject.toString());
-		
-		mav.setViewName("json");
+		if(user == null){
+			mav.setViewName("redirect:/main");
+		}else if((user.get("login").get("id")).equals("admin")){
+			mav.setViewName("redirect:/admin");
+		}else {
+			HashMap<String, Object> param = new HashMap<String, Object>();
+			param.put("start", Integer.parseInt(req.getParameter("start")));
+			param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));
+			param.put("id", user.get("login").get("id"));
+			// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectMyqna(param)));
+			mav.addObject("message", jsonObject.toString());
+			
+			mav.setViewName("json");
+			return mav;
+		}
 		return mav;
 	}
 	
-	@RequestMapping("/myqnaDetail")
-	public ModelAndView myqnaDetail(ModelAndView mav, HttpServletRequest req){
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("no", req.getParameter("no"));
-		param.put("title", req.getParameter("title"));
-		param.put("contents", req.getParameter("contents"));
-		param.put("answer", req.getParameter("answer"));
-		System.out.println(param);
-		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
-		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.myqnaDetail(param)));
-		mav.addObject("message", jsonObject.toString());
-		mav.setViewName("json");
+	@RequestMapping(value = "/myqnaDetail", method=RequestMethod.POST)
+	public ModelAndView myqnaDetail(ModelAndView mav, HttpServletRequest req, HttpSession session){
+		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		if(user == null){
+			mav.setViewName("redirect:/main");
+		}else if((user.get("login").get("id")).equals("admin")){
+			mav.setViewName("redirect:/admin");
+		}else {
+			HashMap<String, Object> param = new HashMap<String, Object>();
+			param.put("no", req.getParameter("no"));
+			param.put("title", req.getParameter("title"));
+			param.put("contents", req.getParameter("contents"));
+			param.put("answer", req.getParameter("answer"));
+			System.out.println(param);
+			// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.myqnaDetail(param)));
+			mav.addObject("message", jsonObject.toString());
+			mav.setViewName("json");
+			return mav;
+		}
 		return mav;
 	}
 	
@@ -78,24 +94,31 @@ public class TroisController {
 		return mav;
 	}
 
-	@RequestMapping("/myroomData")
+	@RequestMapping(value = "/myroomData", method=RequestMethod.POST)
 	public ModelAndView myroomData(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("start", Integer.parseInt(req.getParameter("start")));
-		param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));
-		param.put("id", user.get("login").get("id"));
-		
-		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
-		JSONObject jsonObject = new JSONObject();
-		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectMyroom(param)));
-		mav.addObject("message", jsonObject.toString());
-		
-		mav.setViewName("json");
+		if(user == null){
+			mav.setViewName("redirect:/main");
+		}else if((user.get("login").get("id")).equals("admin")){
+			mav.setViewName("redirect:/admin");
+		}else {
+			HashMap<String, Object> param = new HashMap<String, Object>();
+			param.put("start", Integer.parseInt(req.getParameter("start")));
+			param.put("viewRow", Integer.parseInt(req.getParameter("viewRow")));
+			param.put("id", user.get("login").get("id"));
+			
+			// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
+			JSONObject jsonObject = new JSONObject();
+			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectMyroom(param)));
+			mav.addObject("message", jsonObject.toString());
+			
+			mav.setViewName("json");
+			return mav;
+		}
 		return mav;
 	}
 	
-	@RequestMapping("/myroomDataDelete")
+	@RequestMapping(value = "/myroomDataDelete", method=RequestMethod.POST)
 	public ModelAndView myroomDataDelete(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
@@ -109,7 +132,7 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/myroomDataUpdate")
+	@RequestMapping(value = "/myroomDataUpdate", method=RequestMethod.POST)
 	public ModelAndView myroomDataUpdate(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
@@ -136,7 +159,7 @@ public class TroisController {
 		return mav;
 	}
 
-	@RequestMapping("/adminData")
+	@RequestMapping(value = "/adminData", method=RequestMethod.POST)
 	public ModelAndView listData(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -153,7 +176,7 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/adminDataDelete")
+	@RequestMapping(value = "/adminDataDelete", method=RequestMethod.POST)
 	public ModelAndView adminDataDelete(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
@@ -181,7 +204,7 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/modifypwd")
+	@RequestMapping(value = "/modifypwd", method=RequestMethod.POST)
 	public ModelAndView modifypwd(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		if(user == null){
@@ -233,7 +256,7 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/modifyemail")
+	@RequestMapping(value = "/modifyemail", method=RequestMethod.POST)
 	public ModelAndView modifyemail(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		if(user == null){
@@ -270,7 +293,7 @@ public class TroisController {
 		return mav;
 	}
 	
-	@RequestMapping("/deleteuser")
+	@RequestMapping(value = "/deleteuser", method=RequestMethod.POST)
 	public ModelAndView deleteuser(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		HashMap<String, Object> param = new HashMap<String, Object>();

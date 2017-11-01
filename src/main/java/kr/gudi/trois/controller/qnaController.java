@@ -36,7 +36,7 @@ public class qnaController {
 		return mav;
 	}
 	
-	@RequestMapping(value="/questionRead")
+	@RequestMapping(value="/questionRead", method=RequestMethod.POST)
 	public ModelAndView questionCheck(ModelAndView mav, HttpServletRequest req, HttpSession session) {
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		if(user == null){
@@ -118,7 +118,7 @@ public class qnaController {
 			
 	}
 	
-	@RequestMapping(value="/answerRead")
+	@RequestMapping(value="/answerRead", method=RequestMethod.POST)
 	public ModelAndView test(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		if(user == null){
