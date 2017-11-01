@@ -31,9 +31,13 @@ public class workController {
 @RequestMapping(value="/work")
 public ModelAndView question(ModelAndView mav, HttpSession session) {
 	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-	HashMap<String, Object> param = new HashMap<String, Object>();
-	param.put("id", user.get("login").get("id"));
-	mav.setViewName("work");
+//	HashMap<String, Object> param = new HashMap<String, Object>();
+//	param.put("id", user.get("login").get("id"));
+	if(user == null){
+		mav.setViewName("redirect:/main");
+	}else {
+		mav.setViewName("work");
+	}
 	return mav;
 }
 
@@ -51,11 +55,12 @@ public void workInsert(HttpSession session, HttpServletRequest req, HttpServletR
 public ModelAndView workSelect(ModelAndView mav, HttpSession session) {
 	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 	if(user == null){
-		mav.addObject("id", "");
+		mav.setViewName("redirect:/main");
+//		mav.addObject("id", "");
 	}else{
 		mav.addObject("id", user.get("login").get("id"));
+		mav.setViewName("work2");
 	}
-	mav.setViewName("work2");
 	return mav;
 }
 

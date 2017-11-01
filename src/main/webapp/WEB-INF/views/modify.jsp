@@ -175,9 +175,9 @@
 		</div>
 		<div class="footer">
 			<footer>
-				상호 : Trois(주)<br> 장소재지 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
-				대표이사 : 박기윤 김원중 최승환 김보경 공은비<br> Copyright (c) 2017 Trois all
-				rights reserved. Trois는 안전하게 운영중입니다.
+				상호 : Trois(주)<br> 장소 : 서울특별시 금천구 대륭테크노타운 3차 811호<br>
+				 대표이사 : 공은비 김보경 김원중 박기윤 최승환 <br> Copyright (c) 2017 Trois all rights
+				reserved. Trois는 안전하게 운영중입니다.
 			</footer>
 		</div>
 	</div>
