@@ -9,6 +9,8 @@
 (function (global){
 /*! http://mths.be/punycode v1.2.4 by @mathias */
 ;(function(root) {
+	
+	
 
 	/** Detect free variables */
 	var freeExports = typeof exports == 'object' && exports;

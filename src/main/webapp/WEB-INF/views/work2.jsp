@@ -23,6 +23,7 @@ var ws_src = "";
 var ws_index = "";
 var addItems = [];
 var addItems2 = [];
+var imgdown = "";
 $(document).ready(function() {
 	
 	$.ajax({
@@ -66,6 +67,41 @@ $(document).ready(function() {
 	span.onclick = function() {
 	    modal.style.display = "none";
 	}
+	
+	$("#btn1").off().on("click", function(){
+		if(confirm("이미지 저장을 하시겠습니까?")){
+			html2canvas($("#main"), {
+				onrendered: function(canvas){
+					
+					imgdown = canvas.toDataURL();
+					 imgEvent();
+		               // toDataURL() 가져온 데이터를 주소값으로 변경 하는 부분
+// 		                $("div").html("<img src='" + img + "'>");
+		               // 특정 위치에 화면으로 표현 하는 부분
+				}
+			});
+	    }else{ 
+	    alert("취소되었습니다.");
+	    }
+	});
+	
+	function imgEvent(){
+        var title = $("#text").val();
+        if(title == ""){
+           title = "img.png";
+        } 
+        var html = '<a href="' + imgdown + '" download="' + title + '">다운로드</a>';
+        $("#forA").html(html);
+     }
+	
+	//<img class="btn-img" src="resources/work/imagesave.PNG">
+     
+     $("form").submit(function( event ) {
+          event.preventDefault(); // 자동으로 submit 막기!
+          var formData = new FormData();
+          formData.append('file', imgdown);
+          console.log(formData);
+     });
 	
 
 	$("#btn3").click(function(){
@@ -154,11 +190,47 @@ function drop2(ev) {
 								<div class="p4">벽</div>
 								<div class="active8-1" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall3.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
 									<img class="image94" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall1.png">
 								</div>
 								<div class="active8-2" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
 									<img class="image95" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall2.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall4.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall5.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall6.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall7.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall8.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall9.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall10.png">
+								</div>
+								<div class="active8-1" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/wall/wall11.png">
 								</div>
 								<div class="p4">문</div>
 								<div class="active7-1" ondrop="drop2(event)" 
@@ -169,11 +241,19 @@ function drop2(ev) {
 							ondragover="allowDrop(event)">
 									<img class="image97" draggable="true" ondragstart="drag(event)" src="resources/img/door/door2.png">
 								</div>
+								<div class="active7-2" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image97" draggable="true" ondragstart="drag(event)" src="resources/img/door/door3.png">
+								</div>
+								<div class="active7-2" ondrop="drop2(event)" 
+							ondragover="allowDrop(event)">
+									<img class="image97" draggable="true" ondragstart="drag(event)" src="resources/img/door/door4.png">
+								</div>
 					<div class="p1">침대</div>
 					<div id="active3">
 						<div class="active3-1" ondrop="drop2(event)" ondragover="allowDrop(event)">
 							<img class="image9" draggable="true" ondragstart="drag(event)" src="resources/img/bed/bed1.png">
-						</div>
+						</div>	
 						<div class="active3-2" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
 							<img class="image10" draggable="true" ondragstart="drag(event)" src="resources/img/bed/bed2.png">
@@ -305,10 +385,6 @@ function drop2(ev) {
 							</div>
 							<div class="active4-4" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
-								<img class="image40" draggable="true" ondragstart="drag(event)" src="resources/img/sofa/sofa8.png">
-							</div>
-							<div class="active4-4" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
 								<img class="image41" draggable="true" ondragstart="drag(event)" src="resources/img/sofa/sofa9.png">
 							</div>
 							<div class="active4-4" ondrop="drop2(event)" 
@@ -361,11 +437,6 @@ function drop2(ev) {
 							ondragover="allowDrop(event)">
 											<img class="image51" draggable="true" ondragstart="drag(event)"
 												src="resources/img/refrigerator/refrigerator5.png">
-										</div>
-										<div class="active5-2" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-											<img class="image52" draggable="true" ondragstart="drag(event)"
-												src="resources/img/refrigerator/refrigerator6.png">
 										</div>
 										<div class="active5-1" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
@@ -429,11 +500,6 @@ function drop2(ev) {
 												<img class="image64" draggable="true" ondragstart="drag(event)"
 													src="resources/img/washingmachine/washingmachine8.png">
 											</div>
-											<div class="active5-1" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-												<img class="image65" draggable="true" ondragstart="drag(event)"
-													src="resources/img/washingmachine/washingmachine9.png">
-											</div>
 											<div class="active5-2" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
 												<img class="image66" draggable="true" ondragstart="drag(event)"
@@ -465,16 +531,6 @@ function drop2(ev) {
 							ondragover="allowDrop(event)">
 													<img class="image71" draggable="true" ondragstart="drag(event)"
 														src="resources/img/diningtable/diningtable5.png">
-												</div>
-												<div class="active5-2" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-													<img class="image72" draggable="true" ondragstart="drag(event)"
-														src="resources/img/diningtable/diningtable6.png">
-												</div>
-												<div class="active5-1" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-													<img class="image73" draggable="true" ondragstart="drag(event)"
-														src="resources/img/diningtable/diningtable7.png">
 												</div>
 												<div class="p3">드레서</div>
 												<div id="active5">
@@ -526,11 +582,6 @@ function drop2(ev) {
 															<img class="image84" draggable="true" ondragstart="drag(event)"
 																src="resources/img/wardrobe/wardrobe2.png">
 														</div>
-														<div class="active4-3" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-															<img class="image85" draggable="true" ondragstart="drag(event)"
-																src="resources/img/wardrobe/wardrobe3.png">
-														</div>
 														<div class="active4-4" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
 															<img class="image86" draggable="true" ondragstart="drag(event)"
@@ -541,27 +592,12 @@ function drop2(ev) {
 															<img class="image87" draggable="true" ondragstart="drag(event)"
 																src="resources/img/wardrobe/wardrobe5.png">
 														</div>
-														<div class="active4-4" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-															<img class="image88" draggable="true" ondragstart="drag(event)"
-																src="resources/img/wardrobe/wardrobe6.png">
-														</div>
-														<div class="active4-4" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-															<img class="image89" draggable="true" ondragstart="drag(event)"
-																src="resources/img/wardrobe/wardrobe7.png">
-														</div>
 														<div class="p3">화장대</div>
 														<div id="active5">
 															<div class="active5-1" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
 																<img class="image90" draggable="true" ondragstart="drag(event)"
 																	src="resources/img/dressingtable/dressingtable1.png">
-															</div>
-															<div class="active4-2" ondrop="drop2(event)" 
-							ondragover="allowDrop(event)">
-																<img class="image91" draggable="true" ondragstart="drag(event)"
-																	src="resources/img/dressingtable/dressingtable2.png">
 															</div>
 															<div class="active4-3" ondrop="drop2(event)" 
 							ondragover="allowDrop(event)">
@@ -774,6 +810,9 @@ function drop2(ev) {
 						ondrop="drop(event)" ondragover="allowDrop(event)"></div>
 				</div>
 				<div id="active9">
+				<button class="btn" id="btn1" type="submit">
+						<img class="btn-img" src="resources/work/imagesave.PNG">
+					</button>
 					<button class="btn" id="btn2" type="submit">
 						<img class="btn-img" src="resources/work/save.PNG">
 					</button>
