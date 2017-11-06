@@ -83,7 +83,10 @@ $(document).ready(function() {
 	
 	$("#btn2").on('click', function () {
 	    if(confirm("저장을 하시겠습니까?")){
-	    	if(addItems != null){
+
+	    	if((addItems == null) || ($("#text").val() == "")){
+	    		alert("저장되지 않음");
+	    	}else if((addItems != null) && ($("#text").val() != "")){
 // 		    	alert("저장되었습니다.");
 
 // 			for(var i=0; i<addItems.length; i++){
@@ -109,9 +112,7 @@ $(document).ready(function() {
 							alert("ajax 안됨");
 						});
 // 					}
-		    	}else{
-	    			alert("저장되지 않음");
-	    		}
+		    	}
 	    }else{
 	    alert("취소되었습니다.");
 	    }

@@ -49,7 +49,7 @@
   			$("#submit").append('<button type="button" id="submitBtn2">돌아가기</button>');
   			
   			$("#submitBtn2").off().on("click", function(){
-  				var url = "myroom"; 
+  				var url = "myqna"; 
   				$(location).attr('href',url);
   			});
 		}

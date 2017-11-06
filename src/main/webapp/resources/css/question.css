@@ -191,3 +191,9 @@ html, body{
     background: #b4b4b4;
     color: black;
 }
+#submitBtn2{
+	border-radius: 5px;
+    font-family:"맑은 고딕";
+    background: #b4b4b4;
+    color: black;
+}

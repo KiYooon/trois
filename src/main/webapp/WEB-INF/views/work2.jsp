@@ -106,7 +106,7 @@ $(document).ready(function() {
 
 	$("#btn3").click(function(){
 		if(confirm("나가시겠습니까?")){
-	    location.href="/trois/main";
+	    location.href="myroom";
 	    }else{ 
 	    alert("취소되었습니다.");
 	    }
