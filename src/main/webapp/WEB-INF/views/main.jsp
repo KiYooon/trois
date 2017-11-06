@@ -7,10 +7,10 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Trois</title>
 
-<script
-	src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<script type="text/javascript" src="/trois/resources/js/main.js">
-	
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script type="text/javascript" src="/trois/resources/js/main.js"></script>
+<script>
+	$("#email").attr("pattern", "[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*");
 </script>
 </head>
 <body>
@@ -35,11 +35,11 @@
 						<form method="post">
 							<div class="logintable">
 								<p>
-									<label for="id">ID : </label> <input type="text" id="loginid">
+									<label for="id">ID : </label> <input type="text" id="loginid" maxlength='10'>
 								</p>
 								<p>
 									<label for="pw">PW : </label> <input type="password"
-										id="loginpwd">
+										id="loginpwd" maxlength='50'>
 								</p>
 								<button type="button" id="iplogin">Login</button>
 								<button type="button" id="findid">ID찾기</button>
@@ -60,20 +60,20 @@
 							<div class="jointable">
 								<p>
 									<label for="id">ID : </label> <input type="text" id="createid"
-										name="id">
+										name="id" maxlength='10'>
 									<button type="button" id="overlap">중복확인</button>
 								</p>
 								<p>
 									<label for="pw">PW : </label> <input type="password" id="pwd"
-										name="pwd">
+										name="pwd" maxlength='50'>
 								</p>
 								<p>
 									<label for="name">Name : </label> <input type="text" id="name"
-										name="name">
+										name="name" maxlength='20'>
 								</p>
 								<p>
-									<label for="email">E-MAIL : </label> <input type="text"
-										id="email" name="email">
+									<label for="email">E-MAIL : </label> <input type="email"
+										id="email" name="email" maxlength='50'>
 								</p>
 
 
@@ -165,16 +165,16 @@
 		// Get the <span> element that closes the modal
 		var tr = "<span class='close'>&times;</span>" + "<p>"
 				+ "<label for='name'>Name : </label>"
-				+ "<input type='text' id='name'>" + "</p>" + "<p>"
+				+ "<input type='text' id='name' maxlength='10'>" + "</p>" + "<p>"
 				+ "<label for='email'>E-mail : </label>"
-				+ "<input type='text' id='email'>" + "</p>"
+				+ "<input type='email' id='email' maxlength='50'>" + "</p>"
 				+ "<input type='submit' value='찾기' id='findid2'>";
 
 		var tr3 = "<span class='close'>&times;</span>" + "<p>"
 				+ "<label for='id'>ID : </label>"
-				+ "<input type='text' id='loginid'>" + "</p>" + "<p>"
+				+ "<input type='text' id='loginid' maxlength='10'>" + "</p>" + "<p>"
 				+ "<label for='pw'>PW : </label>"
-				+ "<input type='password' id='loginpwd'>" + "</p>"
+				+ "<input type='password' id='loginpwd' maxlength='50'>" + "</p>"
 
 				+ "<button type='button' id='iplogin'>로그인</button>"
 
@@ -182,15 +182,14 @@
 				+ "<button type='button' id='settingpw'>비밀번호 재설정</button>";
 
 		var tr4 = "<p>" + "<label for='name'>Name : </label>"
-				+ "<input type='text' id='name'>" + "</p>" + "<p>"
+				+ "<input type='text' id='name' maxlength='20'>" + "</p>" + "<p>"
 				+ "<label for='id'>ID : </label>"
-				+ "<input type='text' id='id'>" + "</p>" + "<p>"
+				+ "<input type='text' id='id' maxlength='10'>" + "</p>" + "<p>"
 				+ "<label for='changepw'>비밀번호 변경 : </label>"
-				+ "<input type='password' id='changepw'>" + "</p>"
+				+ "<input type='password' id='changepw' maxlength='50'>" + "</p>"
 				+ "<button type='button' id='change'>변경</button>";
 
-		var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요."
-				+ "<button type='button' id='okpw'>확인</button>";
+		var tr5 = "비밀번호가 변경되었습니다.<br>변경된 비밀번호로 로그인 해 주세요." + "<button type='button' id='okpw'>확인</button>";
 
 		//       var tr6 = "회원가입이 완료되었습니다."
 		//          + "<button type='button' id='okjoin'>확인</button>";
@@ -198,20 +197,20 @@
 		var tr7 = "<span class='close'>&times;</span>"
 				+ "<p>"
 				+ "<label for='id'>ID : </label>"
-				+ "<input type='text' id='id'> <input type='submit' id='overlap' value='중복확인'>"
+				+ "<input type='text' id='id' maxlength='10'> <input type='submit' id='overlap' value='중복확인'>"
 				+ "</p>" + "<p>" + "<label for='pw'>PW : </label>"
-				+ "<input type='password' id='pw'>" + "</p>" + "<p>"
+				+ "<input type='password' id='pw' maxlength='50'>" + "</p>" + "<p>"
 				+ "<label for='name'>Name : </label>"
-				+ "<input type='text' id='name'>" + "</p>" + "<p>"
+				+ "<input type='text' id='name' maxlength='20'>" + "</p>" + "<p>"
 				+ "<label for='email'>E-MAIL : </label>"
-				+ "<input type='text' id='email'>" + "</p>" + "<form>"
+				+ "<input type='email' id='email' maxlength='50'>" + "</p>" + "<form>"
 				+ "<input type='submit' value='회원가입' id='ipjoin'>" + "</form>";
 
 		var tr8 = "<span class='close'>&times;</span>" + "<p>"
 				+ "<label for='id'>ID : </label>"
-				+ "<input type='text' id='loginid2'>" + "</p>" + "<p>"
+				+ "<input type='text' id='loginid2' maxlength='10'>" + "</p>" + "<p>"
 				+ "<label for='pw'>PW : </label>"
-				+ "<input type='password' id='loginpwd2'>" + "</p>"
+				+ "<input type='password' id='loginpwd2' maxlength='50'>" + "</p>"
 
 				+ "<button type='button' id='iplogin2'>로그인</button>"
 
@@ -221,9 +220,12 @@
 		var span = $("close")[0];
 		var span2 = $("close")[1];
 
+		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		
 		function btnLogin() {//메인화면에서 로그인버튼으로 로그인
 			$("#login").off().on("click", function() {
 				// alert("띠용");
+				
 				$("#myModal").css("display", "block");
 				btnFindid();
 				btnSettingpw()
@@ -250,6 +252,14 @@
 
 				name = $("#name").val();
 				email = $("#email").val();
+				
+				if (name == null || email == null) {
+					alert("이름 혹은 이메일을 입력해주세요.");
+					return false;
+				}else if(regex.test(email) == false) {
+					alert("잘못된 이메일 형식입니다.");
+					return false;
+				}
 
 				$.ajax({
 					type : "post",
@@ -259,14 +269,13 @@
 						"email" : email
 					}
 				}).done(function(result) {
-					//                console.log(result);
-					//                console.log(result.name);
-					if (result.name == null || result.email == null) {
-						alert("이름 혹은 이메일을 확인해주세요.");
-					} else {
+// 					if (result.name == null || result.email == null) {
+// 						alert("이름 혹은 이메일을 확인해주세요.");
+// 					} 
+					
 						findid = result.findid;
 						alert("회원님의 아이디는 " + findid.id + " 입니다.");
-					}
+					
 					$(".modal-content").html(tr3);
 
 					$("#iplogin").off().on("click", function() {
@@ -299,25 +308,19 @@
 		function btnChange() {//
 			$("#change").off().on("click", function() {
 				btnChangePW();
-				$(".modal-content").html(tr5);
-
-				$("#okpw").off().on("click", function() {
-					$(".modal-content").html(tr3);
-					// 이벤트 다시 생성
-					$("#iplogin").off().on("click", function() {
-						login();
-					});
-					btnFindid();
-					btnSettingpw()
-					btnSpan();
-				});
+// 				$(".modal-content").html(tr5);
+				
 			});
 		}
 		function btnChangePW() {
 			id = $("#id").val();
 			name = $("#name").val();
 			var pw = $("#changepw").val();
-
+			if((pw == "") || (id == "") || (name == "")){
+				alert("정보를 정확히 입력해주세요");
+				location.href = "main";
+// 					return false;
+			}
 			$.ajax({
 				type : "post",
 				url : "updatepw",
@@ -328,6 +331,17 @@
 				}
 			}).done(function(result) {
 				//             console.log(result);
+				$(".modal-content").html(tr5);
+				$("#okpw").off().on("click", function() {
+					$(".modal-content").html(tr3);
+					// 이벤트 다시 생성
+					$("#iplogin").off().on("click", function() {
+						login();
+					});
+					btnFindid();
+					btnSettingpw()
+					btnSpan();
+				});
 			});
 		}
 		function btnjoin() {
@@ -364,6 +378,9 @@
 
 			if (id == "" || pwd == "" || name == "" || email == "") {
 				alert("값을 모두 입력해주세요.");
+				return false;
+			} else if(regex.test(email) == false) {
+				alert("잘못된 이메일 형식입니다.");
 				return false;
 			}
 
@@ -422,6 +439,7 @@
 					}
 				} else {
 					alert("아이디와 비밀번호를 확인하세요.");
+					location.reload(true);
 				}
 			});
 		}
@@ -442,6 +460,7 @@
 					location.href = "main2";
 				} else {
 					alert("아이디 혹은 패스워드를 확인하세요.");
+					location.reload(true);
 				}
 			});
 		}

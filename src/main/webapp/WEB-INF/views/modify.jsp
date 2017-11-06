@@ -68,6 +68,7 @@
 </style>
 <script>
 	$(document).ready(function(){
+// 		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
 	    // Get the modal
 	    var modal1 = document.getElementById("updatepwd");
 	    var modal2 = document.getElementById('updateemail');
@@ -115,8 +116,27 @@
 	        }
 	    }
 	    
+	    
+// 	    if(regex.test(email) == false) {
+// 			alert("잘못된 이메일 형식입니다.");
+// 			return false;
+// 		}
+
+		$("#okpwd").on("click", function(){
+			if($("#newpwd1").val() == $("#newpwd2").val()){
+		    	alert("성공하였습니다.");
+			}else if($("#newpwd1").val() != $("#newpwd2").val()){
+				alert("확인해주세요");
+			}
+		});
+		
+	    
 	    $("#nopwd").on("click", function(){
 	    	location.href = "modify";
+	    });
+	    
+	    $("#okemail").on("click", function(){
+	    	alert("성공하였습니다.");
 	    });
 	    
 	    $("#noemail").on("click", function(){
@@ -134,6 +154,8 @@
 		$("#logo").on("click", function(){
 			location.href = "main2";
 		});
+		
+		
 	});
 </script>
 </head>
@@ -194,8 +216,8 @@
 			<h2>비밀번호 변경</h2>
 			<form action="modifypwd" method="post">
 				<ul>
-					<li>비밀번호 : <input type="password" id="newpwd1" name="newpwd1" placeholder="입력하세요"></li>
-					<li>비밀번호 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요"></li>
+					<li>비밀번호 : <input type="password" id="newpwd1" name="newpwd1" placeholder="입력하세요" maxlength="50"></li>
+					<li>비밀번호 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요" maxlength="50"></li>
 					<li class="inline-block"><button type="submit" id="okpwd">확인</button></li>
 					<li class="inline-block"><button type="button" id="nopwd">취소</button></li>
 				</ul>
@@ -211,7 +233,7 @@
 			<h2>이메일 변경</h2>
 			<form action="modifyemail" method="post">
 				<ul>
-					<li>email : <input type="text" id="email" name="email" placeholder="입력하세요"></li>
+					<li>email : <input type="email" id="email" name="email" placeholder="입력하세요" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" maxlength="50"></li>
 					<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
 					<li class="inline-block"><button type="button" id="noemail">취소</button></li>
 				</ul>

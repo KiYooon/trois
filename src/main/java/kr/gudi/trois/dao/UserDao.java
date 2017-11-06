@@ -37,7 +37,7 @@ public class UserDao implements UserDaoInterface {
    }
    @Override
    public HashMap<String, Object> findid(HashMap<String, Object> param) {
-      
+	  System.out.println("dao" + param);
       return session.selectOne("sql.findid", param);
    }
    @Override

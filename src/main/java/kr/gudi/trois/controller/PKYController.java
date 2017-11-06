@@ -98,10 +98,10 @@ public class PKYController {
       
       
       HashMap<String, Object> findid = HttpUtil.getParameterMap(req);
-//      System.out.println(findid);
+      System.out.println("findid" + findid);
       
       HashMap<String, Object> findiddata = (HashMap<String, Object>) usi.findid(findid);
-//      System.out.println(findiddata);
+      System.out.println("finddate" + findiddata);
       
       HttpUtil.sendResponceToJson(resp, findiddata);
    }

@@ -3,6 +3,7 @@ package kr.gudi.trois.controller;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -205,7 +206,7 @@ public class TroisController {
 	}
 	
 	@RequestMapping(value = "/modifypwd", method=RequestMethod.POST)
-	public ModelAndView modifypwd(ModelAndView mav, HttpServletRequest req, HttpSession session){
+	public ModelAndView modifypwd(ModelAndView mav, HttpServletRequest req, HttpSession session, HttpServletResponse resp){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 		if(user == null){
 			mav.setViewName("redirect:/main");
@@ -243,7 +244,7 @@ public class TroisController {
 					mav.setViewName("modify");
 				}
 			}else {
-				mav.setViewName("myroom");
+				mav.setViewName("modify");
 			}
 	//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 	//		JSONObject jsonObject = new JSONObject();
