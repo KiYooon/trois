@@ -815,10 +815,10 @@ function drop2(ev) {
 				</div>
 				<div id="active9">
 				<button class="btn" id="btn1" type="submit">
-						<img class="btn-img" src="resources/work/imagesave.PNG">
+						<img class="btn-img" src="resources/work/capture.PNG">
 					</button>
 					<button class="btn" id="btn2" type="submit">
-						<img class="btn-img" src="resources/work/save.PNG">
+						<img class="btn-img" src="resources/work/modify.PNG">
 					</button>
 					<button class="btn" id="btn3" type="submit">
 						<img class="btn-img" src="resources/work/exit.PNG">
