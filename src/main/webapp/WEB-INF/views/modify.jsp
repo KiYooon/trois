@@ -115,12 +115,6 @@
 	            modal3.style.display = "none";
 	        }
 	    }
-	    
-	    
-// 	    if(regex.test(email) == false) {
-// 			alert("잘못된 이메일 형식입니다.");
-// 			return false;
-// 		}
 
 		$("#okpwd").on("click", function(){
 			if($("#newpwd1").val() == $("#newpwd2").val()){
