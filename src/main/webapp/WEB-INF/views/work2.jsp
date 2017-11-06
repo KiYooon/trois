@@ -182,6 +182,7 @@ function drop2(ev) {
 	<div id="helpBox">
 		<div id="active6">
 			<input id="text" type="text" placeholder="제목을 입력해주세요.">
+			<img id="help" type="image" src="resources/work/help.PNG">
 		</div>
 	</div>
 	<div class="contain">
@@ -623,7 +624,7 @@ function drop2(ev) {
 				</div>
 		<div class="right">
 			<div id="main">
-				<img id="help" type="image" src="resources/work/help.PNG">
+				
 				<!-- The Modal -->
 				<div id="myModal1" class="modal1">
 

@@ -30,9 +30,13 @@
 			createqna();
 		});
 		
-// 		$("#logout").on("click", function(){
-// 	    	location.href = "logout";
-// 	    });
+		$("#logout").on("click", function(){
+	    	location.href = "logout";
+	    });
+		
+		$("#logo").on("click", function(){
+			location.href = "main2";
+		});
 		
 		function createqna(){
 			$("#inputBox1").empty(); 
@@ -81,7 +85,7 @@
             <h1>Trois</h1>
         </div>
         <div class="header-right">
-            <button id="logout" onclick="location.href = 'logout';">로그아웃</button>
+            <button id="logout">로그아웃</button>
         </div>
     </div>
     <div class="center">
@@ -91,6 +95,7 @@
 				<li><a href="question" style="text-decoration: underline;">문의하기</a></li>
 				<li><a href="myqna">나의문의내역</a></li>
 				<li><a href="modify">회원정보수정/탈퇴</a></li>
+				<li><a href="work">작업시작하기</a></li>
             </ul>
         </div>
         <div class="center-right">

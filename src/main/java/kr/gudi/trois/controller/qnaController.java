@@ -121,42 +121,34 @@ public class qnaController {
 	@RequestMapping(value="/answerRead", method=RequestMethod.POST)
 	public ModelAndView test(ModelAndView mav, HttpServletRequest req, HttpSession session){
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-		if(user == null){
-			mav.setViewName("redirect:/main");
-		}else if(!(user.get("login").get("id")).equals("admin")) {
-			mav.setViewName("redirect:/main2");
-		}else{
-			HashMap<String, Object> param = new HashMap<String, Object>();
-			boolean chc = true;
-			
-			if("".equals(req.getParameter("answer"))) {
-				chc = false;
-			}
-			if(chc) {
-			param.put("no", req.getParameter("no"));
-			param.put("title", req.getParameter("title"));
-			param.put("contents", req.getParameter("contents"));
-			param.put("answer", req.getParameter("answer"));
-			
-			HashMap<String, Object> SelectAns = (HashMap<String, Object>)qsi.updateQna(param);
-			
-			SelectAns.put("no", param.get("no"));
-			SelectAns.put("title", param.get("title"));
-			SelectAns.put("contents", param.get("contents"));
-			SelectAns.put("answer", param.get("answer"));
-			
-			JSONObject jsonObject = new JSONObject();
-			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectanswer(SelectAns)));
-			
-			mav.addObject("message", jsonObject.toString());
-			mav.setViewName("json");
-			return mav;
-			} else {
-				mav.setViewName("admin");
-				return mav;
-			}
-			
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		boolean chc = true;
+		
+		if("".equals(req.getParameter("answer"))) {
+			chc = false;
 		}
+		if(chc) {
+		param.put("no", req.getParameter("no"));
+		param.put("title", req.getParameter("title"));
+		param.put("contents", req.getParameter("contents"));
+		param.put("answer", req.getParameter("answer"));
+		
+		HashMap<String, Object> SelectAns = (HashMap<String, Object>)qsi.updateQna(param);
+		
+		SelectAns.put("no", param.get("no"));
+		SelectAns.put("title", param.get("title"));
+		SelectAns.put("contents", param.get("contents"));
+		SelectAns.put("answer", param.get("answer"));
+		
+		JSONObject jsonObject = new JSONObject();
+		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(qsi.selectanswer(SelectAns)));
+		
+		mav.addObject("message", jsonObject.toString());
+		mav.setViewName("json");
 		return mav;
+		} else {
+			mav.setViewName("admin");
+			return mav;
+		}
 	}
 }

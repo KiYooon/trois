@@ -88,7 +88,7 @@
 					//tag	+= data[i].answercheck;
 				}
 				tag += '</li>';
-				tag += '<li><button type="button" id="admindel">삭제</button></li>';
+				tag += '<li><button type="button">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}
@@ -214,7 +214,6 @@
 						detailCreate();
 					}else{
 						detailCreate2();
-						$('#inputBox').html($('#reqText3').html().replace(/\n/g,"<br>"));
 					}
 					});
 			});
@@ -235,7 +234,6 @@
             $(".mainContent").append(content);
             
             $('#reqBox2').html($('#reqText2').html().replace(/\n/g,"<br>"));
-            $('#reqBox3').html($('#reqText3').html().replace(/\n/g,"<br>"));
             
             $("#inputText").keydown(function(){
         		var numChar = $(this).val().length;
@@ -270,7 +268,7 @@
             $(".mainContent").append(content);
             
             $('#reqBox2').html($('#reqText2').html().replace(/\n/g,"<br>"));
-            $('#reqBox3').html($('#reqText3').html().replace(/\n/g,"<br>"));
+            $('#inputBox').html($('#reqText3').html().replace(/\n/g,"<br>"));
             
             $("#backBtn").off().on("click", function(){
 				var url = "admin"; 
@@ -284,7 +282,8 @@
 			
 			$("#inputBox").append("<p id='reqText3'>" + answer + "</p>");
 			$("#submit").append("<button type='button' id='backBtn'>돌아가기</button>");
-	 		
+			$('#inputBox').html($('#reqText3').html().replace(/\n/g,"<br>"));
+			
 	 		$("#backBtn").off().on("click", function(){
 				var url = "admin"; 
 				$(location).attr('href',url);

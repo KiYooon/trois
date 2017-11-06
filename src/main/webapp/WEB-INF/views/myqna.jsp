@@ -62,6 +62,10 @@
 	    	location.href = "logout";
 	    });
 		
+		$("#logo").on("click", function(){
+			location.href = "main2";
+		});
+		
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
 			$(".ul-body").empty(); // ul 태그의 자식들를 초기화가 필요하다.
 			for(var i = 0; i < data.length; i++) {
@@ -244,6 +248,7 @@
 					<li><a href="question">문의하기</a></li>
 					<li><a href="myqna" style="text-decoration: underline;">나의문의내역</a></li>
 					<li><a href="modify">회원정보수정/탈퇴</a></li>
+					<li><a href="work">작업시작하기</a></li>
 				</ul>
 			</div>
 			<div class="center-right">
