@@ -74,29 +74,21 @@
 				tag += '<li>' + data[i].id + '</li>';
 				tag += '<li>' + data[i].date + '</li>';
 				tag += '<li>';
-				if (data[i].answer != null) {
-					tag += data[i].answer;
-				} else {
-					tag += ' ';
-				}
-				tag += '</li>';
-				tag += '<li>';
 				if (data[i].answer == null) {
 					tag += ' ';
 				} else {
-					tag += '답변완료';
-					//tag	+= data[i].answercheck;
+// 					tag += '답변완료';
+					tag	+= data[i].answercheck;
 				}
 				tag += '</li>';
-				tag += '<li><button type="button">삭제</button></li>';
+				tag += '<li><button type="button" id="answer">답변</button></li>';
+				tag += '<li><button type="button" id="delete">삭제</button></li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}
 			 if(data.length < 1){
-	            var tag = "<ul>"; 
-	            	tag += "<li>데이터가 없습니다.</li>";
-	            	tag += "</ul>";
-	            $(".ul-body").append(tag);
+				 var tag = "<ul style='text-align:center;'>문의한 내역이 없습니다.</ul>";
+	             $(".ul-body").append(tag);
 	   		}
 			deleteButton();
 			detail();
@@ -176,8 +168,8 @@
 		initData();
 		
 		function deleteButton(){
-			$(".ul-body button").off().on("click", function(){
-				var index = $(".ul-body button").index(this);
+			$(".ul-body #delete").off().on("click", function(){
+				var index = $(".ul-body #delete").index(this);
 				var no = data[index].no;
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
@@ -193,13 +185,16 @@
 		}
 		
 		function detail(){
-			$(".ul-body ul").on("click",function(){
-				index = $(".ul-body ul").index(this);
-				no = data[index].no;
-				title = data[index].title;
-				contents = data[index].contents;
-				answer = data[index].answer;
-				
+			$(".ul-body #answer").on("click",function(){
+				if(data.length < 1){
+					return false;
+				}else{
+					index = $(".ul-body #answer").index(this);
+					no = data[index].no;
+					title = data[index].title;
+					contents = data[index].contents;
+					answer = data[index].answer;
+				}
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "answer", // Spring에서 만든 URL 호출 
@@ -342,8 +337,8 @@
                         <li>내용</li>
                         <li>사용자</li>
                         <li>날짜</li>
-                        <li>답변</li>
                         <li>답변 체크</li>
+                        <li>답변</li>
                         <li>삭제</li>
                     </ul>
                 </div>

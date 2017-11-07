@@ -40,6 +40,7 @@ $(document).ready(function() {
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                   
 	$("#btn1").off().on("click", function(){
 		if(confirm("이미지 저장을 하시겠습니까?")){
+			$("#btn1").hide();
 			html2canvas($("#main"), {
 				onrendered: function(canvas){
 					
@@ -62,6 +63,10 @@ $(document).ready(function() {
         } 
         var html = '<a href="' + imgdown + '" download="' + title + '">다운로드</a>';
         $("#forA").html(html);
+        $("#forA a").on("click", function(){
+        	$("#forA a").remove();
+        	$("#btn1").show();
+        });
      }
 	
 	//<img class="btn-img" src="resources/work/imagesave.PNG">
@@ -75,7 +80,7 @@ $(document).ready(function() {
 	
 	$("#btn3").click(function(){
 		if(confirm("나가시겠습니까?")){
-	    location.href="/trois/main2";
+	    location.href="/trois/myroom";
 	    }else{ 
 	    alert("취소되었습니다.");
 	    }
@@ -85,7 +90,7 @@ $(document).ready(function() {
 	    if(confirm("저장을 하시겠습니까?")){
 
 	    	if((addItems == null) || ($("#text").val() == "")){
-	    		alert("저장되지 않음");
+	    		alert("제목이나 도구를 확인해 주세요.");
 	    	}else if((addItems != null) && ($("#text").val() != "")){
 // 		    	alert("저장되었습니다.");
 

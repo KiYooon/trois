@@ -67,8 +67,13 @@
 }
 </style>
 <script>
+	var email = "";
+	var regex = /^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+	var id = "";
+	var pwd = "";
+	
 	$(document).ready(function(){
-// 		var regex=/^([\w-]+(?:\.[\w-]+)*)@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$/;
+		$("#email").attr("pattern : ");
 	    // Get the modal
 	    var modal1 = document.getElementById("updatepwd");
 	    var modal2 = document.getElementById('updateemail');
@@ -115,6 +120,32 @@
 	            modal3.style.display = "none";
 	        }
 	    }
+	    
+	    $("#okemail").on("click", function(){
+	    	email = $("#email").val();
+	    	
+	    	if(email == ""){
+	    		alert("확인해주세요.");
+	    	}else if(regex.test(email) == false) {
+				alert("잘못된 이메일 형식입니다.");
+			}else{
+	    	
+			    $.ajax({
+					type : "post",
+					url : "modifyemail",
+					data : {
+						"email" : email
+					},
+					datatype : "json"
+		
+				}).done(function(result) {
+					console.log(result);
+					email = result.email;
+					console.log(email);
+				});
+			
+			}
+	    });
 
 		$("#okpwd").on("click", function(){
 			if($("#newpwd1").val() == $("#newpwd2").val()){
@@ -127,10 +158,6 @@
 	    
 	    $("#nopwd").on("click", function(){
 	    	location.href = "modify";
-	    });
-	    
-	    $("#okemail").on("click", function(){
-	    	alert("성공하였습니다.");
 	    });
 	    
 	    $("#noemail").on("click", function(){
@@ -146,7 +173,7 @@
 	    });
 		
 		$("#logo").on("click", function(){
-			location.href = "main2";
+			location.href = "main";
 		});
 		
 		
@@ -225,7 +252,7 @@
 		<div class="modal-content">
 			<span class="close2">&times;</span>
 			<h2>이메일 변경</h2>
-			<form action="modifyemail" method="post">
+			<form action="" method="post">
 				<ul>
 					<li>email : <input type="email" id="email" name="email" placeholder="입력하세요" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" maxlength="50"></li>
 					<li class="inline-block"><button type="submit" id="okemail">확인</button></li>

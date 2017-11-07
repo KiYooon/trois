@@ -1,81 +1,81 @@
-html{
-    margin: 0;
-    padding: 0;
-}
-body{
-    margin: 0;
-    padding: 0;
-}
-.container{
-    margin: 0;
-    padding: 0;
-    height: 150px;
-    border-bottom: 1px solid;
-    display: block;
-}
-h1{
-    margin: 0;
-    padding: 0;
-    text-align: center;
-    font-size: 6rem;
-}
-.head-1{
-    float: left;
-    height: 150px;
-    border-right: 1px solid;
-    width: calc(25% - 1px);
-    text-align:center;
-    position:relative;
-}
-.head-2{
-    float: left;
-    height: 150px;
+/* html{ */
+/*     margin: 0; */
+/*     padding: 0; */
+/* } */
+/* body{ */
+/*     margin: 0; */
+/*     padding: 0; */
+/* } */
+/* .container{ */
+/*     margin: 0; */
+/*     padding: 0; */
+/*     height: 150px; */
+/*     border-bottom: 1px solid; */
+/*     display: block; */
+/* } */
+/* h1{ */
+/*     margin: 0; */
+/*     padding: 0; */
+/*     text-align: center; */
+/*     font-size: 6rem; */
+/* } */
+/* .head-1{ */
+/*     float: left; */
+/*     height: 150px; */
+/*     border-right: 1px solid; */
+/*     width: calc(25% - 1px); */
+/*     text-align:center; */
+/*     position:relative; */
+/* } */
+/* .head-2{ */
+/*     float: left; */
+/*     height: 150px; */
     
-    width: 50%;
-}
-.head-3{
-    display: block;
-    float: left;
-    height: 150px;
-    width: calc(25% - 1px);
-    border-left: 1px solid;
-    text-align: center;
-    position: relative;
-}
+/*     width: 50%; */
+/* } */
+/* .head-3{ */
+/*     display: block; */
+/*     float: left; */
+/*     height: 150px; */
+/*     width: calc(25% - 1px); */
+/*     border-left: 1px solid; */
+/*     text-align: center; */
+/*     position: relative; */
+/* } */
 
-#head-p{
-    margin: 0;
-    padding: 0;
-    color: white;
-    text-align: center;
-    font-size: 5rem;
-}
-#headimg{
-	width : 40%;
-    height: 140px;   
-}
-#myroom{
-    width: 30%;
-    height: 70px;
-    border-radius: 5px;
-    font-family:"맑은 고딕";
-    background: #def5da;
-    color: black;
-    position: absolute;
-    top: calc((150px/2) - 35px);
-    left: 50px;    
-}
-#logout{
-    width: 30%;
-    height: 70px;
-    border-radius: 5px;
-    font-family:"맑은 고딕";
-    background: #def5da;
-    position: absolute;
-    top: calc((150px/2) - 35px);
-    left: calc(100px + 30%);  
-    color: black;
-}
+/* #head-p{ */
+/*     margin: 0; */
+/*     padding: 0; */
+/*     color: white; */
+/*     text-align: center; */
+/*     font-size: 5rem; */
+/* } */
+/* #headimg{ */
+/* 	width : 40%; */
+/*     height: 140px;    */
+/* } */
+/* #myroom{ */
+/*     width: 30%; */
+/*     height: 70px; */
+/*     border-radius: 5px; */
+/*     font-family:"맑은 고딕"; */
+/*     background: #def5da; */
+/*     color: black; */
+/*     position: absolute; */
+/*     top: calc((150px/2) - 35px); */
+/*     left: 50px;     */
+/* } */
+/* #logout{ */
+/*     width: 30%; */
+/*     height: 70px; */
+/*     border-radius: 5px; */
+/*     font-family:"맑은 고딕"; */
+/*     background: #def5da; */
+/*     position: absolute; */
+/*     top: calc((150px/2) - 35px); */
+/*     left: calc(100px + 30%);   */
+/*     color: black; */
+/* } */
 
 
 

@@ -153,7 +153,7 @@ public class TroisController {
 		if(user == null){
 			mav.setViewName("redirect:/main");
 		}else if(!(user.get("login").get("id")).equals("admin")) {
-			mav.setViewName("redirect:/main2");
+			mav.setViewName("redirect:/main");
 		}else{
 			mav.setViewName("admin");
 		}
@@ -276,8 +276,8 @@ public class TroisController {
 			System.out.println(check);
 			if(check){
 				param.put("email", param.get("email"));
+				param = tsi.updateEmail(param);
 			}
-			param = tsi.updateEmail(param);
 			if (user.get("login").get("id") == null) {
 				mav.setViewName("redirect:/main");
 			}else {
@@ -303,7 +303,7 @@ public class TroisController {
 		if (user.get("login").get("id") == null) {
 			mav.setViewName("redirect:/main");
 		}else{
-			mav.setViewName("redirect:/main");
+			mav.setViewName("redirect:/logout");
 		}
 //		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 //		JSONObject jsonObject = new JSONObject();

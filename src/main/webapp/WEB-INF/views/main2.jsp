@@ -7,22 +7,7 @@
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <title>Insert title here</title>
-<script>
-$(document).ready(function() {
-	$("#myroom").on("click", function(){
-// 		alert("ㅗ");
-    	location.href = "myroom";
-    });
-	
-	$("#logout").on("click", function(){
-    	location.href = "logout";
-    });
-	
-	$("#headimg").on("click", function(){
-		location.href = "main2";
-	});
-});
-</script>
+
 </head>
 <body>
 	<div class="container">

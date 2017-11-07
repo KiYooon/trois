@@ -63,7 +63,7 @@
 	    });
 		
 		$("#logo").on("click", function(){
-			location.href = "main2";
+			location.href = "main";
 		});
 		
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
@@ -85,17 +85,14 @@
 				if (data[i].answer == null) {
 					tag += ' ';
 				} else {
-					tag += '답변완료';
-					//tag	+= data[i].answercheck;
+					tag	+= data[i].answercheck;
 				}
 				tag += '</li>';
 				tag += '</ul>';
 				$(".ul-body").append(tag);
 			}
 			 if(data.length < 1){
-                var tag = "<ul>"; 
-                	tag += "<li>데이터가 없습니다.</li>";
-                	tag += "</ul>";
+                var tag = "<ul style='text-align:center;'>문의한 내역이 없습니다.</ul>";
                 $(".ul-body").append(tag);
        		} 
 			detail();
@@ -119,12 +116,10 @@
 			
 			if(end > pageView){
 				$(".button-list").append("<button type='button' id ='#myqna" + ((start+1) - pageView) + "'>&lt;</button>")
-			    console.log("다음");
 				k = 1;
 			}       
 	       	for(var i = start; i < end; i++){
 	       		$(".button-list").append("<button type='button' id ='#myqna" + (i + 1) + "'>" + (i + 1) + "</button>");
-	       		console.log("가운데");
 	       		if(page == (i + 1)){
 	            $(".button-list button").eq(k).addClass("chk");
 	        }
@@ -133,7 +128,6 @@
 	       
 	        if(end >= pageView && paging > end){
 	        	$(".button-list").append("<button type='button' id ='#myqna" + (end + 1) + "'>&gt;</button>");
-	        	console.log("이전");
 	        }
 			$(".button-list button").off().on("click", function() { // 페이지 전환 이벤트를 작성 한다.
 				// a 태그 중에 몇번째 페이지인지 알면 리스트 화면를 다시 보여 줄 수 있다. page 변수 활용 할것!
@@ -179,12 +173,15 @@
 		
 		function detail(){
 			$(".ul-body ul").on("click",function(){
-				index = $(".ul-body ul").index(this);
-				no = data[index].no;
-				title = data[index].title;
-				contents = data[index].contents;
-				answer = data[index].answer;
-				
+				if(data.length < 1){
+					return false;
+				}else{
+					index = $(".ul-body ul").index(this);
+					no = data[index].no;
+					title = data[index].title;
+					contents = data[index].contents;
+					answer = data[index].answer;
+				}
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "myqnaDetail", // Spring에서 만든 URL 호출 

@@ -24,22 +24,27 @@ public class PKYController {
    @Autowired
    UserServiceInterface usi;
    
-   @RequestMapping(value="/main") //메인페이지
-      public ModelAndView main(ModelAndView mav){
-         mav.setViewName("main");
-         return mav;
-      }
-   @RequestMapping(value="/main2") //로그인 되었을 때 메인페이지
-      public ModelAndView main2(ModelAndView mav, HttpSession session){
-        HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-         System.out.println(user.get("login").get("email"));
-        mav.setViewName("main2");
-         return mav;
-      }
-
+	@RequestMapping(value = "/main") // 메인페이지
+	public ModelAndView main(ModelAndView mav) {
+		mav.setViewName("main");
+		return mav;
+	}
+   
+   @RequestMapping(value="/LoginCheck", method = RequestMethod.POST)
+   public void LoginCheck(HttpServletResponse resp, HttpSession session){
+	   HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
+	   HashMap<String, Object> map = new HashMap<String, Object>();
+	   if(user == null){
+		   map.put("status", 0);
+	   }else{
+		   map.put("status", 1);
+	   }
+	   HttpUtil.sendResponceToJson(resp, map);
+   }
+   
    
    @RequestMapping(value="/Userjoin", method = RequestMethod.POST)
-   public void Userjoin(HttpServletResponse resp, HttpServletRequest req){
+   public void Userjoin(HttpServletResponse resp, HttpServletRequest req, HttpSession session){
       
       String id = req.getParameter("id");
       String pwd = req.getParameter("pwd");
@@ -54,6 +59,7 @@ public class PKYController {
       createUser.put("email", email);
       
       createUser = usi.join(createUser);
+      
 
       HttpUtil.sendResponceToJson(resp, createUser);
    }
@@ -75,8 +81,8 @@ public class PKYController {
 //      userlogin.put("del_yn", del_yn);
 //      System.out.println(userlogin);
       HashMap<String, Object> Logindata = (HashMap<String, Object>) usi.login(userlogin);
-      
-      System.out.println(userlogin);
+      System.out.println("Logindata" + Logindata);
+      System.out.println("userlogin" + userlogin);
 //      session.setAttribute("id", Logindata.get("id")); //다른 페이지에서 로그인 데이터를 가져오기 위해  세팅한것 건들면 팀장님한테 뒤짐
 //      
 //      mav.addObject("loginuser", userlogin);
@@ -106,11 +112,12 @@ public class PKYController {
       HttpUtil.sendResponceToJson(resp, findiddata);
    }
    @RequestMapping("/logout")
-      public ModelAndView logout(ModelAndView mav, HttpSession session){
-         session.invalidate();
-         mav.setViewName("redirect:/main");
-         return mav;
-      }
+	public ModelAndView logout(ModelAndView mav, HttpSession session) {
+		session.invalidate();
+		mav.setViewName("redirect:/main");
+		return mav;
+	}
+   
    @RequestMapping(value="/updatepw", method = RequestMethod.POST)
    public void updatepw(HttpServletRequest req, HttpServletResponse resp){
       HashMap<String, Object> updatepw = HttpUtil.getParameterMap(req);

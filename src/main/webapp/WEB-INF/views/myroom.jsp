@@ -57,7 +57,7 @@
 	    });
 		
 		$("#logo").on("click", function(){
-			location.href = "main2";
+			location.href = "main";
 		});
 	
 		function createHtml() { // ul(부모) 태그 속에 li(자식) 태그 넣기 위한 함수
@@ -73,9 +73,7 @@
 				$(".ul-body").append(tag);
 			}
 			 if(data.length < 1){
-	            var tag = "<ul>"; 
-	            	tag += "<li>데이터가 없습니다.</li>";
-	            	tag += "</ul>";
+				 var tag = "<ul style='text-align:center;'>작업한 내역이 없습니다.</ul>";
 	            $(".ul-body").append(tag);
 	   		}  
 			 deleteButton();

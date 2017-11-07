@@ -35,7 +35,7 @@
 	    });
 		
 		$("#logo").on("click", function(){
-			location.href = "main2";
+			location.href = "main";
 		});
 		
 		function createqna(){

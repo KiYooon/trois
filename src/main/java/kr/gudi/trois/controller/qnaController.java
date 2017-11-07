@@ -83,7 +83,7 @@ public class qnaController {
 		if(user == null){
 			mav.setViewName("redirect:/main");
 		}else if(!(user.get("login").get("id")).equals("admin")) {
-			mav.setViewName("redirect:/main2");
+			mav.setViewName("redirect:/main");
 		}else{
 			HashMap<String, Object> param = new HashMap<String, Object>();
 	
