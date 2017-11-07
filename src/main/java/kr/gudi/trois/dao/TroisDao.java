@@ -79,5 +79,10 @@ public class TroisDao implements TroisDaoInterface {
 		return session.selectList("list.updateMyroom", param);
 	}
 
+	@Override
+	public HashMap<String, Object> selectEmail(HashMap<String, Object> param) {
+		return session.selectOne("list.emailSelect", param);
+	}
+
 
 }

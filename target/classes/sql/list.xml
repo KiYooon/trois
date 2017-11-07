@@ -94,4 +94,8 @@
 	<insert id="workOldInsert" parameterType="hashmap">
 		insert into work(ws_no, class1, src, indexs, date) values(#{ws_no}, #{class}, #{src}, #{index}, now())
 	</insert>
+	
+	<select id="emailSelect" parameterType="hashmap" resultType="hashmap">
+		select * from user where id = #{id} and email = #{email}
+	</select>
 </mapper>

@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import kr.gudi.trois.service.TroisServiceInterface;
+import kr.gudi.util.HttpUtil;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 
@@ -275,21 +276,27 @@ public class TroisController {
 			}
 			System.out.println(check);
 			if(check){
-				param.put("email", param.get("email"));
+				param.put("id", user.get("login").get("id"));
 				param = tsi.updateEmail(param);
+				HashMap<String, Object> emailMap = new HashMap<String, Object>();
+				emailMap.put("id", user.get("login").get("id"));
+				emailMap.put("email", req.getParameter("email"));
+				System.out.println(emailMap);
+				JSONObject jsonObject = new JSONObject();
+				jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectEmail(emailMap)));
+				mav.addObject("message", jsonObject.toString());
+				System.out.println(jsonObject);
+				mav.setViewName("json");
+				return mav;
 			}
-			if (user.get("login").get("id") == null) {
-				mav.setViewName("redirect:/main");
-			}else {
-				mav.setViewName("modify");
-			}
-	//		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
-	//		JSONObject jsonObject = new JSONObject();
-	//		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.updatePwd(param)));
-	//		mav.addObject("message", jsonObject.toString());
+//			if (user.get("login").get("id") == null) {
+//				mav.setViewName("redirect:/main");
+//			}else {
+//				mav.setViewName("modify");
+//			}
+			
 	//		
 	//		mav.setViewName("json");
-			return mav;	
 		}
 		return mav;
 	}

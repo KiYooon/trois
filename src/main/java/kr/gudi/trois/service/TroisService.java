@@ -110,6 +110,14 @@ public class TroisService implements TroisServiceInterface {
 		return map;
 	}
 
+	@Override
+	public HashMap<String, Object> selectEmail(HashMap<String, Object> param) {
+		HashMap<String, Object> data2 = (HashMap<String, Object>) tdi.selectEmail(param);
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		map.put("showemail", data2);
+		return map;
+	}
+
 	
 
 	

@@ -129,19 +129,18 @@
 	    	}else if(regex.test(email) == false) {
 				alert("잘못된 이메일 형식입니다.");
 			}else{
-	    	
 			    $.ajax({
 					type : "post",
 					url : "modifyemail",
-					data : {
-						"email" : email
-					},
-					datatype : "json"
-		
-				}).done(function(result) {
-					console.log(result);
+					data : {"email" : email}
+				}).done(function(d) {
+					var result = JSON.parse(d);
 					email = result.email;
 					console.log(email);
+					alert("성공" + email);
+				}).fail(function(d){
+					alert("실패");
+					console.log(result);
 				});
 			
 			}
@@ -252,7 +251,7 @@
 		<div class="modal-content">
 			<span class="close2">&times;</span>
 			<h2>이메일 변경</h2>
-			<form action="" method="post">
+			<form method="post">
 				<ul>
 					<li>email : <input type="email" id="email" name="email" placeholder="입력하세요" pattern="[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*" maxlength="50"></li>
 					<li class="inline-block"><button type="submit" id="okemail">확인</button></li>
