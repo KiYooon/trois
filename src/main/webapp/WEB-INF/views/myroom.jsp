@@ -157,9 +157,7 @@
 		function deleteButton(){
 			$(".ul-body .deletebutton").off().on("click", function(){
 				var index = $(".ul-body .deletebutton").index(this);
-				console.log("index : " + index);
 				var no = data[index].no;
-				console.log("no : " + no);
 				$.ajax({
 					type : "post", // post 방식으로 통신 요청
 					url : "myroomDataDelete", // Spring에서 만든 URL 호출 
@@ -177,9 +175,7 @@
 		function updateButton(){
 			$(".ul-body .updatebutton").off().on("click", function(){
 				var index = $(".ul-body .updatebutton").index(this);
-				console.log("index : " + index);
 				var no = data[index].no;
-				console.log("no : " + no);
 				location.href = "workSelect?ws_no=" + no;
 // 				$.ajax({
 // 					type : "post", // post 방식으로 통신 요청

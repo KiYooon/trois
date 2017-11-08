@@ -126,7 +126,6 @@
 					}
 				}).done(function(result) {
 					findid = result.findid;
-					console.log(findid);
 					if(findid == null){
 						alert("아이디가 없습니다. 정확한 정보를 입력해 주세요.")
 					}else{
@@ -188,7 +187,6 @@
 					"pw" : pw
 				}
 			}).done(function(result) {
-				//             console.log(result);
 				$(".modal-content").html(tr5);
 				$("#okpw").off().on("click", function() {
 					location.reload(true);
@@ -255,7 +253,6 @@
 				}
 
 			}).done(function(result) {
-				//             console.log(result.join);
 				alert("회원가입이 성공하였습니다!");
 
 				$(".modal-content2").html(tr8);
@@ -290,9 +287,7 @@
 				//                "del_yn" : del_yn
 				}
 			}).done(function(result) {
-				console.log(result);
 				loging = result.login;
-				console.log(loging);
 				if (loging != null) {
 					if (id == "admin" && pwd == "1234") {
 						location.href = "admin";
@@ -318,8 +313,6 @@
 					"pwd" : pwd
 				}
 			}).done(function(result) {
-				//             console.log(result);
-				//             console.log(result.login);
 				if (result.login != null) {
 					location.reload(true);
 				} else {
@@ -348,7 +341,6 @@
 				datatype : "json"
 
 			}).done(function(result) {
-				console.log(result.checkid);
 				if (result.checkid == null) {
 					alert("사용 가능한 아이디 입니다.");
 					$("#ipjoin").attr("disabled", false);
@@ -365,7 +357,6 @@
 		function init(){
 			
 			$.post("LoginCheck").done(function(result){
-				console.log("init()", result);
 				if(result.status == 1){
 					// 로그인 되었을때 사용
 					$(".head-3").html('<button type="button" id="myroom">마이룸</button><button type="button" id="logout">로그아웃</button>');

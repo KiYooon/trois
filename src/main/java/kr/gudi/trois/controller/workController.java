@@ -31,8 +31,6 @@ public class workController {
 @RequestMapping(value="/work")
 public ModelAndView question(ModelAndView mav, HttpSession session) {
 	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
-//	HashMap<String, Object> param = new HashMap<String, Object>();
-//	param.put("id", user.get("login").get("id"));
 	if(user == null){
 		mav.setViewName("redirect:/main");
 	}else {
@@ -56,7 +54,6 @@ public ModelAndView workSelect(ModelAndView mav, HttpSession session) {
 	HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
 	if(user == null){
 		mav.setViewName("redirect:/main");
-//		mav.addObject("id", "");
 	}else{
 		mav.addObject("id", user.get("login").get("id"));
 		mav.setViewName("work2");

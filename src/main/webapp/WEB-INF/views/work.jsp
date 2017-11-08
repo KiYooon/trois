@@ -75,7 +75,6 @@ $(document).ready(function() {
           event.preventDefault(); // 자동으로 submit 막기!
           var formData = new FormData();
           formData.append('file', imgdown);
-          console.log(formData);
      });
 	
 	$("#btn3").click(function(){
@@ -100,13 +99,11 @@ $(document).ready(function() {
 // 				ws_src = addItems[i].src;
 // 				ws_index = addItems[i].index;
 // {"no": no, "class": ws_class, "src": ws_src, "index": ws_index}
-						console.log(addItems, JSON.stringify(addItems));
 				    	$.ajax({
 							type : "post", // post 방식으로 통신 요청
 							url : "workInsert", // Spring에서 만든 URL 호출
 							data : {list: JSON.stringify(addItems), title: $("#text").val()} // 파라메터로 사용할 변수 값 객체 넣기
 						}).done(function(result) { // 비동기식 데이터 가져오기
-							console.log(result);
 							if(result.state == 1){
 								location.href = "myroom";
 							}else{
@@ -129,7 +126,6 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-	console.log(ev.target);
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
@@ -138,16 +134,13 @@ var addItems = [];
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-//     console.log($(".big1 div").index(ev.target));
     $.each($("#active img"), function( index, value ) {
     	if(data.substr(data.indexOf("resources"), data.length) == $(value).attr("src")) { 
-    		console.log( index, $(value).attr("class"), $(value).attr("src") );
     		$(ev.target).append('<img id="item' + $(".big1 div").index(ev.target) + '" class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
     		var i = $(".big1 div").index(ev.target);
     		addItems.push({"id": 'item' + i,"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":i});
     	}
     });
-    console.log(addItems);
 }
 
 function drop2(ev) {
@@ -155,12 +148,10 @@ function drop2(ev) {
     var data = ev.dataTransfer.getData("text");
     for(var i = 0; i < addItems.length; i++){
 		if(data == addItems[i].id){
-			console.log(data.substr(data.indexOf("resources"), data.length), addItems[i].src, addItems[i].index);
 			$(".big1 div").eq(addItems[i].index).empty();
 			addItems.splice(i, 1);
 		}    	
     }
-    console.log(addItems);
 }
 
 

@@ -72,7 +72,6 @@ public class TroisController {
 			param.put("title", req.getParameter("title"));
 			param.put("contents", req.getParameter("contents"));
 			param.put("answer", req.getParameter("answer"));
-			System.out.println(param);
 			// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 			JSONObject jsonObject = new JSONObject();
 			jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.myqnaDetail(param)));
@@ -124,7 +123,6 @@ public class TroisController {
 	public ModelAndView myroomDataDelete(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
-		System.out.println(param);
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.deleteMyroom(param)));
@@ -138,7 +136,6 @@ public class TroisController {
 	public ModelAndView myroomDataUpdate(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
-		System.out.println(param);
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.updateMyroom(param)));
@@ -182,7 +179,6 @@ public class TroisController {
 	public ModelAndView adminDataDelete(ModelAndView mav, HttpServletRequest req){
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("no", Integer.parseInt(req.getParameter("no")));
-		System.out.println(param);
 		// 디비에서 받아온 hashmap 데이터를 json으로 변경하여 model 값으로 넣어 준다.
 		JSONObject jsonObject = new JSONObject();
 		jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.deleteAdmin(param)));
@@ -218,17 +214,12 @@ public class TroisController {
 			param.put("id", user.get("login").get("id"));
 			param.put("pwd", req.getParameter("newpwd1"));
 			param.put("pwd2", req.getParameter("newpwd2"));
-			System.out.println(req.getParameter("newpwd1"));
-			System.out.println(req.getParameter("newpwd2"));
 			param.put("id", user.get("login").get("id"));
-			System.out.println(user.get("login").get("id"));
 			boolean check = true;
 			if (("").equals(param.get("pwd"))) {
-				System.out.println("1 비번이 없다.");
 				check = false;
 			}
 			if (("").equals(param.get("pwd2"))) {
-				System.out.println("2 비번이 없다.");
 				check = false;
 			}
 			if (param.get("pwd2").equals(param.get("pwd"))) {
@@ -238,7 +229,6 @@ public class TroisController {
 					param.put("pwd", null);
 				}
 				param = tsi.updatePwd(param);
-				System.out.println(param);
 				if (user.get("login").get("id") == null) {
 					mav.setViewName("redirect:/main");
 				}else {
@@ -271,21 +261,17 @@ public class TroisController {
 			param.put("id", user.get("login").get("id"));
 			boolean check = true;
 			if (("").equals(param.get("email"))) {
-				System.out.println("이메일이 없습니다.");
 				check = false;
 			}
-			System.out.println(check);
 			if(check){
 				param.put("id", user.get("login").get("id"));
 				param = tsi.updateEmail(param);
 				HashMap<String, Object> emailMap = new HashMap<String, Object>();
 				emailMap.put("id", user.get("login").get("id"));
 				emailMap.put("email", req.getParameter("email"));
-				System.out.println(emailMap);
 				JSONObject jsonObject = new JSONObject();
 				jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectEmail(emailMap)));
 				mav.addObject("message", jsonObject.toString());
-				System.out.println(jsonObject);
 				mav.setViewName("json");
 				return mav;
 			}

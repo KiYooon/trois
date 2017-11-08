@@ -136,11 +136,9 @@
 				}).done(function(d) {
 					var result = JSON.parse(d);
 					email = result.email;
-					console.log(email);
 					alert("성공" + email);
 				}).fail(function(d){
 					alert("실패");
-					console.log(result);
 				});
 			
 			}

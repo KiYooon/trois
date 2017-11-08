@@ -17,7 +17,6 @@
 <script type="text/javascript" src="/trois/resources/js/html2canvas.js"></script>
 <script>
 var ws_no = <%=ws_no%>;
-console.log(ws_no);
 var ws_class = "";
 var ws_src = "";
 var ws_index = "";
@@ -31,7 +30,6 @@ $(document).ready(function() {
 		url : "workSelectData", // Spring에서 만든 URL 호출
 		data : {ws_no: ws_no} // 파라메터로 사용할 변수 값 객체 넣기
 	}).done(function(result) { // 비동기식 데이터 가져오기
-		console.log(result);
 		addItems2 = result.list;
 		$("#text").val(result.workSave.title);
 		createItems();
@@ -41,11 +39,9 @@ $(document).ready(function() {
 	
 	function createItems(){
 		for(var i = 0; i < addItems2.length; i++){
-			console.log(addItems[i]);
 			$(".big1 div").eq(addItems2[i].indexs).append('<img id="item' + addItems2[i].indexs + '" class="' + addItems2[i].class1 + '" draggable="true" ondragstart="drag(event)" src="' + addItems2[i].src + '">');
 			addItems.push({"id": 'item' + addItems2[i].indexs,"class1": addItems2[i].class1, "src": addItems2[i].src, "index":addItems2[i].indexs});
 		}
-		console.log(addItems);
 	}
 	
 	$(".tab_sub2,.tab_sub3").hide();
@@ -105,7 +101,6 @@ $(document).ready(function() {
           event.preventDefault(); // 자동으로 submit 막기!
           var formData = new FormData();
           formData.append('file', imgdown);
-          console.log(formData);
      });
 	
 
@@ -122,13 +117,11 @@ $(document).ready(function() {
 	    	if((addItems == null) || ($("#text").val() == "")){
 	    		alert("제목이나 도구를 확인해 주세요.");
 	    	}else if((addItems != null) && ($("#text").val() != "")){
-					console.log(addItems, JSON.stringify(addItems));
 			    	$.ajax({
 						type : "post", // post 방식으로 통신 요청
 						url : "workUpdate", // Spring에서 만든 URL 호출
 						data : {list: JSON.stringify(addItems), title: $("#text").val(), ws_no: ws_no} // 파라메터로 사용할 변수 값 객체 넣기
 					}).done(function(result) { // 비동기식 데이터 가져오기
-						console.log(result);
 						if(result.state == 1){
 							location.href = "myroom";
 						}else{
@@ -150,7 +143,6 @@ function allowDrop(ev) {
 }
 
 function drag(ev) {
-	console.log(ev.target);
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
@@ -159,26 +151,21 @@ function drop(ev) {
     var data = ev.dataTransfer.getData("text");
     $.each($("#active img"), function( index, value ) {
     	if(data.substr(data.indexOf("resources"), data.length) == $(value).attr("src")) { 
-    		console.log( index, $(value).attr("class"), $(value).attr("src") );
     		$(ev.target).append('<img id="item' + $(".big1 div").index(ev.target) + '" class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
     		addItems.push({"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":$(".big1 div").index($(ev.target))});
     	}
     });
-    console.log(addItems);
 }
 
 function drop2(ev) {
 	ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
-    console.log(data);
     for(var i = 0; i < addItems.length; i++){
 		if(data == addItems[i].id){
-			console.log(data.substr(data.indexOf("resources"), data.length), addItems[i].src, addItems[i].index);
 			$(".big1 div").eq(addItems[i].index).empty();
 			addItems.splice(i, 1);
 		}    	
     }
-    console.log(addItems);
 }
 
 
