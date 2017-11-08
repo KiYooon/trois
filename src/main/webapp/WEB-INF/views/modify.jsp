@@ -132,7 +132,6 @@
 				return false;
 	    	}
 	    	
-			console.log(email);
 			
 		    $.post("modifyemail",{"email" : email})
 		     .done(function(d) {

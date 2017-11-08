@@ -24,7 +24,6 @@ public class TroisService implements TroisServiceInterface {
 		HashMap<String, Object> totCnt = tdi.totCntMyqna(param);
 		
 		map.put("totCnt", totCnt);
-		System.out.println("service map: "+ map);
 		return map;
 	}
 

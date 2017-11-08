@@ -92,6 +92,7 @@
 			$("span").off().on("click", function() {
 				$("#myModal").css("display", "none");
 				$("#myModal2").css("display", "none");
+				location.reload(true);
 			});
 		}
 

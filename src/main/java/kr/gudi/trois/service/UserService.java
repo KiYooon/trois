@@ -44,15 +44,12 @@ public class UserService implements UserServiceInterface {
    public HashMap<String, Object> findid(HashMap<String, Object> param){
       map = new HashMap<String, Object>();
       map.put("findid", udi.findid(param));
-      System.out.println("service" + map);
       return map;
    }
    @Override
    public HashMap<String, Object> updatepw(HashMap<String, Object> param){
       map = new HashMap<String, Object>();
-      System.out.println("service : "+ param);
       map.put("updatepw", udi.updatepw(param));
-      System.out.println("service param : "+ map);
       return map;
    }
 }

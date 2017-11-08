@@ -29,7 +29,6 @@ public class workService implements workServiceInterface {
 			JSONArray jsonArray = JSONArray.fromObject(param.get("list").toString());
 			for(int i = 0; i < jsonArray.size(); i++){
 				JSONObject jo = jsonArray.getJSONObject(i);
-				System.out.println(jsonArray.getJSONObject(i));
 				HashMap<String, Object> data = new HashMap<String, Object>(); 
 				data.put("ws_no", 62);
 				data.put("class", jo.getString("class1"));
@@ -64,7 +63,6 @@ public class workService implements workServiceInterface {
 			JSONArray jsonArray = JSONArray.fromObject(param.get("list").toString());
 			for(int i = 0; i < jsonArray.size(); i++){
 				JSONObject jo = jsonArray.getJSONObject(i);
-				System.out.println(jsonArray.getJSONObject(i));
 				HashMap<String, Object> data = new HashMap<String, Object>(); 
 				data.put("ws_no", param.get("ws_no"));
 				data.put("class", jo.getString("class1"));
