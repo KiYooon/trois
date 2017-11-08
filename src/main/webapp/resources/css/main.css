@@ -9,6 +9,9 @@ body{
 p{
     margin: 0;
 }
+.trois{
+	min-width: 1500px;
+}
 .container{
     margin: 0;
     padding: 0;

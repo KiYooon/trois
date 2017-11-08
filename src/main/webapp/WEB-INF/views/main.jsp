@@ -294,12 +294,13 @@
 						location.href = "admin";
 					} else if (loging.del_yn == "n") {
 						alert("탈퇴된 회원입니다.");
-					} else {
+					}else {
 						location.href = "main";
 					}
 				} else {
 					alert("아이디와 비밀번호를 확인하세요.");
-					location.reload(true);
+// 					location.reload(true);
+					location.href = 'logout';
 				}
 			});
 		}
@@ -356,7 +357,6 @@
 		});
 		
 		function init(){
-			
 			$.post("LoginCheck").done(function(result){
 				if(result.status == 1){
 					// 로그인 되었을때 사용
@@ -389,6 +389,7 @@
 </script>
 </head>
 <body>
+<div class="trois">
 	<div class="container">
 		<header>
 			<div class="head-1">
@@ -513,5 +514,6 @@
 			<br> Copyright (c) 2017 Trois all rights reserved. Trois는 안전하게 운영중입니다.</p>
 		</footer>
 	</div>
+</div>
 </body>
 </html>

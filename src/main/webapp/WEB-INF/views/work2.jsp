@@ -64,9 +64,13 @@ $(document).ready(function() {
 	    modal.style.display = "none";
 	}
 	
+	$("#forA").hide();
+	;;;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	$("#btn1").off().on("click", function(){
+		
 		if(confirm("이미지 저장을 하시겠습니까?")){
 			$("#btn1").hide();
+			
 			html2canvas($("#main"), {
 				onrendered: function(canvas){
 					
@@ -88,9 +92,11 @@ $(document).ready(function() {
            title = "img.png";
         } 
         var html = '<a href="' + imgdown + '" download="' + title + '">다운로드</a>';
+        $("#forA").show();
         $("#forA").html(html);
+        
         $("#forA a").on("click", function(){
-        	$("#forA a").remove();
+        	$("#forA").hide();
         	$("#btn1").show();
         });
      }

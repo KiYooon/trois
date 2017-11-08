@@ -107,10 +107,11 @@ body {
     width: 100px;
 }
 .side{ /* 왼쪽 사이드 */
-    width: 20%;
+    width: 20vw;
     float: left;
     display: inline-block;
     height: 70%;
+    min-width: 350px;
 }
 /* .side2{ */
 /* 	width: 20%; */
@@ -393,5 +394,15 @@ li{
 
 a{
 	text-decoration:none;
-	color: black;
+	color: white;
+	border-radius: 5px;
+}
+#forA {
+	background-color : #3297D9;
+	width: 112px;
+	height: 34px;
+	text-align: center;
+	padding-top : 12px;
+	margin-right: 5px;
+	border-radius: 5px;
 }

@@ -36,7 +36,7 @@ public class PKYController {
 	   HashMap<String, Object> map = new HashMap<String, Object>();
 	   if(user == null){
 		   map.put("status", 0);
-	   }else{
+	   }else {
 		   map.put("status", 1);
 	   }
 	   HttpUtil.sendResponceToJson(resp, map);
@@ -69,18 +69,13 @@ public class PKYController {
       
       String id = req.getParameter("id");
       String pwd = req.getParameter("pwd");
-//      String del_yn = req.getParameter("del_yn");
-      
       
       HashMap<String, Object> userlogin = new HashMap<String, Object>();
       
       userlogin.put("id", id);
       userlogin.put("pwd", pwd);
-//      userlogin.put("del_yn", del_yn);
+      
       HashMap<String, Object> Logindata = (HashMap<String, Object>) usi.login(userlogin);
-//      session.setAttribute("id", Logindata.get("id")); //다른 페이지에서 로그인 데이터를 가져오기 위해  세팅한것 건들면 팀장님한테 뒤짐
-//      
-//      mav.addObject("loginuser", userlogin);
       session.setAttribute("user", Logindata);
       
       HttpUtil.sendResponceToJson(resp, Logindata);

@@ -11,7 +11,9 @@
 </head>
 <script type="text/javascript" src="/trois/resources/js/html2canvas.js"></script>
 <script>
+
 $(document).ready(function() {
+	
 	
 	var ws_no = 1;
 	var ws_class = "";
@@ -37,10 +39,13 @@ $(document).ready(function() {
 	span.onclick = function() {
 	    modal.style.display = "none";
 	}
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                  
+	$("#forA").hide();
+	;;;;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     
 	$("#btn1").off().on("click", function(){
+		
 		if(confirm("이미지 저장을 하시겠습니까?")){
 			$("#btn1").hide();
+			
 			html2canvas($("#main"), {
 				onrendered: function(canvas){
 					
@@ -62,9 +67,11 @@ $(document).ready(function() {
            title = "img.png";
         } 
         var html = '<a href="' + imgdown + '" download="' + title + '">다운로드</a>';
+        $("#forA").show();
         $("#forA").html(html);
+        
         $("#forA a").on("click", function(){
-        	$("#forA a").remove();
+        	$("#forA").hide();
         	$("#btn1").show();
         });
      }
@@ -800,7 +807,9 @@ function drop2(ev) {
 					<button class="btn" id="btn3" type="submit">
 						<img class="btn-img" src="resources/work/exit.PNG">
 					</button>
-					<div id="forA"></div>
+					<div id="forA">
+						
+					</div>
 				</div>
 			</div>
 		</div>
