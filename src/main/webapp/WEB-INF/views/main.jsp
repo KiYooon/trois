@@ -294,6 +294,7 @@
 						location.href = "admin";
 					} else if (loging.del_yn == "n") {
 						alert("탈퇴된 회원입니다.");
+						location.href = 'logout';
 					}else {
 						location.href = "main";
 					}
