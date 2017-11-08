@@ -5,7 +5,7 @@
 <mapper namespace="list">
 	<!-- MyQna(본인만) 리스트 목록 불러오기 -->
 	<select id="selectMyqna" parameterType="hashmap" resultType="hashmap">
-		select no, title, substr(contents, 1, 10) as contents, substr(date, 1, 10) as date, substr(answer, 1, 10) as answer, answercheck 
+		select no, substr(title, 1, 10) as title, substr(contents, 1, 10) as contents, substr(date, 1, 10) as date, substr(answer, 1, 10) as answer, answercheck 
 		from qna where del_yn = 'y' and id = #{id} limit #{start}, #{viewRow}
 	</select>
 	
@@ -32,7 +32,7 @@
 	
 	<!-- Admin(전부) 리스트 목록 불러오기 -->
 	<select id="selectAdmin" parameterType="hashmap" resultType="hashmap">
-		select no, title, substr(contents, 1, 10) as contents, substr(date, 1, 10) as date, id, substr(answer, 1, 10) as answer, answercheck 
+		select no, substr(title, 1, 5) as title, substr(contents, 1, 5) as contents, substr(date, 1, 10) as date, id, substr(answer, 1, 10) as answer, answercheck 
 		from qna where del_yn = 'y' limit #{start}, #{viewRow}
 	</select>
 	

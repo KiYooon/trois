@@ -32,6 +32,7 @@
 	float: left;
 	border-bottom: 1px solid green;
 	border-right: 1px solid green;
+	cursor: pointer;
 }
 .button-list button.chk {
     color: #ece4d7;

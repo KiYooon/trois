@@ -13,7 +13,6 @@
 <script type="text/javascript" src="/trois/resources/js/main.js"></script>
 <script>
 	$(document).ready(function(){
-		
 		$("#email").attr("pattern", "[a-zA-Z0-9]+[@][a-zA-Z0-9]+[.]+[a-zA-Z]+[.]*[a-zA-Z]*");
 		
 		var id = "";
@@ -290,7 +289,7 @@
 			}).done(function(result) {
 				loging = result.login;
 				if (loging != null) {
-					if (id == "admin" && pwd == "1234") {
+					if (id == "admin" && pwd == "trois3333") {
 						location.href = "admin";
 					} else if (loging.del_yn == "n") {
 						alert("탈퇴된 회원입니다.");
