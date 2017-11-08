@@ -96,6 +96,6 @@
 	</insert>
 	
 	<select id="emailSelect" parameterType="hashmap" resultType="hashmap">
-		select * from user where id = #{id} and email = #{email}
+		select email from user where id = #{id} and email = #{email}
 	</select>
 </mapper>

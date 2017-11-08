@@ -249,42 +249,36 @@ public class TroisController {
 	}
 	
 	@RequestMapping(value = "/modifyemail", method=RequestMethod.POST)
-	public ModelAndView modifyemail(ModelAndView mav, HttpServletRequest req, HttpSession session){
+	public void modifyemail(HttpServletRequest req, HttpServletResponse resp, HttpSession session){
+		
 		HashMap<String, HashMap<String, Object>> user = (HashMap<String, HashMap<String, Object>>) session.getAttribute("user");
+		HashMap<String, Object> param = HttpUtil.getParameterMap(req);
+		HashMap<String, Object> emailMap = new HashMap<String, Object>();
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		
 		if(user == null){
-			mav.setViewName("redirect:/main");
+			map.put("state", 0);
 		}else if((user.get("login").get("id")).equals("admin")){
-			mav.setViewName("redirect:/admin");
+			map.put("state", 1);
 		}else {
-			HashMap<String, Object> param = new HashMap<String, Object>();
-			param.put("email", req.getParameter("email"));
-			param.put("id", user.get("login").get("id"));
 			boolean check = true;
 			if (("").equals(param.get("email"))) {
 				check = false;
 			}
+			param.put("id", user.get("login").get("id"));
 			if(check){
-				param.put("id", user.get("login").get("id"));
-				param = tsi.updateEmail(param);
-				HashMap<String, Object> emailMap = new HashMap<String, Object>();
-				emailMap.put("id", user.get("login").get("id"));
-				emailMap.put("email", req.getParameter("email"));
-				JSONObject jsonObject = new JSONObject();
-				jsonObject = JSONObject.fromObject(JSONSerializer.toJSON(tsi.selectEmail(emailMap)));
-				mav.addObject("message", jsonObject.toString());
-				mav.setViewName("json");
-				return mav;
+				map = tsi.updateEmail(param);
+				if(Integer.parseInt(map.get("email").toString()) == 0){
+					map.put("state", 2);
+				}else {
+					emailMap.put("id", user.get("login").get("id"));
+					emailMap.put("email", param.get("email"));
+					map = tsi.selectEmail(emailMap);
+					map.put("state", 3);					
+				}
 			}
-//			if (user.get("login").get("id") == null) {
-//				mav.setViewName("redirect:/main");
-//			}else {
-//				mav.setViewName("modify");
-//			}
-			
-	//		
-	//		mav.setViewName("json");
 		}
-		return mav;
+		HttpUtil.sendResponceToJson(resp, map);
 	}
 	
 	@RequestMapping(value = "/deleteuser", method=RequestMethod.POST)
