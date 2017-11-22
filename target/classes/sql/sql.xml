@@ -2,34 +2,12 @@
 <!DOCTYPE mapper
   PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" 
   "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="sql">
+<mapper namespace="test">
    <select id="test" resultType="hashmap">
       select '테스트' as data
    </select>
    
-   <select id="user" resultType="hashmap">
-      select * from user
-   </select>
    
-   <select id="login" resultType="hashmap" parameterType="hashmap">
-      select * from user where id = #{id} and pwd = #{pwd}
-   </select>
-   
-   <insert id="join" parameterType="hashmap">
-      insert into user (id, name, pwd, email, joindate) values (#{id}, #{name}, #{pwd}, #{email}, now())
-   </insert>
-   
-   <select id="checkid" resultType="hashmap" parameterType="hashmap">
-      select * from user where id = #{id}
-   </select>
-   
-   <select id="findid" resultType="hashmap" parameterType="hashmap">
-      select id from user where name = #{name} and email = #{email}
-   </select>
-   
-   <update id="updatepw" parameterType="hashmap">
-      update user set pwd = #{pw} where id=#{id} and name = #{name}
-   </update>
   
    
 </mapper>

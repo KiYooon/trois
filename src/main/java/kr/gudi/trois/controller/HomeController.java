@@ -56,10 +56,10 @@ public class HomeController {
    @Autowired
    TestServiceInterface tsi;
    
-   @RequestMapping(value = "/Test", method = RequestMethod.GET)
-   public void test(HttpServletResponse resp) {
-      HashMap<String, Object> result = tsi.test();
-      // 결과값을 JSON으로 출력하기.
-      HttpUtil.sendResponceToJson(resp, result);
-   } 
+//   @RequestMapping(value = "/Test", method = RequestMethod.GET)
+//   public void test(HttpServletResponse resp) {
+//      HashMap<String, Object> result = tsi.test();
+//      // 결과값을 JSON으로 출력하기.
+//      HttpUtil.sendResponceToJson(resp, result);
+//   } 
 }

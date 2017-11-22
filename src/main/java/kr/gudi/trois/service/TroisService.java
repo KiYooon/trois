@@ -116,9 +116,4 @@ public class TroisService implements TroisServiceInterface {
 		map.put("showemail", data2);
 		return map;
 	}
-
-	
-
-	
-
 }
