@@ -33,13 +33,13 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import kr.gudi.trois.controller.TestController;
+import kr.gudi.trois.controller.TroisController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestDeleteUser {
 
-	HashMap<String, Object> param;
 	ModelAndView mav;
 	
 	HttpServletRequest req = new HttpServletRequest() {
@@ -474,24 +474,13 @@ public class TestDeleteUser {
 		}
 	};
 	
-	@Before
-	public void init(){
-		param = new HashMap<String, Object>();
-		param.put("id", 5);
-		
-		req.setAttribute("no", 5);
-		session.setAttribute("user", "a");
-		
-		mav = new ModelAndView();
-	}
-	
-	
+
 	@Autowired
-	TestController tc;
+	TroisController tc;
 
 	@Test
 	public void test3Controller(){
-		ModelAndView mav = tc.deleteuser(this.mav, req, session);
+		ModelAndView mav = tc.deleteuser(new ModelAndView(), req, session);
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 

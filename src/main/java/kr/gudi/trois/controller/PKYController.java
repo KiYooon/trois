@@ -22,23 +22,23 @@ public class PKYController {
 	@Autowired
 	UserServiceInterface usi;
 
-//	@RequestMapping(value = "/main") // 메인페이지
-//	public ModelAndView main(ModelAndView mav) {
-//		mav.setViewName("main");
-//		return mav;
-//	}
+	@RequestMapping(value = "/main") // 메인페이지
+	public ModelAndView main(ModelAndView mav) {
+		mav.setViewName("main");
+		return mav;
+	}
 
-//	@RequestMapping(value = "/LoginCheck", method = RequestMethod.POST)
-//	public void LoginCheck(HttpServletResponse resp, HttpSession session) {
-//		HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
-//		HashMap<String, Object> map = new HashMap<String, Object>();
-//		if (user == null) {
-//			map.put("status", 0);
-//		} else {
-//			map.put("status", 1);
-//		}
-//		HttpUtil.sendResponceToJson(resp, map);
-//	}
+	@RequestMapping(value = "/LoginCheck", method = RequestMethod.POST)
+	public void LoginCheck(HttpServletResponse resp, HttpSession session) {
+		HashMap<String, Object> user = (HashMap<String, Object>) session.getAttribute("user");
+		HashMap<String, Object> map = new HashMap<String, Object>();
+		if (user == null) {
+			map.put("status", 0);
+		} else {
+			map.put("status", 1);
+		}
+		HttpUtil.sendResponceToJson(resp, map);
+	}
 
 	@RequestMapping(value = "/Userjoin", method = RequestMethod.POST)
 	public void Userjoin(HttpServletResponse resp, HttpServletRequest req, HttpSession session) {

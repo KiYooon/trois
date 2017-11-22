@@ -31,19 +31,20 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.ModelAndViewDefiningException;
 
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import kr.gudi.trois.controller.TestController;
+import kr.gudi.trois.controller.TroisController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMyroomDelete {
-
-	HashMap<String, Object> param;
+	
 	ModelAndView mav;
 	
 	HttpServletRequest req = new HttpServletRequest() {
@@ -478,23 +479,12 @@ public class TestMyroomDelete {
 		}
 	};
 	
-	@Before
-	public void init(){
-		param = new HashMap<String, Object>();
-		param.put("no", 2);
-		
-		req.setAttribute("no", 2);
-		session.setAttribute("user", "test");
-		
-		mav = new ModelAndView();
-	}
-	
 	@Autowired
-	TestController tc;
+	TroisController tc;
 
 	@Test
 	public void test3Controller(){
-		ModelAndView mav = tc.myroomDataDelete(this.mav, req);
+		ModelAndView mav = tc.myroomDataDelete(new ModelAndView(), req);
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 

@@ -240,7 +240,7 @@
 			<form action="modifypwd" method="post">
 				<ul>
 					<li>비밀번호 : <input type="password" id="newpwd1" name="newpwd1" placeholder="입력하세요" maxlength="50"></li>
-					<li>비밀번호 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요" maxlength="50"></li>
+					<li>비밀번호 확인 : <input type="password" id="newpwd2" name="newpwd2" placeholder="입력하세요" maxlength="50"></li>
 					<li class="inline-block"><button type="submit" id="okpwd">확인</button></li>
 					<li class="inline-block"><button type="button" id="nopwd">취소</button></li>
 				</ul>

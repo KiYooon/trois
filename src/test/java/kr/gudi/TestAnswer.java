@@ -41,7 +41,6 @@ import kr.gudi.trois.controller.TestController;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestAnswer {
 
-	HashMap<String, Object> param;
 	ModelAndView mav;
 
 	HttpSession session = new HttpSession() {
@@ -475,35 +474,19 @@ public class TestAnswer {
 		}
 	};
 
-	@Before
-	public void init() {
-		param = new HashMap<String, Object>();
-		param.put("answer", "너무해..");
-
-		req.setAttribute("title", "너무해..");
-
-		session.setAttribute("user", "test");
-
-		mav = new ModelAndView();
-	}
-
 	@Autowired
 	TestController tc;
 
 	@Test
 	public void questionTest() {
-		ModelAndView mav = tc.questionRead(this.mav, req, session);
+		ModelAndView mav = tc.answerRead(new ModelAndView(), req, session);
 
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString();
 
-		System.out.println(message);
-
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
-		System.out.println(element);
-
 		JsonObject jobject = element.getAsJsonObject();
-		System.out.println(jobject);
+		assertEquals(1, jobject.get("updateqna").getAsInt());
 	}
 }

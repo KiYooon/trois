@@ -61,7 +61,7 @@
 	</update>
 	
 	<select id="myqnaDetail" parameterType="hashmap" resultType="hashmap">
-		select title, contents, answer from qna where no = #{no}
+		select no, id, title, contents, answer from qna where no = #{no}
 	</select>
 	
 	<insert id="worksaveInsert" parameterType="hashmap">
@@ -95,7 +95,13 @@
 		insert into work(ws_no, class1, src, indexs, date) values(#{ws_no}, #{class}, #{src}, #{index}, now())
 	</insert>
 	
-	<select id="emailSelect" parameterType="hashmap" resultType="hashmap">
-		select email from user where id = #{id} and email = #{email}
-	</select>
+	<insert id="insertqna" parameterType="hashmap">
+		insert into qna (title, contents, id, date)
+		values (#{title}, #{contents}, #{id}, now())
+	</insert>
+	
+	<update id="updateqna" parameterType="hashmap">
+		update qna set answer = #{answer}, answercheck = '답변완료'
+		where no = #{no}
+	</update>
 </mapper>

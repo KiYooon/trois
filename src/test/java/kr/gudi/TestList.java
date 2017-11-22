@@ -44,7 +44,9 @@ public class TestList {
 
 	int size = 10;
 	int tot = 56;
+	
 	ModelAndView mav;
+	
 	HttpSession session = new HttpSession() {
 		
 		@Override
@@ -486,17 +488,20 @@ public class TestList {
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 
-		System.out.println("message : " + message);
+		System.out.println(message);
+		
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
-		System.out.println("element : " + element);
+		System.out.println(element);
+		
 		JsonObject jobject = element.getAsJsonObject();
 		JsonArray list = jobject.get("data").getAsJsonArray();
 		assertEquals(size, list.size());
-		System.out.println("list : " + list);
+		System.out.println(list);
+		
 		JsonObject totCnt = jobject.get("totCnt").getAsJsonObject();
 		assertEquals(tot, Integer.parseInt(totCnt.get("tot").toString()));
-		System.out.println("totCnt : " + totCnt);
+		System.out.println(totCnt);
 	}
 
 }

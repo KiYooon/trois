@@ -4,6 +4,7 @@ import static org.junit.Assert.*;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
 import java.security.Principal;
 import java.util.Enumeration;
@@ -14,8 +15,10 @@ import java.util.Map;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletInputStream;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 
@@ -26,124 +29,25 @@ import org.junit.runners.MethodSorters;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+import org.springframework.test.web.servlet.MvcResult;
 import org.springframework.web.servlet.ModelAndView;
 
+import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import kr.gudi.trois.controller.TestController;
+import kr.gudi.trois.controller.TroisController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations = { "file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml",
       "file:src/main/webapp/WEB-INF/spring/root-context.xml" })
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestEmailUpdate {
+public class TestModifyEmail {
 
-	HashMap<String, Object> param;
+	ModelAndView mav;
 	
-	HttpSession session = new HttpSession() {
-		
-		@Override
-		public void setMaxInactiveInterval(int interval) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void setAttribute(String name, Object value) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void removeValue(String name) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void removeAttribute(String name) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public void putValue(String name, Object value) {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public boolean isNew() {
-			// TODO Auto-generated method stub
-			return false;
-		}
-		
-		@Override
-		public void invalidate() {
-			// TODO Auto-generated method stub
-			
-		}
-		
-		@Override
-		public String[] getValueNames() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public Object getValue(String name) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public HttpSessionContext getSessionContext() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public ServletContext getServletContext() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public int getMaxInactiveInterval() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-		
-		@Override
-		public long getLastAccessedTime() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-		
-		@Override
-		public String getId() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public long getCreationTime() {
-			// TODO Auto-generated method stub
-			return 0;
-		}
-		
-		@Override
-		public Enumeration getAttributeNames() {
-			// TODO Auto-generated method stub
-			return null;
-		}
-		
-		@Override
-		public Object getAttribute(String name) {
-			// TODO Auto-generated method stub
-			return null;
-		}
-	};
+	MvcResult arg0;
 	
 	HttpServletRequest req = new HttpServletRequest() {
 		
@@ -471,25 +375,132 @@ public class TestEmailUpdate {
 			return null;
 		}
 	};
+
+	HttpSession session = new HttpSession() {
+		
+		@Override
+		public void setMaxInactiveInterval(int interval) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setAttribute(String name, Object value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void removeValue(String name) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void removeAttribute(String name) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void putValue(String name, Object value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public boolean isNew() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public void invalidate() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public String[] getValueNames() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Object getValue(String name) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public HttpSessionContext getSessionContext() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public ServletContext getServletContext() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public int getMaxInactiveInterval() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public long getLastAccessedTime() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public String getId() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public long getCreationTime() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public Enumeration getAttributeNames() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Object getAttribute(String name) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+	};
 	
 	@Autowired
-	   TestController tc;
+	TroisController tc;
 
 	@Test
 	public void testController5() {
+		
 		ModelAndView mav = tc.modifyemail(new ModelAndView(), req, session);
-
+		System.out.println(mav);
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
+		
 		String message = map.get("message").toString();
-
+		System.out.println(message);
+		
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
-
-		// JsonObject jobject = element.getAsJsonObject();
-		// JsonArray list = jobject.get("join").getAsJsonArray();
-
 		System.out.println(element);
-
+		
+		JsonObject jobject = element.getAsJsonObject();
+		System.out.println(jobject.get("email"));
+		assertEquals(1, Integer.parseInt(jobject.get("email").toString()));
 	}
 
 

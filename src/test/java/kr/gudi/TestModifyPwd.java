@@ -22,7 +22,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionContext;
 
-import org.junit.Before;
 import org.junit.FixMethodOrder;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -36,14 +35,14 @@ import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
-import kr.gudi.trois.controller.TestController;
+
 import kr.gudi.trois.controller.TroisController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
-public class TestAdminDelete {
-
+public class TestModifyPwd {
+	
 	ModelAndView mav;
 	
 	HttpServletRequest req = new HttpServletRequest() {
@@ -477,14 +476,208 @@ public class TestAdminDelete {
 			return null;
 		}
 	};
-	
+
+	HttpServletResponse resp = new HttpServletResponse() {
+		
+		@Override
+		public void setLocale(Locale loc) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setContentType(String type) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setContentLength(int len) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setCharacterEncoding(String charset) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setBufferSize(int size) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void resetBuffer() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void reset() {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public boolean isCommitted() {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public PrintWriter getWriter() throws IOException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public ServletOutputStream getOutputStream() throws IOException {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public Locale getLocale() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public String getContentType() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public String getCharacterEncoding() {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public int getBufferSize() {
+			// TODO Auto-generated method stub
+			return 0;
+		}
+		
+		@Override
+		public void flushBuffer() throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setStatus(int sc, String sm) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setStatus(int sc) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setIntHeader(String name, int value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setHeader(String name, String value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void setDateHeader(String name, long date) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void sendRedirect(String location) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void sendError(int sc, String msg) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void sendError(int sc) throws IOException {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public String encodeUrl(String url) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public String encodeURL(String url) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public String encodeRedirectUrl(String url) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public String encodeRedirectURL(String url) {
+			// TODO Auto-generated method stub
+			return null;
+		}
+		
+		@Override
+		public boolean containsHeader(String name) {
+			// TODO Auto-generated method stub
+			return false;
+		}
+		
+		@Override
+		public void addIntHeader(String name, int value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void addHeader(String name, String value) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void addDateHeader(String name, long date) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+		@Override
+		public void addCookie(Cookie cookie) {
+			// TODO Auto-generated method stub
+			
+		}
+	};
 	
 	@Autowired
 	TroisController tc;
-
+	
 	@Test
 	public void test3Controller(){
-		ModelAndView mav = tc.adminDataDelete(new ModelAndView(), req);
+		ModelAndView mav = tc.modifypwd(new ModelAndView(), req, session, resp);
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 
@@ -495,7 +688,7 @@ public class TestAdminDelete {
 		System.out.println(element);
 		
 		JsonObject jobject = element.getAsJsonObject();
-		System.out.println(jobject.get("no"));
-		assertEquals(1, Integer.parseInt(jobject.get("no").toString()));
+		System.out.println(jobject.get("pwd"));
+		assertEquals(1, Integer.parseInt(jobject.get("pwd").toString()));
 	}
 }

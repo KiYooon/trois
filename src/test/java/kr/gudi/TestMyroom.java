@@ -37,15 +37,16 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import kr.gudi.trois.controller.TestController;
+import kr.gudi.trois.controller.TroisController;
 
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestMyroom {
 
-	HashMap<String, Object> param;
 	int size = 10;
-	int tot = 23;
+	int tot = 24;
+	
 	ModelAndView mav;
 	
 	HttpServletRequest req = new HttpServletRequest() {
@@ -480,38 +481,30 @@ public class TestMyroom {
 		}
 	};
 	
-	@Before
-	public void init(){
-		param = new HashMap<String, Object>();
-		param.put("start", 0);
-		param.put("viewRow", 10);
-		param.put("id", "test");
-		
-		req.setAttribute("start", 0);
-		req.setAttribute("viewRow", 10);
-		session.setAttribute("user", "test");
-		
-		mav = new ModelAndView();
-	}
 	
 	@Autowired
-	TestController tc;
+	TroisController tc;
 
 	@Test
 	public void test3Controller(){
-		ModelAndView mav = tc.myroomData(this.mav, req, session);
+		ModelAndView mav = tc.myroomData(new ModelAndView(), req, session);
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 
+		System.out.println(message);
 		
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
+		System.out.println(element);
 		
 		JsonObject jobject = element.getAsJsonObject();
 		JsonArray list = jobject.get("data").getAsJsonArray();
 		assertEquals(size, list.size());
+		System.out.println(list);
 		
 		JsonObject totCnt = jobject.get("totCnt").getAsJsonObject();
 		assertEquals(tot, Integer.parseInt(totCnt.get("tot").toString()));
+		System.out.println(totCnt);
+	
 	}
 }

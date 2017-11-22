@@ -34,14 +34,14 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import kr.gudi.trois.controller.TestController;
+import kr.gudi.trois.controller.TroisController;
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(locations={"file:src/main/webapp/WEB-INF/spring/appServlet/servlet-context.xml","file:src/main/webapp/WEB-INF/spring/root-context.xml"})
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestListDetail {
 
-	HashMap<String, Object> param;
-	int size = 1;
 	ModelAndView mav;
+	
 	HttpServletRequest req = new HttpServletRequest() {
 		
 		@Override
@@ -474,44 +474,25 @@ public class TestListDetail {
 		}
 	};
 	
-	@Before
-	public void init(){
-		param = new HashMap<String, Object>();
-		param.put("no", 1);
-		param.put("title", "도구좀...");
-		param.put("contents", "많이 추가 해주세요");
-		param.put("answer", "네 알겠습니다.");
-		
-		req.setAttribute("no", 1);
-		req.setAttribute("title", "도구좀...");
-		req.setAttribute("contents", "많이 추가 해주세요");
-		req.setAttribute("answer", "네 알겠습니다.");
-		
-		session.setAttribute("user", "test");
-		
-		mav = new ModelAndView();
-	}
-	
 	@Autowired
-	TestController tc;
+	TroisController tc;
 
 	@Test
 	public void test3Controller(){
-		ModelAndView mav = tc.myqnaDetail(this.mav, req, session);
+		ModelAndView mav = tc.myqnaDetail(new ModelAndView(), req, session);
 		
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
 		String message = map.get("message").toString(); 
+		System.out.println(message);
 		
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
+		System.out.println(element);
 		
 		JsonObject jobject = element.getAsJsonObject();
 		JsonArray list = jobject.get("data").getAsJsonArray();
+		assertEquals(1, list.size());
 		System.out.println(list);
-		assertEquals(size, list.size());
-		System.out.println(size);
-		
-
 	}
 	
 }

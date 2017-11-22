@@ -42,7 +42,6 @@ import kr.gudi.trois.controller.qnaController;
 @FixMethodOrder(MethodSorters.NAME_ASCENDING)
 public class TestQuestion {
 
-	HashMap<String, Object> param;
 	ModelAndView mav;
 
 	HttpSession session = new HttpSession() {
@@ -476,36 +475,21 @@ public class TestQuestion {
 		}
 	};
 
-	@Before
-	public void init() {
-		param = new HashMap<String, Object>();
-		param.put("title", "왜 시험?");
-		param.put("contents", "거 장난이 너무 심한거 아니오?");
-
-		req.setAttribute("title", "왜 시험?");
-		req.setAttribute("contents", "거 장난이 너무 심한거 아니오?");
-
-		session.setAttribute("user", "test");
-
-		mav = new ModelAndView();
-	}
-
 	@Autowired
-	qnaController qc;
+	TestController tc;
 
 	@Test
 	public void questionTest() {
-		ModelAndView mav = qc.answer(this.mav, req,session);
+		ModelAndView mav = tc.questionRead(new ModelAndView(), req, session);
 
 		HashMap<String, Object> map = (HashMap<String, Object>) mav.getModel();
+	
 		String message = map.get("message").toString();
-
-		System.out.println(message);
 
 		JsonParser parser = new JsonParser();
 		JsonElement element = parser.parse(message);
-		System.out.println(element);
-
 		JsonObject jobject = element.getAsJsonObject();
+		System.out.println(jobject.get("insertqna").getAsInt());
+		assertEquals(1, jobject.get("insertqna").getAsInt());
 	}
 }
