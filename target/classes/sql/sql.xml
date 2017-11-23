@@ -19,6 +19,9 @@
 	<select id="checkid" resultType="hashmap" parameterType="hashmap">
 		select * from user where id = #{id}
 	</select>
+	<select id="checkemail" resultType="hashmap" parameterType="hashmap">
+		select * from user where email = #{email}
+	</select>
 
 	<select id="findid" resultType="hashmap" parameterType="hashmap">
 		select id from user where name = #{name} and email = #{email}

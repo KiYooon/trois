@@ -345,6 +345,12 @@ h1{
     font-family:monospace;
     height: 20px;
 }
+#overlapemail{
+    background: #ebebeb;
+/*     border-radius: 5px; */
+    font-family:monospace;
+    height: 20px;
+}
 .jointable{
     
     float: left;

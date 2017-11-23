@@ -76,7 +76,7 @@
 	</insert>
 	
 	<select id="workSelect" parameterType="hashmap" resultType="hashmap">
-		select * from work where ws_no = #{ws_no}
+		select * from work where ws_no = #{ws_no} and indexs != '-1';
 	</select>
 	
 	<select id="worksaveSelect" parameterType="hashmap" resultType="hashmap">

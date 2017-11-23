@@ -40,6 +40,11 @@ public class UserService implements UserServiceInterface {
       map.put("checkid", udi.checkid(param));
       return map;
    }
+   public HashMap<String, Object> checkemail(HashMap<String, Object> param){
+	      map = new HashMap<String, Object>();
+	      map.put("checkemail", udi.checkemail(param));
+	      return map;
+	   }
    @Override
    public HashMap<String, Object> findid(HashMap<String, Object> param){
       map = new HashMap<String, Object>();

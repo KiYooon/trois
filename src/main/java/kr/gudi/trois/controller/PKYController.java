@@ -84,6 +84,13 @@ public class PKYController {
 
 		HttpUtil.sendResponceToJson(resp, checkiddata);
 	}
+	@RequestMapping(value = "/checkemail", method = RequestMethod.POST)
+	public void checkemail(HttpServletRequest req, HttpServletResponse resp) {
+		HashMap<String, Object> checkemail = HttpUtil.getParameterMap(req);
+		HashMap<String, Object> checkemaildata = (HashMap<String, Object>) usi.checkemail(checkemail);
+
+		HttpUtil.sendResponceToJson(resp, checkemaildata);
+	}
 
 	@RequestMapping(value = "/findid", method = RequestMethod.POST)
 	public void findid(HttpServletRequest req, HttpServletResponse resp) {

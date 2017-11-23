@@ -371,6 +371,9 @@
       $("#overlap").on("click", function() {
          btnOverlap();
       });
+      $("#overlapemail").on("click", function() {
+    	  btnOverlapEmail();
+       });
       function btnOverlap() {
          var id = $("#createid").val();
 
@@ -390,13 +393,40 @@
          }).done(function(result) {
             if (result.checkid == null) {
                alert("사용 가능한 아이디 입니다.");
-               $("#ipjoin").attr("disabled", false);
+               
                $("#createid").attr("disabled", "disabled");
             } else {
                alert("사용 불가능한 아이디 입니다.")
             }
          });
       }
+      function btnOverlapEmail() {
+          var email = $("#email").val();
+
+          if (email == "") {
+             alert("이메일을 입력해주세요.");
+             return false;
+          }
+
+          $.ajax({
+             type : "post",
+             url : "checkemail",
+             data : {
+                "email" : email
+             },
+             datatype : "json"
+
+          }).done(function(result) {
+        	  
+             if (result.checkemail == null) {
+                alert("사용 가능한 이메일 입니다.");
+                $("#ipjoin").attr("disabled", false);
+                $("#email").attr("disabled", "disabled");
+             } else {
+                alert("사용 불가능한 이메일 입니다.")
+             }
+          });
+       }
       
       $("#headimg").on("click", function(){
          location.href = "main";
@@ -499,6 +529,7 @@
                         <p>
                            <label for="email">E-MAIL : </label> <input type="email"
                               id="email" name="email" maxlength='50'>
+                              <button type="button" id="overlapemail">중복확인</button>
                         </p>
 
 

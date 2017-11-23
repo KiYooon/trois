@@ -36,6 +36,11 @@ public class UserDao implements UserDaoInterface {
       return session.selectOne("sql.checkid", param);
    }
    @Override
+   public HashMap<String, Object> checkemail(HashMap<String, Object> param) {
+      
+      return session.selectOne("sql.checkemail", param);
+   }
+   @Override
    public HashMap<String, Object> findid(HashMap<String, Object> param) {
       return session.selectOne("sql.findid", param);
    }

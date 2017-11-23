@@ -15,4 +15,6 @@ public interface UserServiceInterface {
 	
 	public HashMap<String, Object> updatepw(HashMap<String, Object> param);
 	
+	public HashMap<String, Object> checkemail(HashMap<String, Object> param);
+	
 }

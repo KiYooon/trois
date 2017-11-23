@@ -152,13 +152,15 @@ function drag(ev) {
     ev.dataTransfer.setData("text", ev.target.id);
 }
 
+
 function drop(ev) {
     ev.preventDefault();
     var data = ev.dataTransfer.getData("text");
     $.each($("#active img"), function( index, value ) {
     	if(data.substr(data.indexOf("resources"), data.length) == $(value).attr("src")) { 
     		$(ev.target).append('<img id="item' + $(".big1 div").index(ev.target) + '" class="' + $(value).attr("class") + '" draggable="true" ondragstart="drag(event)" src="' + $(value).attr("src") + '">');
-    		addItems.push({"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":$(".big1 div").index($(ev.target))});
+    		var i = $(".big1 div").index(ev.target);
+    		addItems.push({"id": 'item' + i,"class1": $(value).attr("class"), "src":$(value).attr("src"), "index":i});
     	}
     });
 }
